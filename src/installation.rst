@@ -1,58 +1,53 @@
-
-
 .. _installation:
 
-==================
-Installing PHPUnit
-==================
+=================
+Установка PHPUnit
+=================
 
 .. _installation.requirements:
 
-Requirements
-############
+Требования
+##########
 
-PHPUnit |version| requires PHP 7.1; using the latest version of PHP is highly
-recommended.
+PHPUnit |version| требует PHP 7.1; настоятельно рекомендуется использовать последнюю версию PHP.
 
-PHPUnit requires the `dom <http://php.net/manual/en/dom.setup.php>`_ and `json <http://php.net/manual/en/json.installation.php>`_
-extensions, which are normally enabled by default.
+PHPUnit требует расширений `dom <http://php.net/manual/ru/dom.setup.php>`_ и `json <http://php.net/manual/ru/json.installation.php>`_,
+которые обычно включены по умолчанию.
 
-PHPUnit also requires the
-`pcre <http://php.net/manual/en/pcre.installation.php>`_,
-`reflection <http://php.net/manual/en/reflection.installation.php>`_,
-and `spl <http://php.net/manual/en/spl.installation.php>`_
-extensions. These standard extensions are enabled by default and cannot be
-disabled without patching PHP's build system and/or C sources.
+PHPUnit также требует расширений
+`pcre <http://php.net/manual/ru/pcre.installation.php>`_,
+`reflection <http://php.net/manual/ru/reflection.installation.php>`_
+и `spl <http://php.net/manual/ru/spl.installation.php>`_.
+Эти стандартные расширения включены по умолчанию и не могут быть
+отключены без внесения изменений в систему сборки PHP и/или в исходный код C.
 
-The code coverage report feature requires the
-`Xdebug <http://xdebug.org/>`_ (2.5.0 or later) and
-`tokenizer <http://php.net/manual/en/tokenizer.installation.php>`_
-extensions.
-Generating XML reports requires the
-`xmlwriter <http://php.net/manual/en/xmlwriter.installation.php>`_
-extension.
+Для функциональности отчёта по покрытию кода тестами требуются расширения
+`Xdebug <http://xdebug.org/>`_ (2.5.0 или новее) и
+`tokenizer <http://php.net/manual/ru/tokenizer.installation.php>`_.
+Генерация XML-отчётов требует расширения
+`xmlwriter <http://php.net/manual/ru/xmlwriter.installation.php>`_.
 
 .. _installation.phar:
 
 PHP Archive (PHAR)
 ##################
 
-The easiest way to obtain PHPUnit is to download a `PHP Archive (PHAR) <http://php.net/phar>`_ that has all required
-(as well as some optional) dependencies of PHPUnit bundled in a single
-file.
+Самый простой способ получить PHPUnit - загрузить `PHP Archive (PHAR) <http://php.net/phar>`_, в котором есть
+все необходимые (а также некоторые необязательные) зависимости PHPUnit,
+собранные в одном-единственном файле.
 
-The `phar <http://php.net/manual/en/phar.installation.php>`_
-extension is required for using PHP Archives (PHAR).
+Расширение `phar <http://php.net/manual/ru/phar.installation.php>`_ обязательно
+для использования PHP Archives (PHAR).
 
-If the `Suhosin <http://suhosin.org/>`_ extension is
-enabled, you need to allow execution of PHARs in your
+Если расширение `Suhosin <http://suhosin.org/>`_ включено,
+вам необходимо разрешить выполнение PHAR в вашем
 ``php.ini``:
 
 .. code-block:: bash
 
     suhosin.executor.include.whitelist = phar
 
-To globally install the PHAR:
+Для глобальной установки PHAR:
 
 .. code-block:: bash
 
@@ -62,7 +57,7 @@ To globally install the PHAR:
     $  phpunit --version
     PHPUnit x.y.z by Sebastian Bergmann and contributors.
 
-You may also use the downloaded PHAR file directly:
+Вы также можете использовать загруженный PHAR-файл напрямую:
 
 .. code-block:: bash
 
@@ -75,34 +70,33 @@ You may also use the downloaded PHAR file directly:
 Windows
 =======
 
-Globally installing the PHAR involves the same procedure as manually
-`installing Composer on Windows <https://getcomposer.org/doc/00-intro.md#installation-windows>`_:
+Глобальная установка PHAR включает ту же самую процедуру, что и ручная
+`установка Composer на Windows <https://getcomposer.org/doc/00-intro.md#installation-windows>`_:
 
 #.
 
-   Create a directory for PHP binaries; e.g., :file:`C:\\bin`
+   Создать папку для двоичных файлов PHP; например, :file:`C:\\bin`
 
 #.
 
-   Append ;C:\bin to your ``PATH``
-   environment variable
-   (`related help <http://stackoverflow.com/questions/6318156/adding-python-path-on-windows-7>`_)
+   Добавить ;C:\bin к вашей переменной окружения ``PATH``
+   (`справочная информация по этой теме <http://stackoverflow.com/questions/6318156/adding-python-path-on-windows-7>`_)
 
 #.
 
-   Download `<https://phar.phpunit.de/phpunit-|version|.phar>`_ and
-   save the file as :file:`C:\\bin\\phpunit.phar`
+   Загрузить `<https://phar.phpunit.de/phpunit-|version|.phar>`_ и
+   сохранить файл по пути :file:`C:\\bin\\phpunit.phar`
 
 #.
 
-   Open a command line (e.g.,
-   press :kbd:`Windows`:kbd:`R`
-   » type cmd
+   Открыть командую строку (например,
+   нажать :kbd:`Windows`:kbd:`R`
+   » ввести cmd
    » :kbd:`ENTER`)
 
 #.
 
-   Create a wrapping batch script (results in
+   Создать пакетный скрипт (в результате получится
    :file:`C:\\bin\\phpunit.cmd`):
 
    .. code-block:: bash
@@ -113,40 +107,40 @@ Globally installing the PHAR involves the same procedure as manually
 
 #.
 
-   Open a new command line and confirm that you can execute PHPUnit
-   from any path:
+   Открыть новую командную строку и убедиться, что вы можете выполнить PHPUnit
+   из любого пути:
 
    .. code-block:: bash
 
        C:\Users\username>  phpunit --version
        PHPUnit x.y.z by Sebastian Bergmann and contributors.
 
-For Cygwin and/or MingW32 (e.g., TortoiseGit) shell environments, you
-may skip step 5. above, simply save the file as
-:file:`phpunit` (without :file:`.phar`
-extension), and make it executable via
+Для командных оболочек Cygwin и/или MingW32 (например, TortoiseGit) вы
+можете пропустить шаг 5 выше, просто сохранив файл как
+:file:`phpunit` (без расширения :file:`.phar`)
+и сделав его исполняемым через команду
 chmod 775 phpunit.
 
 .. _installation.phar.verification:
 
-Verifying PHPUnit PHAR Releases
-===============================
+Проверка релизов PHPUnit PHAR
+=============================
 
-All official releases of code distributed by the PHPUnit Project are
-signed by the release manager for the release. PGP signatures and SHA1
-hashes are available for verification on `phar.phpunit.de <https://phar.phpunit.de/>`_.
+Все официальные релизы кода, распространяемые проектом PHPUnit, подписываются
+релиз-менеджером. Подписи PGP и хеши SHA1
+доступны для проверки на `phar.phpunit.de <https://phar.phpunit.de/>`_.
 
-The following example details how release verification works. We start
-by downloading :file:`phpunit.phar` as well as its
-detached PGP signature :file:`phpunit.phar.asc`:
+В следующем примере показано, как работает проверка релиза. Мы начинаем
+с загрузки :file:`phpunit.phar`, а также его отделённой подписи PGP
+:file:`phpunit.phar.asc`:
 
 .. code-block:: bash
 
     wget https://phar.phpunit.de/phpunit.phar
     wget https://phar.phpunit.de/phpunit.phar.asc
 
-We want to verify PHPUnit's PHP Archive (:file:`phpunit.phar`)
-against its detached signature (:file:`phpunit.phar.asc`):
+Мы хотим проверить PHP Archive (:file:`phpunit.phar`) PHPUnit
+с его отделённой подписью (:file:`phpunit.phar.asc`):
 
 .. code-block:: bash
 
@@ -154,11 +148,11 @@ against its detached signature (:file:`phpunit.phar.asc`):
     gpg: Signature made Sat 19 Jul 2014 01:28:02 PM CEST using RSA key ID 6372C20A
     gpg: Can't check signature: public key not found
 
-We don't have the release manager's public key (``6372C20A``)
-in our local system. In order to proceed with the verification we need
-to retrieve the release manager's public key from a key server. One such
-server is :file:`pgp.uni-mainz.de`. The public key servers
-are linked together, so you should be able to connect to any key server.
+У нас нет открытого ключа релиз-менеджера (``6372C20A``)
+в нашей локальной системе. Для продолжения проверки нам нужно
+получить открытый ключ релиз-менеджера с сервера ключей. Один из таких
+серверов - это :file:`pgp.uni-mainz.de`. Серверы открытых ключей
+связаны между собой, поэтому вы можете подключиться к любому из них.
 
 .. code-block:: bash
 
@@ -168,10 +162,10 @@ are linked together, so you should be able to connect to any key server.
     gpg: Total number processed: 1
     gpg:               imported: 1  (RSA: 1)
 
-Now we have received a public key for an entity known as "Sebastian
-Bergmann <sb@sebastian-bergmann.de>". However, we have no way of
-verifying this key was created by the person known as Sebastian
-Bergmann. But, let's try to verify the release signature again.
+Теперь мы получили открытый для сущности, известной как "Sebastian
+Bergmann <sb@sebastian-bergmann.de>". Однако, у нас нет способа
+проверить, что этот ключ был создан человеком под именем Себастьян Бергман (Sebastian
+Bergmann). Но давайте снова попробуем проверить подпись релиза.
 
 .. code-block:: bash
 
@@ -187,23 +181,21 @@ Bergmann. But, let's try to verify the release signature again.
     gpg:          There is no indication that the signature belongs to the owner.
     Primary key fingerprint: D840 6D0D 8294 7747 2937  7831 4AA3 9408 6372 C20A
 
-At this point, the signature is good, but we don't trust this key. A
-good signature means that the file has not been tampered. However, due
-to the nature of public key cryptography, you need to additionally
-verify that key ``6372C20A`` was created by the real
-Sebastian Bergmann.
+В данный момент подпись хорошая, но мы не доверяем этому ключу. Хорошая
+подпись означает, что файл не был изменён. Однако ввиду характера
+криптографии открытого ключа вам необходимо дополнительно
+проверить, что ключ ``6372C20A`` был создан настоящим
+Себастьяном Бергманом (Sebastian Bergmann).
 
-Any attacker can create a public key and upload it to the public key
-servers. They can then create a malicious release signed by this fake
-key. Then, if you tried to verify the signature of this corrupt release,
-it would succeed because the key was not the "real" key. Therefore, you
-need to validate the authenticity of this key. Validating the
-authenticity of a public key, however, is outside the scope of this
-documentation.
+Любой злоумышленник может создать открытый ключ и загрузить его на серверы открытых серверов.
+Затем они могут создать вредоносный релиз, подписанный этим поддельным ключом.
+key. После чего, если вы попытаетесь проверить подпись этого испорченного релиза,
+проверка будет успешной, потому что ключ не является "реальным" ключом. Поэтому вам
+нужно проверить подлинность этого ключа. Однако проверка подлинности открытого ключа
+выходит за рамки данной документации.
 
-It may be prudent to create a shell script to manage PHPUnit installation
-that verifies the GnuPG signature before running your test suite. For
-example:
+Возможно, было бы целесообразно создать скрипт командной оболочки для управления установкой PHPUnit,
+который проверяет подпись GnuPG перед запуском набора тестов. Например:
 
 .. code-block:: bash
 
@@ -267,10 +259,10 @@ example:
 Composer
 ########
 
-Simply add a (development-time) dependency on
-``phpunit/phpunit`` to your project's
-``composer.json`` file if you use `Composer <https://getcomposer.org/>`_ to manage the
-dependencies of your project:
+Просто добавьте (для разработки) зависимость
+``phpunit/phpunit`` в файл
+``composer.json`` вашего проекта, если вы используете `Composer <https://getcomposer.org/>`_ для управления
+зависимостями в вашей проекте:
 
 .. code-block:: bash
 
@@ -278,18 +270,18 @@ dependencies of your project:
 
 .. _installation.optional-packages:
 
-Optional packages
-#################
+Необязательные пакеты
+#####################
 
-The following optional packages are available:
+Доступны следующие необязательные (дополнительные) пакеты:
 
 ``PHP_Invoker``
 
-    A utility class for invoking callables with a timeout. This package is
-    required to enforce test timeouts in strict mode.
+    Класс-утилита для вызова функций обратного вызова с тайм-аутом. Этот пакет
+    необходим для обеспечения выполнения тайм-аутов тестирования в строгом режиме.
 
-    This package is included in the PHAR distribution of PHPUnit. It can
-    be installed via Composer using the following command:
+    Этот пакет включён в дистрибутив PHAR PHPUnit. Его
+    можно установить через Composer, используя следующую команду:
 
     .. code-block:: bash
 
@@ -297,13 +289,11 @@ The following optional packages are available:
 
 ``DbUnit``
 
-    DbUnit port for PHP/PHPUnit to support database interaction testing.
+    Порт DbUnit для PHP/PHPUnit для поддержки тестирования взаимодействия с базами данных.
 
-    This package is not included in the PHAR distribution of PHPUnit. It can
-    be installed via Composer using the following command:
+    Этот пакет не включён в дистрибутив PHAR PHPUnit. Его
+    можно установить через Composer, используя следующую команду:
 
     .. code-block:: bash
 
         composer require --dev phpunit/dbunit
-
-
