@@ -1,14 +1,14 @@
-==============
-PHPUnit Manual
-==============
+======================
+Руководство по PHPUnit
+======================
 
-Edition for PHPUnit |version|. Updated on |today|.
+Документация на русском языке для PHPUnit версии |version|. Обновлено: |today|.
 
-Sebastian Bergmann
+Себастьян Бергман (Sebastian Bergmann)
 
-This work is licensed under the Creative Commons Attribution 3.0 Unported License.
+Эта работа распространяется на условиях лицензии Creative Commons Attribution 3.0 Unported License.
 
-Contents:
+Содержание:
 
 .. toctree::
    :maxdepth: 3
@@ -37,5 +37,3 @@ Contents:
    configuration
    bibliography
    copyright
-
-
