@@ -1,33 +1,32 @@
-
-
 .. _writing-tests-for-phpunit:
 
-=========================
-Writing Tests for PHPUnit
-=========================
+========================
+Написание тестов PHPUnit
+========================
 
-:numref:`writing-tests-for-phpunit.examples.StackTest.php` shows
-how we can write tests using PHPUnit that exercise PHP's array operations.
-The example introduces the basic conventions and steps for writing tests
-with PHPUnit:
-
-#.
-
-   The tests for a class ``Class`` go into a class ``ClassTest``.
+:numref:`writing-tests-for-phpunit.examples.StackTest.php` показывает,
+как мы можем писать тесты, используя PHPUnit, которые выполняют операции с массивом PHP.
+В этом примере представлены основные соглашения и шаги для написания тестов
+с помощью PHPUnit:
 
 #.
 
-   ``ClassTest`` inherits (most of the time) from ``PHPUnit\Framework\TestCase``.
+   Тесты для класса ``Class`` переходят в класс ``ClassTest``.
 
 #.
 
-   The tests are public methods that are named ``test*``.
-
-   Alternatively, you can use the ``@test`` annotation in a method's docblock to mark it as a test method.
+   ``ClassTest`` наследуется (чаще всего) от ``PHPUnit\Framework\TestCase``.
 
 #.
 
-   Inside the test methods, assertion methods such as ``assertSame()`` (see :ref:`appendixes.assertions`) are used to assert that an actual value matches an expected value.
+  Тесты - общедоступные методы, которые называются ``test*``.
+
+   Кроме того, вы можете использовать аннотацию ``@test`` в docblock метода, чтобы пометить его как метод тестирования.
+
+#.
+
+   Внутри тестовых методов используются методы-утверждения, такие как ``assertSame()`` (см. :ref:`appendixes.assertions`), которые
+   используется для подтверждения того, соответствует ли фактическое значение ожидаемому значению.
 
 .. code-block:: php
     :caption: Testing array operations with PHPUnit
@@ -54,45 +53,46 @@ with PHPUnit:
 |
     *Martin Fowler*:
 
-    Whenever you are tempted to type something into a
-    ``print`` statement or a debugger expression, write it
-    as a test instead.
+    Всякий раз, когда возникает соблазн что-то распечатать, используя
+    ``print``, или написать выражение для отладчика, напишите тест
+    вместо этого.
 
 .. _writing-tests-for-phpunit.test-dependencies:
 
-Test Dependencies
-#################
+Зависимости тестов
+##################
 
     *Adrian Kuhn et. al.*:
 
-    Unit Tests are primarily written as a good practice to help developers
-    identify and fix bugs, to refactor code and to serve as documentation
-    for a unit of software under test. To achieve these benefits, unit tests
-    ideally should cover all the possible paths in a program. One unit test
-    usually covers one specific path in one function or method. However a
-    test method is not necessarily an encapsulated, independent entity. Often
-    there are implicit dependencies between test methods, hidden in the
-    implementation scenario of a test.
+    Модульные тесты (Unit Tests) главным образом пишутся в качестве хорошей практики,
+    помогающей разработчикам выявлять и исправлять баги (ошибки), проводить рефакторинг код
+    и служить как документация для тестируемого программного модуля.
+    Для достижения этих преимуществ модульные тесты
+    в идеале должны охватывать все возможные пути в программе. Один модульный тест
+    обычно охватывает один конкретный путь в функции или метода. Однако методы тестирования
+    необязательно должен быть инкапсулированными и независимыми. Часто
+    существуют неявные зависимости между тестовыми методами, скрытые в
+    реализации теста.
 
-PHPUnit supports the declaration of explicit dependencies between test
-methods. Such dependencies do not define the order in which the test
-methods are to be executed but they allow the returning of an instance of
-the test fixture by a producer and passing it to the dependent consumers.
-
--
-
-  A producer is a test method that yields its unit under test as return value.
+PHPUnit поддерживает объявление явных зависимостей между тестовыми методами.
+Такие зависимости не определяют порядок, в котором должны выполняться тестовые методы,
+но они позволяют возвращать экземпляр фикстуры (fixture) теста продюсером (producer)
+и передавать его зависимым потребителям (consumers).
 
 -
 
-  A consumer is a test method that depends on one or more producers and their return values.
+  Продюсер (producer) - тестовый метод, который выдаёт протестированный модуль в качестве возвращаемого значения.
 
-:numref:`writing-tests-for-phpunit.examples.StackTest2.php` shows
-how to use the ``@depends`` annotation to express
-dependencies between test methods.
+-
+
+  Потребитель (consumer) - тестовый метод, который зависит от одного или более продюсеров и их возвращаемых значений.
+
+:numref:`writing-tests-for-phpunit.examples.StackTest2.php` показывает,
+как использовать аннотацию ``@depends`` для представления зависимостей
+между тестовыми методами.
 
 .. code-block:: php
-    :caption: Using the ``@depends`` annotation to express dependencies
+    :caption: Использование аннотации ``@depends`` для представления зависимостей
     :name: writing-tests-for-phpunit.examples.StackTest2.php
 
     <?php
@@ -130,30 +130,29 @@ dependencies between test methods.
         }
     }
 
-In the example above, the first test, ``testEmpty()``,
-creates a new array and asserts that it is empty. The test then returns
-the fixture as its result. The second test, ``testPush()``,
-depends on ``testEmpty()`` and is passed the result of that
-depended-upon test as its argument. Finally, ``testPop()``
-depends upon ``testPush()``.
+В вышеприведённом примере первый тест, ``testEmpty()``,
+создаёт новый массив и утверждает, что он пуст. Затем тест возвращает фикстуру
+(fixture) в качестве результата. Второй тест, ``testPush()``,
+зависит от ``testEmpty()`` и ему передаётся результат зависимого теста
+в качестве аргумента. Наконец, ``testPop()``
+зависит от ``testPush()``.
 
 .. admonition:: Note
 
-   The return value yielded by a producer is passed "as-is" to its
-   consumers by default. This means that when a producer returns an object,
-   a reference to that object is passed to the consumers. Instead of
-   a reference either (a) a (deep) copy via ``@depends clone``, or (b) a
-   (normal shallow) clone (based on PHP keyword ``clone``) via
-   ``@depends shallowClone`` are possible too.
+   Возвращаемое значение, выданное производителем, по умолчанию передаётся потребителям "как есть".
+   Это означает, что когда продюсер возвращает объект, ссылка на этот объект передаётся потребителям.
+   Вместо ссылки возможна, либо (a) (глубокая) копия через ``@depends clone`` или также (b)
+   (обычная неполная) копия (на основе ключевого слова PHP ``clone``) через
+   ``@depends shallowClone``.
 
-To quickly localize defects, we want our attention to be focussed on
-relevant failing tests. This is why PHPUnit skips the execution of a test
-when a depended-upon test has failed. This improves defect localization by
-exploiting the dependencies between tests as shown in
-:numref:`writing-tests-for-phpunit.examples.DependencyFailureTest.php`.
+Чтобы быстро локализовать дефекты, мы хотим сосредоточить наше внимание.
+на соответствующих неудачных тестах. Вот почему PHPUnit пропускает выполнение теста,
+когда зависимый тест не прошёл. Это помогает локализовать дефекты путём использования
+зависимостей между тестами, как это показано
+в :numref:`writing-tests-for-phpunit.examples.DependencyFailureTest.php`.
 
 .. code-block:: php
-    :caption: Exploiting the dependencies between tests
+    :caption: Использование зависимостей между тестами
     :name: writing-tests-for-phpunit.examples.DependencyFailureTest.php
 
     <?php
@@ -198,18 +197,17 @@ exploiting the dependencies between tests as shown in
     FAILURES!
     Tests: 1, Assertions: 1, Failures: 1, Skipped: 1.
 
-A test may have more than one ``@depends`` annotation.
-PHPUnit does not change the order in which tests are executed, you have to
-ensure that the dependencies of a test can actually be met before the test
-is run.
+Тест может иметь более одной аннотации ``@depends``.
+PHPUnit не изменяет порядок выполнения тестов, поэтому вы должны убедиться,
+что зависимости действительно могут быть выполнены до запуска теста.
 
-A test that has more than one ``@depends`` annotation
-will get a fixture from the first producer as the first argument, a fixture
-from the second producer as the second argument, and so on.
-See :numref:`writing-tests-for-phpunit.examples.MultipleDependencies.php`
+Тест, содержащий более одно аннотации ``@depends``,
+получит фикстуру от первого продюсера в качестве первого аргумента, фикстуру
+от второго продюсера во втором аргумент и т.д.
+См. :numref:`writing-tests-for-phpunit.examples.MultipleDependencies.php`
 
 .. code-block:: php
-    :caption: Test with multiple dependencies
+    :caption: Тест с несколькими зависимостями
     :name: writing-tests-for-phpunit.examples.MultipleDependencies.php
 
     <?php
@@ -253,23 +251,21 @@ See :numref:`writing-tests-for-phpunit.examples.MultipleDependencies.php`
 
 .. _writing-tests-for-phpunit.data-providers:
 
-Data Providers
-##############
+Провайдеры данных
+#################
 
-A test method can accept arbitrary arguments. These arguments are to be
-provided by one ore more data provider methods (``additionProvider()`` in
-:numref:`writing-tests-for-phpunit.data-providers.examples.DataTest.php`).
-The data provider method to be used is specified using the
-``@dataProvider`` annotation.
+Тестовый метод может принимать произвольное количество аргументов. Эти аргументы могут быть
+предоставлены одним или несколькими методами провайдеров данных (data provider)
+(см. ``additionProvider()`` в :numref:`writing-tests-for-phpunit.data-providers.examples.DataTest.php`).
+Используемый метод провайдера данных указывается в аннотации ``@dataProvider``.
 
-A data provider method must be ``public`` and either return
-an array of arrays or an object that implements the ``Iterator``
-interface and yields an array for each iteration step. For each array that
-is part of the collection the test method will be called with the contents
-of the array as its arguments.
+Метод провайдера данных должен быть объявлен как ``public`` и либо возвращать
+массив массивов или объект, реализующий интерфейс ``Iterator``
+и выдавать массив для каждого шага итерации. Для каждого массива, являющегося
+частью коллекции, будет вызываться тестовый метод с содержимым массива в качестве его аргументов.
 
 .. code-block:: php
-    :caption: Using a data provider that returns an array of arrays
+    :caption: Использование провайдера данных, который возвращает массив массивов
     :name: writing-tests-for-phpunit.data-providers.examples.DataTest.php
 
     <?php
@@ -315,11 +311,12 @@ of the array as its arguments.
     FAILURES!
     Tests: 4, Assertions: 4, Failures: 1.
 
-When using a large number of datasets it's useful to name each one with string key instead of default numeric.
-Output will be more verbose as it'll contain that name of a dataset that breaks a test.
+При использовании большого количества наборов данных (datasets) полезно указывать для каждого из них строковый ключ,
+вместо использования числового ключа по умолчанию.
+Вывод станет более подробным, т.к. он будет содержать имя набора данных, который не прошёл тест.
 
-.. code-block:: php
-    :caption: Using a data provider with named datasets
+.. code-block:: phpименованными
+    :caption: Использование провайдера данных с  наборами данных
     :name: writing-tests-for-phpunit.data-providers.examples.DataTest1.php
 
     <?php
@@ -366,7 +363,7 @@ Output will be more verbose as it'll contain that name of a dataset that breaks 
     Tests: 4, Assertions: 4, Failures: 1.
 
 .. code-block:: php
-    :caption: Using a data provider that returns an Iterator object
+    :caption: Использование провайдера данных, который возвращает объект Iterator
     :name: writing-tests-for-phpunit.data-providers.examples.DataTest2.php
 
     <?php
@@ -410,7 +407,7 @@ Output will be more verbose as it'll contain that name of a dataset that breaks 
     Tests: 4, Assertions: 4, Failures: 1.
 
 .. code-block:: php
-    :caption: The CsvFileIterator class
+    :caption: Класс CsvFileIterator
     :name: writing-tests-for-phpunit.data-providers.examples.CsvFileIterator.php
 
     <?php
@@ -453,15 +450,14 @@ Output will be more verbose as it'll contain that name of a dataset that breaks 
         }
     }
 
-When a test receives input from both a ``@dataProvider``
-method and from one or more tests it ``@depends`` on, the
-arguments from the data provider will come before the ones from
-depended-upon tests. The arguments from depended-upon tests will be the
-same for each data set.
-See :numref:`writing-tests-for-phpunit.data-providers.examples.DependencyAndDataProviderCombo.php`
+Когда тест получает входные данные как из метода с ``@dataProvider``,
+так и от одного или более методов с аннотацией ``@depends``,
+первыми будут приходить аргументы от провайдера данных, а после от зависимых тестов.
+Аргументы от зависимых тестов будут одинаковыми для каждого набора данных.
+См. :numref:`writing-tests-for-phpunit.data-providers.examples.DependencyAndDataProviderCombo.php`
 
 .. code-block:: php
-    :caption: Combination of @depends and @dataProvider in same test
+    :caption: Комбинация @depends и @dataProvider в одном тесте
     :name: writing-tests-for-phpunit.data-providers.examples.DependencyAndDataProviderCombo.php
 
     <?php
@@ -528,7 +524,7 @@ See :numref:`writing-tests-for-phpunit.data-providers.examples.DependencyAndData
     Tests: 4, Assertions: 4, Failures: 1.
 
 .. code-block:: php
-    :caption: Using multiple data providers for a single test
+    :caption: Использование нескольких провайдеров данных для одного теста
       :name: writing-tests-for-phpunit.data-providers.examples.DataTest.php
 
       <?php
@@ -584,30 +580,29 @@ See :numref:`writing-tests-for-phpunit.data-providers.examples.DependencyAndData
 
 .. admonition:: Note
 
-   When a test depends on a test that uses data providers, the depending
-   test will be executed when the test it depends upon is successful for at
-   least one data set. The result of a test that uses data providers cannot
-   be injected into a depending test.
+   Когда тест зависит от теста, который использует провайдеры данных, зависимый
+   тест начнёт выполняться, когда тест, от которого от зависит, успешно выполнится
+   как минимум для одного набора данных. Результат теста, который использует провайдеры данных,
+   не может быть внедрён в зависимый тест.
 
 .. admonition:: Note
 
-   All data providers are executed before both the call to the ``setUpBeforeClass``
-   static method and the first call to the ``setUp`` method.
-   Because of that you can't access any variables you create there from
-   within a data provider. This is required in order for PHPUnit to be able
-   to compute the total number of tests.
+   Все провайдеры данных выполняются как перед вызовом статического метода ``setUpBeforeClass``,
+   так и перед первым вызовом метода ``setUp``.
+   Из-за этого вы не можете получить доступ к переменным, созданным внутри провайдера данных.
+   Это необходимо для того, чтобы PHPUnit мог вычислить общее количество тестов.
 
 .. _writing-tests-for-phpunit.exceptions:
 
-Testing Exceptions
-##################
+Тестирование исключений
+#######################
 
 :numref:`writing-tests-for-phpunit.exceptions.examples.ExceptionTest.php`
-shows how to use the ``expectException()`` method to test
-whether an exception is thrown by the code under test.
+показывает, как использовать метод ``expectException()`` для проверки того,
+было ли выброшено исключение в тестируемом коде.
 
 .. code-block:: php
-    :caption: Using the expectException() method
+    :caption: Использование метода expectException()
     :name: writing-tests-for-phpunit.exceptions.examples.ExceptionTest.php
 
     <?php
@@ -638,28 +633,28 @@ whether an exception is thrown by the code under test.
     FAILURES!
     Tests: 1, Assertions: 1, Failures: 1.
 
-In addition to the ``expectException()`` method the
+В дополнение к методу ``expectException()`` существуют методы
 ``expectExceptionCode()``,
-``expectExceptionMessage()``, and
-``expectExceptionMessageRegExp()`` methods exist to set up
-expectations for exceptions raised by the code under test.
+``expectExceptionMessage()`` и
+``expectExceptionMessageRegExp()`` для установки ожиданий для
+исключений, вызванных тестируемым кодом.
 
 .. admonition:: Note
 
-   Note that expectExceptionMessage asserts that the ``$actual``
-   message contains the ``$expected`` message and doesn't perform
-   an exact string comparison.
+   Обратите внимание, что метод expectExceptionMessage, утверждает,
+   что фактическое сообщение в ``$actual`` содержит ожидаемое сообщение ``$expected``
+   без выполнения точного сравнения строк.
 
-Alternatively, you can use the ``@expectedException``,
+Кроме того, вы можете использовать аннотации ``@expectedException``,
 ``@expectedExceptionCode``,
-``@expectedExceptionMessage``, and
-``@expectedExceptionMessageRegExp`` annotations to set up
-expectations for exceptions raised by the code under test.
+``@expectedExceptionMessage`` и
+``@expectedExceptionMessageRegExp``, чтобы установить
+ожидания для исключений, вызванных тестируемым кодом.
 :numref:`writing-tests-for-phpunit.exceptions.examples.ExceptionTest2.php`
-shows an example.
+демонстрирует пример использования.
 
 .. code-block:: php
-    :caption: Using the @expectedException annotation
+    :caption: Использование аннотации @expectedException
     :name: writing-tests-for-phpunit.exceptions.examples.ExceptionTest2.php
 
     <?php
@@ -694,23 +689,23 @@ shows an example.
 
 .. _writing-tests-for-phpunit.errors:
 
-Testing PHP Errors
-##################
+Тестирование ошибок PHP
+#######################
 
-By default, PHPUnit converts PHP errors, warnings, and notices that are
-triggered during the execution of a test to an exception. Using these
-exceptions, you can, for instance, expect a test to trigger a PHP error as
-shown in :numref:`writing-tests-for-phpunit.exceptions.examples.ErrorTest.php`.
+По умолчанию PHPUnit преобразует ошибки, предупреждения и уведомления, вызываемые PHP
+во время выполнения теста, в исключения.
+Использовав эти исключения, вы можете, например, ожидать, что тест вызовет ошибку
+PHP, как показано в :numref:`writing-tests-for-phpunit.exceptions.examples.ErrorTest.php`.
 
 .. admonition:: Note
 
-   PHP's ``error_reporting`` runtime configuration can
-   limit which errors PHPUnit will convert to exceptions. If you are
-   having issues with this feature, be sure PHP is not configured to
-   suppress the type of errors you're testing.
+   Конфигурация времени выполнения PHP ``error_reporting`` может
+   ограничивать, какие ошибки PHPUnit будет конвертировать в исключения. Если у вас
+   возникли проблемы с этой настройкой, убедитесь, что PHP не настроен на подавление
+   типов ошибок, которые вы тестируете.
 
 .. code-block:: php
-    :caption: Expecting a PHP error using @expectedException
+    :caption: Ожидание ошибки PHP в тесте, используя @expectedException
     :name: writing-tests-for-phpunit.exceptions.examples.ErrorTest.php
 
     <?php
@@ -738,26 +733,24 @@ shown in :numref:`writing-tests-for-phpunit.exceptions.examples.ErrorTest.php`.
 
     OK (1 test, 1 assertion)
 
-``PHPUnit\Framework\Error\Notice`` and
-``PHPUnit\Framework\Error\Warning`` represent PHP notices
-and warnings, respectively.
+Классы ``PHPUnit\Framework\Error\Notice``
+``PHPUnit\Framework\Error\Warning`` представляют уведомления и предупреждения PHP
+соответственно.
 
 .. admonition:: Note
 
-   You should be as specific as possible when testing exceptions. Testing
-   for classes that are too generic might lead to undesirable
-   side-effects. Accordingly, testing for the ``Exception``
-   class with ``@expectedException`` or
-   ``expectException()`` is no longer permitted.
+   Вы должны как можно более конкретно указать исключения при тестировании. Тестирование
+   классов, которые являются слишком общими, может привести к нежелательным побочным
+   эффектам. Соответственно, тестирование исключения на соответствие классу ``Exception``
+   с помощью ``@expectedException`` или ``expectException()`` больше не разрешено.
 
-When testing that relies on php functions that trigger errors like
-``fopen`` it can sometimes be useful to use error
-suppression while testing. This allows you to check the return values by
-suppressing notices that would lead to a phpunit
-``PHPUnit\Framework\Error\Notice``.
+При тестировании, которое использует функции PHP, вызывающие ошибки, например,
+``fopen``, иногда бывает полезно использовать подавление ошибок во время тестирования.
+Таким образом, вы можете проверять возвращаемые значения, подавляя уведомления, которые
+преобразуется в объекты PHPUnit ``PHPUnit\Framework\Error\Notice``.
 
 .. code-block:: php
-    :caption: Testing return values of code that uses PHP Errors
+    :caption: Тестирование возвращаемых значений в коде, в котором возникают ошибки PHP
     :name: writing-tests-for-phpunit.exceptions.examples.TriggerErrorReturnValue.php
 
     <?php
@@ -796,29 +789,28 @@ suppressing notices that would lead to a phpunit
 
     OK (1 test, 1 assertion)
 
-Without the error suppression the test would fail reporting
+Без подавления ошибки тест завершится неудачей с сообщением
 ``fopen(/is-not-writeable/file): failed to open stream: No such file or directory``.
 
 .. _writing-tests-for-phpunit.output:
 
-Testing Output
-##############
+Тестирования вывода
+###################
 
-Sometimes you want to assert that the execution of a method, for
-instance, generates an expected output (via ``echo`` or
-``print``, for example). The
-``PHPUnit\Framework\TestCase`` class uses PHP's
-`Output
-Buffering <http://www.php.net/manual/en/ref.outcontrol.php>`_ feature to provide the functionality that is
-necessary for this.
+Иногда вы хотите проверить, что выполнение метода, например,
+генерирует ожидаемый вывод (к примеру, через ``echo`` или
+``print``). Класс
+``PHPUnit\Framework\TestCase`` использует возможность
+`буферизации вывода <http://www.php.net/manual/ru/ref.outcontrol.php>`_ PHP
+для обеспечения необходимой для этого функциональности.
 
 :numref:`writing-tests-for-phpunit.output.examples.OutputTest.php`
-shows how to use the ``expectOutputString()`` method to
-set the expected output. If this expected output is not generated, the
-test will be counted as a failure.
+показывает, как использовать метод ``expectOutputString()`` для установки
+ожидаемого вывода. Если этот ожидаемый вывод не будет сгенерирован, тест
+будет считаться неудачным.
 
 .. code-block:: php
-    :caption: Testing the output of a function or method
+    :caption: Тестирование вывода функции или метода
     :name: writing-tests-for-phpunit.output.examples.OutputTest.php
 
     <?php
@@ -862,38 +854,38 @@ test will be counted as a failure.
     Tests: 2, Assertions: 2, Failures: 1.
 
 :numref:`writing-tests-for-phpunit.output.tables.api`
-shows the methods provided for testing output
+показывает доступные методы для тестирования вывода
 
 .. rst-class:: table
-.. list-table:: Methods for testing output
+.. list-table:: Методы для тестирования вывода
     :name: writing-tests-for-phpunit.output.tables.api
     :header-rows: 1
 
-    * - Method
-      - Meaning
+    * - Метод
+      - Описание
     * - ``void expectOutputRegex(string $regularExpression)``
-      - Set up the expectation that the output matches a ``$regularExpression``.
+      - Установить ожидание, что вывод соответствует регулярному выражению ``$regularExpression``.
     * - ``void expectOutputString(string $expectedString)``
-      - Set up the expectation that the output is equal to an ``$expectedString``.
+      - Установить ожидание, что вывод соответствует строке ``$expectedString``.
     * - ``bool setOutputCallback(callable $callback)``
-      - Sets up a callback that is used to, for instance, normalize the actual output.
+      - Устанавливает функцию обратного вызова, используемую, например, для нормализации фактического вывода.
     * - ``string getActualOutput()``
-      - Get the actual output.
+      - Получить фактический вывод.
 
 .. admonition:: Note
 
-   A test that emits output will fail in strict mode.
+   Тест, который генерирует вывод, не будет работать в строгом режиме.
 
 .. _writing-tests-for-phpunit.error-output:
 
-Error output
+Вывод ошибки
 ############
 
-Whenever a test fails PHPUnit tries its best to provide you with as much
-context as possible that can help to identify the problem.
+Всякий раз, когда тест терпит неудачу, PHPUnit изо всех сил пытается предоставить вам
+максимально возможный контекст, который может помочь выявить проблему.
 
 .. code-block:: php
-    :caption: Error output generated when an array comparison fails
+    :caption: Вывод ошибки, сгенерированный при неудачном сравнении массива
     :name: writing-tests-for-phpunit.error-output.examples.ArrayDiffTest.php
 
     <?php
@@ -940,14 +932,14 @@ context as possible that can help to identify the problem.
     FAILURES!
     Tests: 1, Assertions: 1, Failures: 1.
 
-In this example only one of the array values differs and the other values
-are shown to provide context on where the error occurred.
+В этом примере только одно из значений массива отличается, а остальные значения показаны,
+чтобы предоставить контекст, где произошла ошибка.
 
-When the generated output would be long to read PHPUnit will split it up
-and provide a few lines of context around every difference.
+Когда сгенерированный вывод будет длинным для чтения, PHPUnit разделит его
+и предоставит несколько строк контекста вокруг каждой разницы.
 
 .. code-block:: php
-    :caption: Error output when an array comparison of an long array fails
+    :caption: Вывод ошибки при неудачном сравнении длинного массива
     :name: writing-tests-for-phpunit.error-output.examples.LongArrayDiffTest.php
 
     <?php
@@ -996,18 +988,18 @@ and provide a few lines of context around every difference.
 
 .. _writing-tests-for-phpunit.error-output.edge-cases:
 
-Edge cases
-==========
+Крайние случаи
+==============
 
-When a comparison fails PHPUnit creates textual representations of the
-input values and compares those. Due to that implementation a diff
-might show more problems than actually exist.
+Когда сравнение терпит неудачу, PHPUnit создаёт текстовые представления
+входных значений и сравнивает их. Из-за этой реализации сравнение изменений (diff)
+может показать больше проблем, чем существует на самом деле.
 
-This only happens when using assertEquals or other 'weak' comparison
-functions on arrays or objects.
+Это происходит только при использовании assertEquals или 'слабых' ('weak') функций
+сравнения массивов или объектов.
 
 .. code-block:: php
-    :caption: Edge case in the diff generation when using weak comparison
+    :caption: Крайний случай в генерации сравнения при использовании слабого сравнения
     :name: writing-tests-for-phpunit.error-output.edge-cases.examples.ArrayWeakComparisonTest.php
 
     <?php
@@ -1055,8 +1047,8 @@ functions on arrays or objects.
     FAILURES!
     Tests: 1, Assertions: 1, Failures: 1.
 
-In this example the difference in the first index between
-``1`` and ``'1'`` is
-reported even though assertEquals considers the values as a match.
+В этом примере сообщается о различии в первом индексе между
+``1`` и ``'1'``,
+хотя assertEquals считает, что эти значения совпадают.
 
 
