@@ -3,12 +3,12 @@
 .. _textui:
 
 ============================
-The Command-Line Test Runner
+Исполнитель тестов командной строки
 ============================
 
-The PHPUnit command-line test runner can be invoked through the
-:file:`phpunit` command. The following code shows how to run
-tests with the PHPUnit command-line test runner:
+Исполнитель тестов (test runner) командной строки PHPUnit можно запустить с помощью
+команды :file:`phpunit`. Следующий пример показывает, как запускать
+тесты с помощью этого инструмента командной строки PHPUnit:
 
 .. code-block:: bash
 
@@ -21,57 +21,55 @@ tests with the PHPUnit command-line test runner:
 
     OK (2 tests, 2 assertions)
 
-When invoked as shown above, the PHPUnit command-line test runner will look
-for a :file:`ArrayTest.php` sourcefile in the current working
-directory, load it, and expect to find a ``ArrayTest`` test
-case class. It will then execute the tests of that class.
+При вводе команды, как показано выше, исполнитель тестов командной строки PHPUnit будет
+искать исходный файл :file:`ArrayTest.php` в текущей рабочей директории,
+загрузит его с целью найти в нём класс теста ``ArrayTest``. Затем он выполнит тесты этого класса.
 
-For each test run, the PHPUnit command-line tool prints one character to
-indicate progress:
+Для каждого тестового запуска инструмент командной строки PHPUnit выведет один символ для
+обозначения прогресса:
 
 ``.``
 
-    Printed when the test succeeds.
+    Выводится, если тест успешно пройден.
 
 ``F``
 
-    Printed when an assertion fails while running the test method.
+    Выводится, когда утверждение не проходит во время выполнения тестового метода.
 
 ``E``
 
-    Printed when an error occurs while running the test method.
+    Выводится, когда возникает ошибка во время запуска тестового метода.
 
 ``R``
 
-    Printed when the test has been marked as risky (see
+    Выводится, когда тест был отмечен как рискованный (risky) (см.
     :ref:`risky-tests`).
 
 ``S``
 
-    Printed when the test has been skipped (see
+    Выводится, когда тест был пропущен (см.
     :ref:`incomplete-and-skipped-tests`).
 
 ``I``
 
-    Printed when the test is marked as being incomplete or not yet
-    implemented (see :ref:`incomplete-and-skipped-tests`).
+    Выводится, когда тест отмечен как незавершённый (incomplete) или ещё не
+    реализован (см. :ref:`incomplete-and-skipped-tests`).
 
-PHPUnit distinguishes between *failures* and
-*errors*. A failure is a violated PHPUnit
-assertion such as a failing ``assertSame()`` call.
-An error is an unexpected exception or a PHP error. Sometimes
-this distinction proves useful since errors tend to be easier to fix
-than failures. If you have a big list of problems, it is best to
-tackle the errors first and see if you have any failures left when
-they are all fixed.
+PHPUnit различает *неудачные выполнения (failures)* и
+*ошибки (errors)*. Неудачное выполнение - это непройденное утверждение PHPUnit,
+например вызов ``assertSame()``.
+Ошибка - необработанное исключение или ошибка PHP. Иногда
+это различие оказывается полезным, поскольку ошибки гораздо легче исправить, чем
+неудачные выполнения. В случае большого списка проблем, лучше всего сначала
+устранить ошибки и посмотреть, остались ли ещё какие-либо неудачные выполнения,
+когда ошибки исправлены.
 
 .. _textui.clioptions:
 
-Command-Line Options
-####################
+Опции командной строки
+######################
 
-Let's take a look at the command-line test runner's options in
-the following code:
+Давайте посмотрим на опции командной строки исполнителя тестов в следующем коде:
 
 .. code-block:: bash
 
@@ -169,104 +167,96 @@ the following code:
 
 ``phpunit UnitTest``
 
-    Runs the tests that are provided by the class
-    ``UnitTest``. This class is expected to be declared
-    in the :file:`UnitTest.php` sourcefile.
+    Запускает тесты, представленные в классе ``UnitTest``. Ожидается, что этот класс будет объявлен
+    в исходном файле :file:`UnitTest.php`.
 
-    ``UnitTest`` must be either a class that inherits
-    from ``PHPUnit\Framework\TestCase`` or a class that
-    provides a ``public static suite()`` method which
-    returns a ``PHPUnit\Framework\Test`` object, for
-    example an instance of the
-    ``PHPUnit\Framework\TestSuite`` class.
+    ``UnitTest`` должен быть либо классом, который наследуется от ``PHPUnit\Framework\TestCase``, либо классом,
+    с методом ``public static suite()``, возвращающий объект типа ``PHPUnit\Framework\Test``, например,
+    экземпляр класса ``PHPUnit\Framework\TestSuite``.
 
 ``phpunit UnitTest UnitTest.php``
 
-    Runs the tests that are provided by the class
-    ``UnitTest``. This class is expected to be declared
-    in the specified sourcefile.
+    Выполняет тесты в классе ``UnitTest``. Ожидается, что этот класс будет
+    объявлен в указанном исходном файле.
 
 ``--coverage-clover``
 
-    Generates a logfile in XML format with the code coverage information
-    for the tests run. See :ref:`logging` for more details.
+    Генерирует файл логов в формате XML с информацией о покрытии кода тестами для выполненных тестов.
+    См. :ref:`logging` для получения более подробной информации.
 
-    Please note that this functionality is only available when the
-    tokenizer and Xdebug extensions are installed.
+    Обратите внимание, что данная функциональность доступна только в случае
+    установленных расширений tokenizer и Xdebug.
 
 ``--coverage-crap4j``
 
-    Generates a code coverage report in Crap4j format. See
-    :ref:`code-coverage-analysis` for more details.
+    Генерирует отчёт о покрытии кода тестами в формате Crap4j.
+    См. :ref:`code-coverage-analysis` для получения более подробной информации.
 
-    Please note that this functionality is only available when the
-    tokenizer and Xdebug extensions are installed.
+    Обратите внимание, что данная функциональность доступна только в случае
+    установленных расширений tokenizer и Xdebug.
 
 ``--coverage-html``
 
-    Generates a code coverage report in HTML format. See
-    :ref:`code-coverage-analysis` for more details.
+    Генерирует отчёт о покрытии кода тестами в формате HTML.
+    См. :ref:`code-coverage-analysis` для получения более подробной информации.
 
-    Please note that this functionality is only available when the
-    tokenizer and Xdebug extensions are installed.
+    Обратите внимание, что данная функциональность доступна только в случае
+    установленных расширений tokenizer и Xdebug.
 
 ``--coverage-php``
 
-    Generates a serialized PHP_CodeCoverage object with the
-    code coverage information.
+    Генерирует сериализованный объект класса PHP_CodeCoverage с
+    информацией о покрытии кода тестами.
 
-    Please note that this functionality is only available when the
-    tokenizer and Xdebug extensions are installed.
+    Обратите внимание, что данная функциональность доступна только в случае
+    установленных расширений tokenizer и Xdebug.
 
 ``--coverage-text``
 
-    Generates a logfile or command-line output in human readable format
-    with the code coverage information for the tests run.
-    See :ref:`logging` for more details.
+    Генерирует файл логов или вывод командной строки в человекочитаемом формате
+    с информацией о покрытии кода тестами для запуска тестов.
+    См. :ref:`logging` для получения более подробной информации.
 
-    Please note that this functionality is only available when the
-    tokenizer and Xdebug extensions are installed.
+    Обратите внимание, что данная функциональность доступна только в случае
+    установленных расширений tokenizer и Xdebug.
 
 ``--log-junit``
 
-    Generates a logfile in JUnit XML format for the tests run.
-    See :ref:`logging` for more details.
+    Генерирует файл журнала (logfile) в формате JUnit XML для запуска тестов.
+    См. :ref:`logging` для получения более подробной информации.
 
-``--testdox-html`` and ``--testdox-text``
+``--testdox-html`` и ``--testdox-text``
 
-    Generates agile documentation in HTML or plain text format for the
-    tests that are run (see :ref:`textui.testdox`).
+    Генерирует agile-документацию в HTML или текстовом формате для запущенных тестов
+    (см. :ref:`textui.testdox`).
 
 ``--filter``
 
-    Only runs tests whose name matches the given regular expression
-    pattern. If the pattern is not enclosed in delimiters, PHPUnit
-    will enclose the pattern in ``/`` delimiters.
+    Выполняются только те тесты, названия которых совпадают с шаблоном регулярного выражения.
+    Если шаблон не заключён в разделители, PHPUnit будет заключать шаблон в разделители ``/``.
 
-    The test names to match will be in one of the following formats:
+    Имена тестов для совпадения может быть в одном из следующих форматов:
 
     ``TestNamespace\TestCaseClass::testMethod``
 
-        The default test name format is the equivalent of using
-        the ``__METHOD__`` magic constant inside
-        the test method.
+        Формат имени теста по умолчанию эквивалентен использованию магической константы
+        ``__METHOD__`` внутри тестового метода.
 
     ``TestNamespace\TestCaseClass::testMethod with data set #0``
 
-        When a test has a data provider, each iteration of the
-        data gets the current index appended to the end of the
-        default test name.
+        Когда в тесте есть провайдер данных, каждая итерация данных
+        получает текущий индекс, добавленный в концу имени теста по умолчанию.
 
     ``TestNamespace\TestCaseClass::testMethod with data set "my named data"``
 
-        When a test has a data provider that uses named sets, each
-        iteration of the data gets the current name appended to the
-        end of the default test name. See
-        :numref:`textui.examples.TestCaseClass.php` for an
-        example of named data sets.
+        Когда в тесте есть провайдер данных, использующий именованные наборы, каждая
+        итерация данных получает текущее название, добавленное к
+        концу имени теста по умолчанию. См.
+        :numref:`textui.examples.TestCaseClass.php` для просмотра примера
+        именованных наборов данных.
 
         .. code-block:: php
-            :caption: Named data sets
+            :caption: Именованные наборы данных
             :name: textui.examples.TestCaseClass.php
 
             <?php
@@ -296,13 +286,13 @@ the following code:
 
     ``/path/to/my/test.phpt``
 
-        The test name for a PHPT test is the filesystem path.
+        Путь в файловой системе к имени теста типа PHPT.
 
-    See :numref:`textui.examples.filter-patterns` for examples
-    of valid filter patterns.
+    См. :numref:`textui.examples.filter-patterns` для примеров
+    корректных шаблонов фильтров.
 
     .. code-block:: shell
-        :caption: Filter pattern examples
+        :caption: Примеры шаблонов фильтров
         :name: textui.examples.filter-patterns
 
         --filter 'TestNamespace\\TestCaseClass::testMethod'
@@ -314,12 +304,12 @@ the following code:
         --filter '/::testMethod .*#5$/'
         --filter '/::testMethod .*#(5|6|7)$/'
 
-    See :numref:`textui.examples.filter-shortcuts` for some
-    additional shortcuts that are available for matching data
-    providers.
+    См. :numref:`textui.examples.filter-shortcuts` для некоторых
+    дополнительных сокращений (shortcuts), доступных для сопоставления с
+    провайдерами данных.
 
     .. code-block:: shell
-        :caption: Filter shortcuts
+        :caption: Сокращения фильтра
         :name: textui.examples.filter-shortcuts
 
         --filter 'testMethod#2'
@@ -333,212 +323,204 @@ the following code:
 
 ``--testsuite``
 
-    Only runs the test suite whose name matches the given pattern.
+    Выполняется только тот тестовый набор, который совпадает с заданным шаблоном.
 
 ``--group``
 
-    Only runs tests from the specified group(s). A test can be tagged as
-    belonging to a group using the ``@group`` annotation.
+    Выполняются только тесты из указанных групп. Тест можно назначить
+    группе, используя аннотацию ``@group`.
 
-    The ``@author`` and ``@ticket`` annotations are aliases for
-    ``@group`` allowing to filter tests based on their
-    authors or their ticket identifiers, respectively.
+    Аннотация ``@author`` - это псевдоним для ``@group``, позволяющий фильтровать тесты по их авторам.
 
 ``--exclude-group``
 
-    Exclude tests from the specified group(s). A test can be tagged as
-    belonging to a group using the ``@group`` annotation.
+    Исключить тесты из указанных групп. Тест можно назначить
+    группе, используя аннотацию ``@group`.
 
 ``--list-groups``
 
-    List available test groups.
+    Список доступных групп тестов.
 
 ``--test-suffix``
 
-    Only search for test files with specified suffix(es).
+    Только поиск тестовых файлов с указанными суффиксами.
 
 ``--dont-report-useless-tests``
 
-    Do not report tests that do not test anything. See :ref:`risky-tests` for details.
+    Не сообщать о тестах, которые ничего не тестируют. См. :ref:`risky-tests` для получения подробной информации.
 
 ``--strict-coverage``
 
-    Be strict about unintentionally covered code. See :ref:`risky-tests` for details.
+    Строгая проверка непроизвольного охвата тестами кода. См. :ref:`risky-tests` для получения подробной информации.
 
 ``--strict-global-state``
 
-    Be strict about global state manipulation. See :ref:`risky-tests` for details.
+    Строгая проверка относительно манипуляций с глобальным состоянием. See :ref:`risky-tests` для получения подробной информации.
 
 ``--disallow-test-output``
 
-    Be strict about output during tests. See :ref:`risky-tests` for details.
+    Строгая проверка относительно вывода во время выполнения тестов. See :ref:`risky-tests` для получения подробной информации.
 
 ``--disallow-todo-tests``
 
-    Does not execute tests which have the ``@todo`` annotation in its docblock.
+    Не выполнять тесты с аннотацией ``@todo`` в её docblock.
 
 ``--enforce-time-limit``
 
-    Enforce time limit based on test size. See :ref:`risky-tests` for details.
+    Применить ограничение по времени, основываясь на размер теста. См. :ref:`risky-tests` для получения более подробной информации.
 
 ``--process-isolation``
 
-    Run each test in a separate PHP process.
+    Запускать каждый тест в отдельном процессе PHP.
 
 ``--no-globals-backup``
 
-    Do not backup and restore $GLOBALS. See :ref:`fixtures.global-state`
-    for more details.
+    Не создавать резервную копию и восстанавливать суперглобальный массив $GLOBALS. См. :ref:`fixtures.global-state`
+    для получения более подробной информации..
 
 ``--static-backup``
 
-    Backup and restore static attributes of user-defined classes.
-    See :ref:`fixtures.global-state` for more details.
+    Резервное копирование и восстановление статических атрибутов пользовательских классов.
+    См. :ref:`fixtures.global-state` для получения более подробной информации..
 
 ``--colors``
 
-    Use colors in output.
-    On Windows, use `ANSICON <https://github.com/adoxa/ansicon>`_ or `ConEmu <https://github.com/Maximus5/ConEmu>`_.
+    Использовать цвета в выводе.
+    В Windows используйте `ANSICON <https://github.com/adoxa/ansicon>`_ или `ConEmu <https://github.com/Maximus5/ConEmu>`_.
 
-    There are three possible values for this option:
-
-    -
-
-      ``never``: never displays colors in the output. This is the default value when ``--colors`` option is not used.
+    Существует три возможных значения этой опции:
 
     -
 
-      ``auto``: displays colors in the output unless the current terminal doesn't supports colors,
-      or if the output is piped to a command or redirected to a file.
+      ``never``: никогда не отображать цвета в выводе. Это значение по умолчанию, когда не используется опция ``--colors``.
 
     -
 
-      ``always``: always displays colors in the output even when the current terminal doesn't supports colors,
-      or when the output is piped to a command or redirected to a file.
+      ``auto``: отображает цвета в выводе, за исключением, если текущий терминал не поддерживает цвета, либо
+      если вывод не был передан в другую команду или не перенаправлен в файл.
 
-    When ``--colors`` is used without any value, ``auto`` is the chosen value.
+    -
+
+      ``always``: всегда отображать цвета в выводе, даже если текущий терминал не поддерживает цвета, или
+      когда вывод передаётся в команду или перенаправляется в file.
+
+    Когда ``--colors`` используется без значения, используется ``auto``.
 
 ``--columns``
 
-    Defines the number of columns to use for progress output.
-    If ``max`` is defined as value, the number of columns will be maximum of the current terminal.
+    Определяет количество столбцов для вывода прогресса выполнения тестов.
+    Если задано значение ``max``, количество столбцов будет максимальным для текущего терминала.
 
 ``--stderr``
 
-    Optionally print to ``STDERR`` instead of
-    ``STDOUT``.
+    Необязательно печатать в ``STDERR`` вместо ``STDOUT``.
 
 ``--stop-on-error``
 
-    Stop execution upon first error.
+    Прекратить выполнение при первой ошибке.
 
 ``--stop-on-failure``
 
-    Stop execution upon first error or failure.
+    Прекратить выполнение при первой ошибке или неудачном выполнении.
 
 ``--stop-on-risky``
 
-    Stop execution upon first risky test.
+    Прекратить выполнение при первом рискованном тесте.
 
 ``--stop-on-skipped``
 
-    Stop execution upon first skipped test.
+    Прекратить выполнение при первом пропущенном тесте.
 
 ``--stop-on-incomplete``
 
-    Stop execution upon first incomplete test.
+    Прекратить выполнение при первом незавершённом тесте.
 
 ``--verbose``
 
-    Output more verbose information, for instance the names of tests
-    that were incomplete or have been skipped.
+    Выводить более подробную информацию, например, имена незавершённых или пропущенных тестов.
 
 ``--debug``
 
-    Output debug information such as the name of a test when its
-    execution starts.
+    Выводить отладочную информацию, такую как название теста при его запуске.
 
 ``--loader``
 
-    Specifies the ``PHPUnit\Runner\TestSuiteLoader``
-    implementation to use.
+    Указывает используемую реализацию загрузчика ``PHPUnit\Runner\TestSuiteLoader``
 
-    The standard test suite loader will look for the sourcefile in the
-    current working directory and in each directory that is specified in
-    PHP's ``include_path`` configuration directive.
-    A class name such as ``Project_Package_Class`` is
-    mapped to the source filename
+    Стандартный загрузчик тестового набора будет искать исходный файл теста
+    в текущей рабочей директории и в каждой директории, указанной в конфигурационной
+    директиве PHP ``include_path``.
+    Имя класса, такое как ``Project_Package_Class``, сопоставляется с исходным файлом
     :file:`Project/Package/Class.php`.
 
 ``--repeat``
 
-    Repeatedly runs the test(s) the specified number of times.
+    Повторять выполнение тестов указанное количество раз.
 
 ``--testdox``
 
-    Reports the test progress in TestDox format (see :ref:`textui.testdox`).
+    Сообщает о ходе тестирования в формате TestDox (см. :ref:`textui.testdox`).
 
 ``--printer``
 
-    Specifies the result printer to use. The printer class must extend
-    ``PHPUnit\Util\Printer`` and implement the
-    ``PHPUnit\Framework\TestListener`` interface.
+    Указывает используемую реализацию форматирования вывода (printer). Этот класс должен наследоваться от
+    ``PHPUnit\Util\Printer`` и реализовывать интерфейс
+    ``PHPUnit\Framework\TestListener``.
 
 ``--bootstrap``
 
-    A "bootstrap" PHP file that is run before the tests.
+    "Загрузочный" ("bootstrap") файл PHP, который будет запускаться перед выполнением тестов.
 
 ``--configuration``, ``-c``
 
-    Read configuration from XML file.
-    See :ref:`appendixes.configuration` for more details.
+    Прочитать конфигурацию из XML-файла.
+    См. :ref:`appendixes.configuration` для получения более подробной информации.
 
-    If :file:`phpunit.xml` or
-    :file:`phpunit.xml.dist` (in that order) exist in the
-    current working directory and ``--configuration`` is
-    *not* used, the configuration will be automatically
-    read from that file.
+    Если файл :file:`phpunit.xml` или
+    :file:`phpunit.xml.dist` (в таком порядке) существуют в
+    текущей рабочей директории, а опция ``--configuration``
+    *не* используется, конфигурация будет автоматически прочитана
+    из этого файла.
 
-    If a directory is specified and if
-    :file:`phpunit.xml` or :file:`phpunit.xml.dist` (in that order)
-    exists in this directory, the configuration will be
-    automatically read from that file.
+    Если директория указана и файл
+    :file:`phpunit.xml` или :file:`phpunit.xml.dist` (в таком порядке)
+    существует в этой директории, конфигурация будет автоматически загружена
+    из этого файла.
 
 ``--no-configuration``
 
-    Ignore :file:`phpunit.xml` and
-    :file:`phpunit.xml.dist` from the current working
-    directory.
+    Игнорировать :file:`phpunit.xml` и
+    :file:`phpunit.xml.dist` из текущей рабочей
+    директории.
 
 ``--include-path``
 
-    Prepend PHP's ``include_path`` with given path(s).
+    Добавить в опцию PHP ``include_path`` указанные пути.
 
 ``-d``
 
-    Sets the value of the given PHP configuration option.
+    Устанавливает значение заданной опции конфигурации PHP.
 
 .. admonition:: Note
 
-   Please note that as of 4.8, options can be put after the argument(s).
+   Обратите внимание, что с версии 4.8 параметры могут быть указаны после аргументов.
 
 .. _textui.testdox:
 
 TestDox
 #######
 
-PHPUnit's TestDox functionality looks at a test class and all the test
-method names and converts them from camel case (or snake_case) PHP names to sentences:
-``testBalanceIsInitiallyZero()`` (or ``test_balance_is_initially_zero()`` becomes "Balance is
-initially zero". If there are several test methods whose names only
-differ in a suffix of one or more digits, such as
-``testBalanceCannotBecomeNegative()`` and
-``testBalanceCannotBecomeNegative2()``, the sentence
-"Balance cannot become negative" will appear only once, assuming that
-all of these tests succeed.
+Функциональность TestDox PHPUnit просматривает тестовый класс и все названия его
+тестовых методов, и преобразует их из имён PHP в стиле написания camel case (или snake_case) в предложения:
+``testBalanceIsInitiallyZero()`` (или ``test_balance_is_initially_zero()``) становится "Balance is
+initially zero". Если есть несколько тестовых методов, названия которых отличаются
+только одной или более цифрой на конце, например
+``testBalanceCannotBecomeNegative()`` и
+``testBalanceCannotBecomeNegative2()``, предложение
+"Balance cannot become negative" появится только один раз, при условии, что
+все эти тесты успешно прошли.
 
-Let us take a look at the agile documentation generated for a
-``BankAccount`` class:
+Давайте посмотрим aglie-документацию, сгенерированную для класса ``BankAccount``:
 
 .. code-block:: bash
 
@@ -549,18 +531,15 @@ Let us take a look at the agile documentation generated for a
      ✔ Balance is initially zero
      ✔ Balance cannot become negative
 
-Alternatively, the agile documentation can be generated in HTML or plain
-text format and written to a file using the ``--testdox-html``
-and ``--testdox-text`` arguments.
+В качестве альтернативы, aglie-документация может быть сгенерирована в HTML или
+текстовом формате и записана в файл, используя аргументы ``--testdox-html``
+и ``--testdox-text``.
 
-Agile Documentation can be used to document the assumptions you make
-about the external packages that you use in your project. When you use
-an external package, you are exposed to the risks that the package will
-not behave as you expect, and that future versions of the package will
-change in subtle ways that will break your code, without you knowing it.
-You can address these risks by writing a test every time you make an
-assumption. If your test succeeds, your assumption is valid. If you
-document all your assumptions with tests, future releases of the
-external package will be no cause for concern: if the tests succeed,
-your system should continue working.
+Документация Agile может использоваться для документирования предположений, которые вы делаете относительно внешних пакетов, используемых проекте.
+Когда вы используете внешний пакет, вы подвержены рискам, что пакет не будет работать так, как ожидалось, то есть он изменит своё поведение,
+а будущие версии пакета изменятся завуалированным способом, тем самым ломая ваш код, даже не подозревая об этом.
+Вы можете снизить эти риски, путём написания каждый раз теста, когда вы делаете предположение.
+Если тест проходит, значит ваше предположение верно.
+Если вы будете документировать все свои предположения с помощью тестов, новые версии внешнего пакета не будут вызывать беспокойства:
+если тесты проходят, то система должна продолжать работать.
 
