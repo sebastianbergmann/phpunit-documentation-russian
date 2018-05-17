@@ -1,98 +1,80 @@
-
-
 .. _risky-tests:
 
-===========
-Risky Tests
-===========
+=================
+Рискованные тесты
+=================
 
-PHPUnit can perform the additional checks documented below while it executes
-the tests.
+При выполнении тестов PHPUnit может проводить дополнительные проверки, описанные ниже.
 
 .. _risky-tests.useless-tests:
 
-Useless Tests
-#############
+Бесполезные тесты
+#################
 
-PHPUnit is by default strict about tests that do not test anything. This check
-can be disabled by using the ``--dont-report-useless-tests``
-option on the commandline or by setting
-``beStrictAboutTestsThatDoNotTestAnything="false"`` in
-PHPUnit's XML configuration file.
+PHPUnit по умолчанию строг по отношению к тестам, которые ничего не тестируют. Эта проверка
+может быть отключена с помощью опции командной строки ``--dont-report-useless-tests``
+или через установку ``beStrictAboutTestsThatDoNotTestAnything="false"``
+в конфигурационном XML-файле PHPUnit.
 
-A test that does not perform an assertion will be marked as risky
-when this check is enabled. Expectations on mock objects or annotations
-such as @expectedException count as an assertion.
+Тест, в котором нет утверждений, будет отмечен как рискованный (risky),
+если эта проверка включена. Ожидания на mock-объектах или аннотации,
+такие как @expectedException, считаются за утверждение.
 
 .. _risky-tests.unintentionally-covered-code:
 
-Unintentionally Covered Code
+Непреднамеренно покрытый код
 ############################
 
-PHPUnit can be strict about unintentionally covered code. This check
-can be enabled by using the ``--strict-coverage`` option on
-the commandline or by setting
-``beStrictAboutCoversAnnotation="true"`` in PHPUnit's
-XML configuration file.
+PHPUnit может быть строгим по отношению к непреднамеренно покрытому коду. Эта проверка
+может быть включена с помощью опции командной строки ``--strict-coverage``
+или через установку
+``beStrictAboutCoversAnnotation="true"`` в конфигурационном XML-файле PHPUnit.
 
-A test that is annotated with @covers and executes code that
-is not listed using a @covers or @uses
-annotation will be marked as risky when this check is enabled.
+Тест с аннотацией @covers, проверяющий код без аннотации @covers или @uses,
+будет отмечен как рискованный (risky), если эта проверка включена.
 
 .. _risky-tests.output-during-test-execution:
 
-Output During Test Execution
-############################
+Вывод во время выполнения теста
+###############################
 
-PHPUnit can be strict about output during tests. This check can be enabled
-by using the ``--disallow-test-output`` option on the
-commandline or by setting
-``beStrictAboutOutputDuringTests="true"`` in PHPUnit's XML
-configuration file.
+PHPUnit может быть строгим по отношению к выводу во время выполнения тестов. Эту проверку можно включить
+с помощью опции командной строки ``--disallow-test-output`` или через установку
+``beStrictAboutOutputDuringTests="true"`` в конфигурационном XML-файле PHPUnit.
 
-A test that emits output, for instance by invoking print in
-either the test code or the tested code, will be marked as risky when this
-check is enabled.
+Тест, который производит вывод, например, через вызов функции print либо
+в тестовом коде, либо в тестируемом, будет отмечен как рискованный (risky), если
+эта проверка включена.
 
 .. _risky-tests.test-execution-timeout:
 
-Test Execution Timeout
-######################
+Тайм-аут выполнения теста
+#########################
 
-A time limit can be enforced for the execution of a test if the
-``PHP_Invoker`` package is installed and the
-``pcntl`` extension is available. The enforcing of this
-time limit can be enabled by using the
-``--enforce-time-limit`` option on the commandline or by
-setting ``beStrictAboutTestSize="true"`` in PHPUnit's XML
-configuration file.
+Для теста может быть применено ограничение по времени выполнения, если установлен пакет
+``PHP_Invoker`` и доступно расширение ``pcntl``. Обеспечение
+ограничения времени выполнения может включено с помощью опции командной строки
+``--enforce-time-limit``или через
+установку ``beStrictAboutTestSize="true"`` в конфигурационном XML-файле PHPUnit.
 
-A test annotated with ``@large`` will fail if it takes
-longer than 60 seconds to execute. This timeout is configurable via the
-``timeoutForLargeTests`` attribute in the XML
-configuration file.
+Тест с аннотацией ``@large`` завершится неудачно, если время его выполнения
+превысит 60 секунд. Этот тайм-аут настраивается через атрибут
+``timeoutForLargeTests`` в конфигурационном XML-файле.
 
-A test annotated with ``@medium`` will fail if it takes
-longer than 10 seconds to execute. This timeout is configurable via the
-``timeoutForMediumTests`` attribute in the XML
-configuration file.
+Тест с аннотацией ``@medium`` завершится неудачно, если время его выполнения
+займёт больше 10 секунд. Этот тайм-аут настраивается через атрибут
+``timeoutForMediumTests`` в конфигурационном XML-файле.
 
-A test that is not annotated with ``@medium`` or
-``@large`` will be treated as if it were annotated with
-``@small``. A small test will fail if it takes longer than
-1 second to execute. This timeout is configurable via the
-``timeoutForSmallTests`` attribute in the XML configuration
-file.
+Тест без аннотации ``@medium`` или ``@large`` будет обрабатываться так,
+как если был он был с аннотацией ``@small``. Небольшой тест завершится неудачно,
+если его выполнения займёт более 1 секунды. Этот тайм-аут настраивается через атрибут
+``timeoutForSmallTests`` в конфигурационном XML-файле.
 
 .. _risky-tests.global-state-manipulation:
 
-Global State Manipulation
-#########################
+Манипуляция глобальным состоянием
+#################################
 
-PHPUnit can be strict about tests that manipulate global state. This check
-can be enabled by using the ``--strict-global-state``
-option on the commandline or by setting
-``beStrictAboutChangesToGlobalState="true"`` in PHPUnit's
-XML configuration file.
-
-
+PHPUnit может быть строгим по отношению к текстам, которые манипулируют глобальным состоянием. Эта проверка
+может быть включена с помощью опции командной строки ``--strict-global-state`` или через настройку
+``beStrictAboutChangesToGlobalState="true"`` в конфигурационном XML-файле PHPUnit.
