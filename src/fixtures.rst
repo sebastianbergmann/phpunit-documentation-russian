@@ -1,50 +1,50 @@
-
-
 .. _fixtures:
 
 ========
-Fixtures
+Фикстуры
 ========
+
+Одной из наиболее трудозатратных частей при написании тестов - написание кода
+настройки тестового окружения в известное состояние, а затем возврат его в
+исходное состояние, когда тест будет завершён. Это известное состояние называется
+*фикстурой* теста.
 
 One of the most time-consuming parts of writing tests is writing the
 code to set the world up in a known state and then return it to its
 original state when the test is complete. This known state is called
 the *fixture* of the test.
 
-In :ref:`writing-tests-for-phpunit.examples.StackTest.php`, the
-fixture was simply the array that is stored in the ``$stack``
-variable. Most of the time, though, the fixture will be more complex
-than a simple array, and the amount of code needed to set it up will
-grow accordingly. The actual content of the test gets lost in the noise
-of setting up the fixture. This problem gets even worse when you write
-several tests with similar fixtures. Without some help from the testing
-framework, we would have to duplicate the code that sets up the fixture
-for each test we write.
+В разделе :ref:`writing-tests-for-phpunit.examples.StackTest.php` фикстурой
+была простой массив, который хранится в переменной ``$stack``.
+Однако, в большинстве случаев, фикстура будет более сложной,
+чем простой массив, и количество кода, необходимое для её настройки,
+будет соответственно расти. Фактическое содержание теста потеряется в шуме
+настройки фикстуры. Эта проблема становится хуже, когда вы пишите
+несколько тестов с похожими фикстурами. Без помощи от фреймворка тестирования,
+нам пришлось дублировать код, который устанавливает фикстуру для каждого
+теста, который мы пишем.
 
-PHPUnit supports sharing the setup code. Before a test method is run, a
-template method called ``setUp()`` is invoked.
-``setUp()`` is where you create the objects against which
-you will test. Once the test method has finished running, whether it
-succeeded or failed, another template method called
-``tearDown()`` is invoked. ``tearDown()``
-is where you clean up the objects against which you tested.
+PHPUnit поддерживает общий код установки. Перед тем выполнением тестового метода,
+будет вызван шаблонный метод ``setUp()``.
+``setUp()`` - это там, где вы создаёте объекты, которые вы будете тестировать.
+После того, как тестовый метод выполнился, вне зависимости успешно или нет,
+вызывается другой шаблонный метод с названием ``tearDown()``. ``tearDown()``
+- это там, где вы очищаете протестированные объекты.
 
-In :ref:`writing-tests-for-phpunit.examples.StackTest2.php` we
-used the producer-consumer relationship between tests to share a fixture. This
-is not always desired or even possible. :numref:`fixtures.examples.StackTest.php`
-shows how we can write the tests of the ``StackTest`` in such
-a way that not the fixture itself is reused but the code that creates it.
-First we declare the instance variable, ``$stack``, that we
-are going to use instead of a method-local variable. Then we put the
-creation of the ``array`` fixture into the
-``setUp()`` method. Finally, we remove the redundant code
-from the test methods and use the newly introduced instance variable,
-``$this->stack``, instead of the method-local variable
-``$stack`` with the ``assertSame()``
-assertion method.
+В разделе :ref:`writing-tests-for-phpunit.examples.StackTest2.php` мы использовали
+отношения между продюсер-потребитель между тестами для совместного использования
+фикстур. Это не всегда желательно или даже возможно.
+:numref:`fixtures.examples.StackTest.php`
+показывает, как мы можем написать тесты ``StackTest`` таким образом, чтобы не сама фикстура повторно использовалась, а код, который создаёт её.
+Сначала мы объявляем переменную экземпляра, ``$stack``, которую мы
+будем использовать вместо обычной переменной в методе. Затем мы помещаем
+создание  массива (``array``) фикстуры в метод ``setUp()``. Наконец, мы удаляем избыточный код
+из тестовых методов и используем недавно созданную переменную экземпляра,
+``$this->stack``, вместо локальной переменной метода
+``$stack`` в методу утверждения ``assertSame()``.
 
 .. code-block:: php
-    :caption: Using setUp() to create the stack fixture
+    :caption: Использование setUp() для создания фикстуры
     :name: fixtures.examples.StackTest.php
 
     <?php
@@ -80,20 +80,17 @@ assertion method.
     }
     ?>
 
-The ``setUp()`` and ``tearDown()`` template
-methods are run once for each test method (and on fresh instances) of the
-test case class.
+Шаблонные методы ``setUp()`` and ``tearDown()`` вызываются по одному разу при каждом выполнении тестового метода (и для нового экземпляра)
+тестового класса.
 
-In addition, the ``setUpBeforeClass()`` and
-``tearDownAfterClass()`` template methods are called before
-the first test of the test case class is run and after the last test of the
-test case class is run, respectively.
+Кроме того, вызываются шаблонные методы ``setUpBeforeClass()`` и
+``tearDownAfterClass()`` перед тем, как первый тест в тестовом классе будет выполнен,
+и после запуска последнего теста тестового класса, соответственно.
 
-The example below shows all template methods that are available in a test
-case class.
+Приведённый ниже пример показывает все шаблонные методы, доступные в тестовом классе.
 
 .. code-block:: php
-    :caption: Example showing all template methods available
+    :caption: Пример, показывающий все доступные шаблонные методы
     :name: fixtures.examples.TemplateMethodsTest.php
 
     <?php
@@ -182,62 +179,60 @@ case class.
 
 .. _fixtures.more-setup-than-teardown:
 
-More setUp() than tearDown()
-############################
+Больше setUp() чем tearDown()
+#############################
 
-``setUp()`` and ``tearDown()`` are nicely
-symmetrical in theory but not in practice. In practice, you only need
-to implement ``tearDown()`` if you have allocated
-external resources like files or sockets in ``setUp()``.
-If your ``setUp()`` just creates plain PHP objects, you
-can generally ignore ``tearDown()``. However, if you
-create many objects in your ``setUp()``, you might want
-to ``unset()`` the variables pointing to those objects
-in your ``tearDown()`` so they can be garbage collected.
-The garbage collection of test case objects is not predictable.
+``setUp()`` and ``tearDown()`` довольно симметричны
+в теории, но не на практике. На практике вам нужно
+реализовывать ``tearDown()``, если вы в ``setUp()`` создали внешние ресурсы,
+такие как файлы или сокеты.
+Если ваш метод ``setUp()`` просто создаёт обычные PHP-объекты, вы
+можете вообще игнорировать ``tearDown()``. Однако, если вы
+создаёте много объектов в своём ``setUp()``, вам возможно потребуется
+использовать ``unset()`` для удаления переменных, указывающие на эти объекты в
+в своём ``tearDown()``, чтобы они могли быть очищены сборщиком мусора.
+Сборщик мусора объектов тестового класса непредсказуем.
 
 .. _fixtures.variations:
 
-Variations
-##########
+Разновидности
+#############
 
-What happens when you have two tests with slightly different setups?
-There are two possibilities:
-
--
-
-  If the ``setUp()`` code differs only slightly, move
-  the code that differs from the ``setUp()`` code to
-  the test method.
+Что произойдёт, если у вас есть два теста с немного различающимися настройками?
+Есть два варианта:
 
 -
 
-  If you really have a different ``setUp()``, you need
-  a different test case class. Name the class after the difference in
+  Если код ``setUp()`` отличается совсем немного, то
+  необходимо перенести код, отличающиеся от ``setUp()``, в тестовый метод.
+
+-
+
+  Если у вас действительно разный ``setUp()``, требуется создать
+  другой тестовый класс. Name the class after the difference in
   the setup.
 
 .. _fixtures.sharing-fixture:
 
-Sharing Fixture
-###############
+Совместное использование фикстур
+################################
 
-There are few good reasons to share fixtures between tests, but in most
-cases the need to share a fixture between tests stems from an unresolved
-design problem.
+Есть несколько веских причин для совместного использования фикстур между тестами, но в большинстве
+случаев эта необходимость связана с неразрешённой проблемой проектирования.
 
-A good example of a fixture that makes sense to share across several
-tests is a database connection: you log into the database once and reuse
-the database connection instead of creating a new connection for each
-test. This makes your tests run faster.
+Хорошим примером фикстуры для совместного использования между тестами может быть
+соединение с базой данных: вы подключаетесь к базе данных только один раз и затем повторно используете
+это соединение для каждого теста вместо создания нового.
+test. Это позволяет сделать ваши тесты быстрее.
 
 :numref:`fixtures.sharing-fixture.examples.DatabaseTest.php`
-uses the ``setUpBeforeClass()`` and
-``tearDownAfterClass()`` template methods to connect to the
-database before the test case class' first test and to disconnect from the
-database after the last test of the test case, respectively.
+использует шаблонные методы ``setUpBeforeClass()`` и
+``tearDownAfterClass()`` для подключения к базе данных
+до выполнения первого теста в тестовом классе и закрытие соединения
+с базой данных после запуска последнего теста, соответственно.
 
 .. code-block:: php
-    :caption: Sharing fixture between the tests of a test suite
+    :caption: Совместное использование фикстур тестами в тестовом наборе
     :name: fixtures.sharing-fixture.examples.DatabaseTest.php
 
     <?php
@@ -259,79 +254,78 @@ database after the last test of the test case, respectively.
     }
     ?>
 
-It cannot be emphasized enough that sharing fixtures between tests
-reduces the value of the tests. The underlying design problem is
-that objects are not loosely coupled. You will achieve better
-results solving the underlying design problem and then writing tests
-using stubs (see :ref:`test-doubles`), than by creating
-dependencies between tests at runtime and ignoring the opportunity
-to improve your design.
+Следует вновь отметить, что совместное использование фикстур между тестами
+снижает ценность тестов. Основная проблема проектирования заключается в том,
+что объекты сильно связаны между собой. Вы достигнете лучших результатов,
+решая эту основную проблему в проектировании, а после напишите тесты,
+используя заглушки (stubs) (see :ref:`test-doubles`), а не создавая
+зависимости между тестами во время выполнения и игнорируя возможность
+улучшения архитектуры.
 
 .. _fixtures.global-state:
 
-Global State
-############
+Глобальное состояние
+####################
 
-`It is hard to test code that uses singletons. <http://googletesting.blogspot.com/2008/05/tott-using-dependancy-injection-to.html>`_
-The same is true for code that uses global variables. Typically, the code
-you want to test is coupled strongly with a global variable and you cannot
-control its creation. An additional problem is the fact that one test's
-change to a global variable might break another test.
+`Трудно тестировать код, который использует синглтоны. <http://googletesting.blogspot.com/2008/05/tott-using-dependancy-injection-to.html>`_
+То же самое относится и к коду, использующему глобальные переменные. Обычно код,
+который вы хотите протестировать, сильно связан с глобальной переменной, и вы не можете
+управлять её созданием. Ещё одна проблема заключается в том, что одно изменение в тесте,
+использующим глобальную переменную, может сломать другой тест.
 
-In PHP, global variables work like this:
-
--
-
-  A global variable ``$foo = 'bar';`` is stored as ``$GLOBALS['foo'] = 'bar';``.
+В PHP глобальные переменные работают следующим образом:
 
 -
 
-  The ``$GLOBALS`` variable is a so-called *super-global* variable.
+  Глобальная переменная ``$foo = 'bar';`` сохраняется как ``$GLOBALS['foo'] = 'bar';``.
 
 -
 
-  Super-global variables are built-in variables that are always available in all scopes.
+  Переменная ``$GLOBALS`` — это так называемая *суперглобальная (super-global)* переменная.
 
 -
 
-  In the scope of a function or method, you may access the global variable ``$foo`` by either directly accessing ``$GLOBALS['foo']`` or by using ``global $foo;`` to create a local variable with a reference to the global variable.
+  Суперглобальные переменные — это встроенные переменные, доступные во всех областях видимости.
 
-Besides global variables, static attributes of classes are also part of
-the global state.
+-
 
-Prior to version 6, by default, PHPUnit ran your tests in a way where
-changes to global and super-global variables (``$GLOBALS``,
+  В области видимости функции или метода вы можете получить доступ к ``$foo`` либо напрямую через ``$GLOBALS['foo']`` или используя ``global $foo;``
+  для создания локальной переменной в текущей области видимости, ссылающиеся на глобальную переменную.
+
+Помимо глобальных переменных, статические атрибуты классов также являются частью
+глобального состояния.
+
+До версии 6, PHPUnit по умолчанию запускал тесты таким образом,
+что изменения в глобальных и суперглобальных переменных (``$GLOBALS``,
 ``$_ENV``, ``$_POST``,
 ``$_GET``, ``$_COOKIE``,
 ``$_SERVER``, ``$_FILES``,
-``$_REQUEST``) do not affect other tests.
+``$_REQUEST``) не влияли на другие тесты.
 
-As of version 6, PHPUnit does not perform this backup and restore
-operation for global and super-global variables by default anymore.
-It can be activated by using the ``--globals-backup``
-option or setting ``backupGlobals="true"`` in the
-XML configuration file.
+Начиная с версии 6, PHPUnit больше не делает операции резервного копирования и восстановления
+глобальных и суперглобальных переменных по умолчанию.
+Это можно включить, используя опцию ``--globals-backup``
+или настройку ``backupGlobals="true"`` в конфигурационном XML-файле.
 
-By using the ``--static-backup`` option or setting
-``backupStaticAttributes="true"`` in the
-XML configuration file, this isolation can be extended to static
-attributes of classes.
+Используя опцию ``--static-backup`` или настройку
+``backupStaticAttributes="true"`` в конфигурационном
+XML-файле, данная изоляция выше может быть расширена до статических атрибутов классов.
 
 .. admonition:: Note
 
-   The backup and restore operations for global variables and static
-   class attributes use ``serialize()`` and
+   Операции резервного копирования и восстановления глобальных переменных и статических
+   атрибутов классов используют ``serialize()`` и
    ``unserialize()``.
 
-   Objects of some classes (e.g., ``PDO``) cannot be
-   serialized and the backup operation will break when such an object is
-   stored e.g. in the ``$GLOBALS`` array.
+   Объекты некоторых классов (например, ``PDO``) не могут быть
+   сериализованы, и операция резервного копирования будет прервана,
+   когда подобный объект будет сохраняться, например, в массив  ``$GLOBALS``.
 
-The ``@backupGlobals`` annotation that is discussed in
-:ref:`appendixes.annotations.backupGlobals` can be used to
-control the backup and restore operations for global variables.
-Alternatively, you can provide a blacklist of global variables that are to
-be excluded from the backup and restore operations like this
+Аннотация ``@backupGlobals``, которая обсуждается в
+:ref:`appendixes.annotations.backupGlobals`, может использоваться для
+управления операциями резервного копирования и восстановления глобальных переменных.
+Кроме этого, вы можете предоставить чёрный список глобальных переменных, которые должны быть
+исключены при выполнении операций резервного копирования и восстановления, как показано ниже:
 
 .. code-block:: php
 
@@ -344,40 +338,37 @@ be excluded from the backup and restore operations like this
 
 .. admonition:: Note
 
-   Setting the ``$backupGlobalsBlacklist`` property inside
-   e.g. the ``setUp()`` method has no effect.
+   Установка свойства ``$backupGlobalsBlacklist`` внутри, например,
+   метода``setUp()``, не даст никакого эффекта.
 
-The ``@backupStaticAttributes`` annotation discussed in
-:ref:`appendixes.annotations.backupStaticAttributes`
-can be used to back up all static property values in all declared classes
-before each test and restore them afterwards.
+Аннотацию ``@backupStaticAttributes``, обсуждаемая в
+:ref:`appendixes.annotations.backupStaticAttributes`, можно использовать
+для резервного копирования всех статических значений свойств во всех объявленных классах
+перед каждым тестом с последующим их восстановлением.
 
-It processes all classes that are declared at the time a test starts, not
-only the test class itself. It only applies to static class properties,
-not static variables within functions.
+Она обрабатывает все классы, объявленные в момент запуска теста, а не
+только сам тестовый класс. Она применяется только к статическим свойствам класса, а не к статическим переменным внутри функций.
 
 .. admonition:: Note
 
-   The ``@backupStaticAttributes`` operation is executed
-   before a test method, but only if it is enabled. If a static value was
-   changed by a previously executed test that did not have
-   ``@backupStaticAttributes`` enabled, then that value will
-   be backed up and restored — not the originally declared default value.
-   PHP does not record the originally declared default value of any static
-   variable.
+   Операция ``@backupStaticAttributes`` выполняется перед каждым тестовым методом,
+   но только если она включена. Если статическое значение было
+   изменено ранее выполненным тестом с отключенным
+   ``@backupStaticAttributes``, тогда это значение будет скопировано
+   и восстановлено, но не к первоначальному значению по умолчанию.
+   PHP не записывает первоначально объявленное значение по умолчанию любой
+   статической переменной.
 
-   The same applies to static properties of classes that were newly
-   loaded/declared within a test. They cannot be reset to their originally
-   declared default value after the test, since that value is unknown.
-   Whichever value is set will leak into subsequent tests.
+   То же самое относительно и к статическим свойствам классов, которые недавно были
+   загружены или объявлены внутри теста. Они не могут быть сброшены к первоначально объявленному значению по умолчанию после теста,
+   так как это значение неизвестно. Независимо установленного значения, произойдёт
+   утечка в последующие тесты.
 
-   For unit tests, it is recommended to explicitly reset the values of
-   static properties under test in your ``setUp()`` code
-   instead (and ideally also ``tearDown()``, so as to not
-   affect subsequently executed tests).
+   Для модульных тестов рекомендуется явно сбросить значения статических свойств
+   в методе теста ``setUp()`` (и в идеале также в методе ``tearDown()``,
+   чтобы не повлиять на последующие выполняемые тесты).
 
-You can provide a blacklist of static attributes that are to be excluded
-from the backup and restore operations:
+Вы можете предоставить чёрный список статических атрибутов, которые должны быть исключены из операций резервного копирования и восстановления:
 
 .. code-block:: php
 
@@ -392,7 +383,7 @@ from the backup and restore operations:
 
 .. admonition:: Note
 
-   Setting the ``$backupStaticAttributesBlacklist`` property
-   inside e.g. the ``setUp()`` method has no effect.
+   Установка свойства ``$backupStaticAttributesBlacklist`` внутри,
+   например, метода ``setUp()``, не даст никакого эффекта.
 
 
