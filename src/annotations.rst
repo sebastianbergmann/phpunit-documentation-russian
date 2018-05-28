@@ -1,45 +1,42 @@
-
-
 .. _appendixes.annotations:
 
-===========
-Annotations
-===========
+=========
+Аннотации
+=========
 
-An annotation is a special form of syntactic metadata that can be added to
-the source code of some programming languages. While PHP has no dedicated
-language feature for annotating source code, the usage of tags such as
-``@annotation arguments`` in a documentation block has been
-established in the PHP community to annotate source code. In PHP
-documentation blocks are reflective: they can be accessed through the
-Reflection API's ``getDocComment()`` method on the function,
-class, method, and attribute level. Applications such as PHPUnit use this
-information at runtime to configure their behaviour.
+Аннотация - специальная форма синтаксических метаданных, которые могут добавлены
+в исходный код некоторых языков программирования. Хотя у PHP нет собственной
+языковой возможности для аннотирования исходного кода, использование тегов, таких как
+``@annotation arguments`` в блоке документации (documentation block), было принято
+в сообществе PHP для аннотации вашего кода. В PHP блоки документации
+рефлексивны: к ним можно получить доступ с помощью
+метода API Reflection ``getDocComment()`` на уровне функции,
+классе, методе и атрибуте. Такие приложения, как PHPUnit, используют
+информацию во время выполнения для настройки их поведения.
 
-.. admonition:: Note
+.. admonition:: Примечание
 
-   A doc comment in PHP must start with ``/**`` and end with
-   ``*/``. Annotations in any other style of comment will be
-   ignored.
+   Комментарий документации в PHP должен начинаться с ``/**`` и заканчиваться
+   ``*/``. Аннотации в любом другом стиле комментария будут проигнорированы.
 
-This appendix shows all the varieties of annotations supported by PHPUnit.
+В этом приложении представлены все разновидности аннотаций, поддерживаемые PHPUnit.
 
 .. _appendixes.annotations.author:
 
 @author
 #######
 
-The ``@author`` annotation is an alias for the
-``@group`` annotation (see :ref:`appendixes.annotations.group`) and allows to filter tests based
-on their authors.
+Аннотация ``@author`` - это псевдоним для аннотации
+``@group`` (см. :ref:`appendixes.annotations.group`) и позволяет фильтровать тесты
+на основе их авторов.
 
 .. _appendixes.annotations.after:
 
 @after
 ######
 
-The ``@after`` annotation can be used to specify methods
-that should be called after each test method in a test case class.
+Аннотацию ``@after`` можно использовать для указания методов,
+которые должны вызываться после каждого тестового метода в тестовом классе.
 
 .. code-block:: php
 
@@ -69,9 +66,9 @@ that should be called after each test method in a test case class.
 @afterClass
 ###########
 
-The ``@afterClass`` annotation can be used to specify
-static methods that should be called after all test methods in a test
-class have been run to clean up shared fixtures.
+Аннотацию ``@afterClass`` можно использовать для указания
+статических методов, которые должны вызываться после того, как все тестовые методы
+в тестовом классе были запущены для очистки общих фикстур.
 
 .. code-block:: php
 
@@ -101,8 +98,8 @@ class have been run to clean up shared fixtures.
 @backupGlobals
 ##############
 
-The backup and restore operations for global variables can be completely
-disabled for all tests of a test case class like this
+Операции резервного копирования и восстановления глобальных переменных могут быть полностью
+отключены для всех тестов в тестовом классе, следующим образом:
 
 .. code-block:: php
 
@@ -116,9 +113,9 @@ disabled for all tests of a test case class like this
         // ...
     }
 
-The ``@backupGlobals`` annotation can also be used on the
-test method level. This allows for a fine-grained configuration of the
-backup and restore operations:
+Аннотацию ``@backupGlobals`` также можно использовать на уровне
+тестового метода. Это позволяет выполнять тонкую настройку операций
+резервного копирования и восстановления:
 
 .. code-block:: php
 
@@ -143,10 +140,10 @@ backup and restore operations:
 @backupStaticAttributes
 #######################
 
-The ``@backupStaticAttributes`` annotation can be used to
-back up all static property values in all declared classes before each
-test and restore them afterwards. It may be used at the test case class or
-test method level:
+Аннотацию ``@backupStaticAttributes`` можно использовать для
+резервного копирования всех значений статических свойств во всех объявленных классах перед
+каждым тестом с последующим их восстановлением. Она может использоваться на уровне тестового класса
+или тестового метода:
 
 .. code-block:: php
 
@@ -166,21 +163,22 @@ test method level:
         }
     }
 
-.. admonition:: Note
+.. admonition:: Примечание
 
-   ``@backupStaticAttributes`` is limited by PHP internals
-   and may cause unintended static values to persist and leak into
-   subsequent tests in some circumstances.
+   ``@backupStaticAttributes`` ограничивается внутри PHP
+   и при определённых условиях может привести
+   к непреднамеренному сохранению статических значений и утечке
+   в последующих тестах.
 
-   See :ref:`fixtures.global-state` for details.
+   См. :ref:`fixtures.global-state` дополнительной информации.
 
 .. _appendixes.annotations.before:
 
 @before
 #######
 
-The ``@before`` annotation can be used to specify methods
-that should be called before each test method in a test case class.
+Аннотацию ``@before`` можно использовать для указания методов,
+которые должны вызываться перед каждым тестовым методом в тестовом классе.
 
 .. code-block:: php
 
@@ -210,9 +208,9 @@ that should be called before each test method in a test case class.
 @beforeClass
 ############
 
-The ``@beforeClass`` annotation can be used to specify
-static methods that should be called before any test methods in a test
-class are run to set up shared fixtures.
+Аннотацию ``@beforeClass`` можно использовать для указания
+статических методов, которые должны вызываться до выполнения любых тестов в тестовом
+классе для настройки общих фикстур.
 
 .. code-block:: php
 
@@ -242,20 +240,20 @@ class are run to set up shared fixtures.
 @codeCoverageIgnore*
 ####################
 
-The ``@codeCoverageIgnore``,
-``@codeCoverageIgnoreStart`` and
-``@codeCoverageIgnoreEnd`` annotations can be used
-to exclude lines of code from the coverage analysis.
+Аннотации ``@codeCoverageIgnore``,
+``@codeCoverageIgnoreStart`` и
+``@codeCoverageIgnoreEnd`` могут использоваться
+для исключения строк кода из анализа покрытия.
 
-For usage see :ref:`code-coverage-analysis.ignoring-code-blocks`.
+Для использования см. :ref:`code-coverage-analysis.ignoring-code-blocks`.
 
 .. _appendixes.annotations.covers:
 
 @covers
 #######
 
-The ``@covers`` annotation can be used in the test code to
-specify which method(s) a test method wants to test:
+Аннотация ``@covers`` может использовать в тестовом коде для
+указания, какие методы собирается тестировать данный тестовый метод:
 
 .. code-block:: php
 
@@ -267,52 +265,51 @@ specify which method(s) a test method wants to test:
         $this->assertSame(0, $this->ba->getBalance());
     }
 
-If provided, only the code coverage information for the specified
-method(s) will be considered.
+Если предоставлена, будет учитываться информация о покрытии кода только для указанных методов.
 
-:numref:`appendixes.annotations.covers.tables.annotations` shows
-the syntax of the ``@covers`` annotation.
+:numref:`appendixes.annotations.covers.tables.annotations` показывает
+синтаксис аннотации ``@covers``.
 
 .. rst-class:: table
-.. list-table:: Annotations for specifying which methods are covered by a test
+.. list-table:: Аннотации для указания, какие методы покрываются тестом
     :name: appendixes.annotations.covers.tables.annotations
     :header-rows: 1
 
-    * - Annotation
-      - Description
+    * - Аннотация
+      - Описание
     * - ``@covers ClassName::methodName``
-      - ``Specifies that the annotated test method covers the specified method.``
+      - ``Указывает, что аннотированный тестовый метод покрывает указанный метод.``
     * - ``@covers ClassName``
-      - ``Specifies that the annotated test method covers all methods of a given class.``
+      - ``Указывает, что аннотированный тестовый метод покрывает все методы данного класса.``
     * - ``@covers ClassName<extended>``
-      - ``Specifies that the annotated test method covers all methods of a given class and its parent class(es) and interface(s).``
+      - ``Указывает, что аннотированный тестовый метод покрывает все методы заданного класса и его родительских классов или интерфейсов.``
     * - ``@covers ClassName::<public>``
-      - ``Specifies that the annotated test method covers all public methods of a given class.``
+      - ``Указывает, что аннотированный тестовый метод покрывает все общедоступные методы заданного класса.``
     * - ``@covers ClassName::<protected>``
-      - ``Specifies that the annotated test method covers all protected methods of a given class.``
+      - ``Указывает, что аннотированный тестовый метод покрывает все защищённые методы заданного класса.``
     * - ``@covers ClassName::<private>``
-      - ``Specifies that the annotated test method covers all private methods of a given class.``
+      - ``Указывает, что аннотированный тестовый метод покрывает все закрытые методы заданного класса.``
     * - ``@covers ClassName::<!public>``
-      - ``Specifies that the annotated test method covers all methods of a given class that are not public.``
+      - ``Указывает, что аннотированный тестовый метод покрывает все не общедоступные методы заданного класса.``
     * - ``@covers ClassName::<!protected>``
-      - ``Specifies that the annotated test method covers all methods of a given class that are not protected.``
+      - ``Указывает, что аннотированный тестовый метод покрывает все не защищённые методы заданного класса.``
     * - ``@covers ClassName::<!private>``
-      - ``Specifies that the annotated test method covers all methods of a given class that are not private.``
+      - ``Указывает, что аннотированный тестовый метод покрывает все не закрытые методы заданного класса.``
     * - ``@covers ::functionName``
-      - ``Specifies that the annotated test method covers the specified global function.``
+      - ``Указывает, что аннотированный тестовый метод покрывает указанную глобальную функцию.``
 
 .. _appendixes.annotations.coversDefaultClass:
 
 @coversDefaultClass
 ###################
 
-The ``@coversDefaultClass`` annotation can be used to
-specify a default namespace or class name. That way long names don't need to be
-repeated for every ``@covers`` annotation. See
+Аннотацию ``@coversDefaultClass`` можно использовать
+для указания пространства имени по умолчанию или класса. Таким образом, длинные имена не нужно
+повторно указывать для каждой аннотации ``@covers``. См.
 :numref:`appendixes.annotations.examples.CoversDefaultClassTest.php`.
 
 .. code-block:: php
-    :caption: Using @coversDefaultClass to shorten annotations
+    :caption: Использование @coversDefaultClass для сокращений аннотаций
     :name: appendixes.annotations.examples.CoversDefaultClassTest.php
 
     <?php
@@ -339,53 +336,50 @@ repeated for every ``@covers`` annotation. See
 @coversNothing
 ##############
 
-The ``@coversNothing`` annotation can be used in the
-test code to specify that no code coverage information will be
-recorded for the annotated test case.
+Аннотацию ``@coversNothing`` можно использовать в тестовом
+коде для указания, что информация о покрытии кода не будет записана
+для данного тестового класса.
 
-This can be used for integration testing. See
+Это можно использовать для интеграционного тестирования. См.
 :ref:`code-coverage-analysis.specifying-covered-methods.examples.GuestbookIntegrationTest.php`
-for an example.
+для примера.
 
-The annotation can be used on the class and the method level and
-will override any ``@covers`` tags.
+Данную аннотацию можно использовать на уровне классе или метода и переопределить любые теги ``@covers``.
 
 .. _appendixes.annotations.dataProvider:
 
 @dataProvider
 #############
 
-A test method can accept arbitrary arguments. These arguments are to be
-provided by one or more data provider methods (``provider()`` in
+Тестовый метод может принимать произвольное количество аргументов. Эти аргументы должны
+быть предоставлены одним или несколькими методами провайдера данных (``provider()`` в
 :ref:`writing-tests-for-phpunit.data-providers.examples.DataTest.php`).
-The data provider method to be used is specified using the
-``@dataProvider`` annotation.
+Используемый метод провайдера данных задаётся с помощью аннотации
+``@dataProvider``.
 
-See :ref:`writing-tests-for-phpunit.data-providers` for more
-details.
+См. :ref:`writing-tests-for-phpunit.data-providers` для получения подробной информации.
 
 .. _appendixes.annotations.depends:
 
 @depends
 ########
 
-PHPUnit supports the declaration of explicit dependencies between test
-methods. Such dependencies do not define the order in which the test
-methods are to be executed but they allow the returning of an instance of
-the test fixture by a producer and passing it to the dependent consumers.
-:ref:`writing-tests-for-phpunit.examples.StackTest2.php` shows
-how to use the ``@depends`` annotation to express
-dependencies between test methods.
+PHPUnit поддерживает объявление явных зависимостей между тестовыми
+методами. Такие зависимости не определяют порядок, в котором должны выполняться тестовые методы,
+но они позволяют возвращать экземпляр
+фикстуры теста продюсером и передавать его зависимым потребителям.
+:ref:`writing-tests-for-phpunit.examples.StackTest2.php` показывает,
+как использовать аннотацию ``@depends`` для выражения
+зависимостей между тестовыми методами.
 
-See :ref:`writing-tests-for-phpunit.test-dependencies` for more
-details.
+См. :ref:`writing-tests-for-phpunit.test-dependencies` для подробной информации.
 
 .. _appendixes.annotations.doesNotPerformAssertions:
 
 @doesNotPerformAssertions
 #########################
 
-Prevents a test that performs no assertions from being considered risky.
+Предотвращает тест, не выполняющий никаких утверждений, для того чтобы не считать его рискованным.
 
 .. _appendixes.annotations.expectedException:
 
@@ -393,21 +387,19 @@ Prevents a test that performs no assertions from being considered risky.
 ##################
 
 :ref:`writing-tests-for-phpunit.exceptions.examples.ExceptionTest.php`
-shows how to use the ``@expectedException`` annotation to
-test whether an exception is thrown inside the tested code.
+показывает, как использовать аннотацию ``@expectedException``
+для проверки того, было ли выброшено исключение внутри тестируемого кода.
 
-See :ref:`writing-tests-for-phpunit.exceptions` for more
-details.
+См. :ref:`writing-tests-for-phpunit.exceptions` для получения подробной информации.
 
 .. _appendixes.annotations.expectedExceptionCode:
 
 @expectedExceptionCode
 ######################
 
-The ``@expectedExceptionCode`` annotation, in conjunction
-with the ``@expectedException`` allows making assertions on
-the error code of a thrown exception thus being able to narrow down a
-specific exception.
+Аннотация ``@expectedExceptionCode`` в сочетании
+с ``@expectedException`` позволяет делать утверждения по
+коду ошибке выбрасываемого исключения, таким образом, сужая конкретное исключение.
 
 .. code-block:: php
 
@@ -425,10 +417,10 @@ specific exception.
         }
     }
 
-To ease testing and reduce duplication a shortcut can be used to
-specify a class constant as an
-``@expectedExceptionCode`` using the
-"``@expectedExceptionCode ClassName::CONST``" syntax.
+Для облегчения тестирования и уменьшения дублирования можно указать
+константу класса в
+``@expectedExceptionCode``, используя синтаксис
+"``@expectedExceptionCode ClassName::CONST``".
 
 .. code-block:: php
 
@@ -455,9 +447,9 @@ specify a class constant as an
 @expectedExceptionMessage
 #########################
 
-The ``@expectedExceptionMessage`` annotation works similar
-to ``@expectedExceptionCode`` as it lets you make an
-assertion on the error message of an exception.
+Аннотация ``@expectedExceptionMessage`` работает аналогично
+``@expectedExceptionCode``, поскольку она может сделать
+утверждение на сообщении об ошибке исключения.
 
 .. code-block:: php
 
@@ -475,10 +467,9 @@ assertion on the error message of an exception.
         }
     }
 
-The expected message can be a substring of the exception Message.
-This can be useful to only assert that a certain name or parameter that
-was passed in shows up in the exception and not fixate the whole
-exception message in the test.
+Ожидаемое сообщение может быть подстрокой сообщения исключения.
+Это может быть полезно, для того чтобы только утверждать, что переданное определённое имя или параметр
+отображается в исключении, не фокусируясь на всём сообщении исключения в тесте.
 
 .. code-block:: php
 
@@ -497,10 +488,10 @@ exception message in the test.
          }
     }
 
-To ease testing and reduce duplication a shortcut can be used to
-specify a class constant as an
-``@expectedExceptionMessage`` using the
-"``@expectedExceptionMessage ClassName::CONST``" syntax.
+Для облегчения тестирования и уменьшения дублирования можно указать
+константу класса в
+``@expectedExceptionMessage``, используя синтаксис
+"``@expectedExceptionMessage ClassName::CONST``".
 A sample can be found in :ref:`appendixes.annotations.expectedExceptionCode`.
 
 .. _appendixes.annotations.expectedExceptionMessageRegExp:
@@ -508,10 +499,10 @@ A sample can be found in :ref:`appendixes.annotations.expectedExceptionCode`.
 @expectedExceptionMessageRegExp
 ###############################
 
-The expected message can also be specified as a regular expression using
-the ``@expectedExceptionMessageRegExp`` annotation. This
-is helpful for situations where a substring is not adequate for matching
-a given message.
+Ожидаемое сообщение также можно указать в виде регулярного выражения, используя
+аннотацию ``@expectedExceptionMessageRegExp``. Это
+полезно в ситуациях, когда подстрока не подходит для соответствия
+заданному сообщению.
 
 .. code-block:: php
 
@@ -534,8 +525,8 @@ a given message.
 @group
 ######
 
-A test can be tagged as belonging to one or more groups using the
-``@group`` annotation like this
+Тест может быть отмечен как принадлежащий одной или нескольким группам, используя аннотацию
+``@group``, следующим образом:
 
 .. code-block:: php
 
@@ -559,55 +550,50 @@ A test can be tagged as belonging to one or more groups using the
         }
     }
 
-The ``@group`` annotation can also be provided for the test
-class. It is then "inherited" to all test methods of that test class.
+Аннотацию ``@group`` можно задать для тестового
+класса. Затем она будет "унаследована" всеми методами этого тестового класса.
 
-Tests can be selected for execution based on groups using the
-``--group`` and ``--exclude-group`` options
-of the command-line test runner or using the respective directives of the
-XML configuration file.
+Тесты могут быть выбраны для выполнения на основе групп с использованием
+опций командной строки исполнителя тестов ``--group`` и ``--exclude-group``
+или используя соответствующие директивы конфигурационного XML-файла.
 
 .. _appendixes.annotations.large:
 
 @large
 ######
 
-The ``@large`` annotation is an alias for
-``@group large``.
+Аннотация ``@large`` - псевдоним для ``@group large``.
 
-If the ``PHP_Invoker`` package is installed and strict
-mode is enabled, a large test will fail if it takes longer than 60
-seconds to execute. This timeout is configurable via the
-``timeoutForLargeTests`` attribute in the XML
-configuration file.
+Если пакет ``PHP_Invoker`` установлен и включён
+строгий режим, большой тест завершится неудачно, если для его выполнения
+потребуется более 60 секунд. Этот тайм-аут настраивается через атрибут
+``timeoutForLargeTests`` в конфигурационном XML-файле.
 
 .. _appendixes.annotations.medium:
 
 @medium
 #######
 
-The ``@medium`` annotation is an alias for
-``@group medium``. A medium test must not depend on a test
-marked as ``@large``.
+Аннотация ``@medium`` - псевдоним для ``@group medium``. Средний тест не должен зависеть от теста,
+отмеченного как ``@large``.
 
-If the ``PHP_Invoker`` package is installed and strict
-mode is enabled, a medium test will fail if it takes longer than 10
-seconds to execute. This timeout is configurable via the
-``timeoutForMediumTests`` attribute in the XML
-configuration file.
+Если пакет ``PHP_Invoker`` установлен и включён
+строгий режим, средний тест завершится неудачно, если для его выполнения
+потребуется более 10 секунд. Этот тайм-аут настраивается через атрибут
+``timeoutForMediumTests`` в конфигурационном XML-файле.
 
 .. _appendixes.annotations.preserveGlobalState:
 
 @preserveGlobalState
 ####################
 
-When a test is run in a separate process, PHPUnit will
-attempt to preserve the global state from the parent process by
-serializing all globals in the parent process and unserializing them
-in the child process. This can cause problems if the parent process
-contains globals that are not serializable. To fix this, you can prevent
-PHPUnit from preserving global state with the
-``@preserveGlobalState`` annotation.
+Когда тест запускается в отдельном процессе, PHPUnit попытается
+сохранить глобальное состояние из родительского процесса,
+сериализуя все глобальные переменные в родительском процессе и десериализуя их
+в дочернем процессе. Это может вызвать проблемы, если родительский процесс
+содержит глобальные переменные, которые невозможно сериализовать.
+Для исправления этого, вы можете запретить PHPUnit сохранять глобальное состояние с помощью аннотации
+``@preserveGlobalState``.
 
 .. code-block:: php
 
@@ -630,10 +616,10 @@ PHPUnit from preserving global state with the
 @requires
 #########
 
-The ``@requires`` annotation can be used to skip tests when common
-preconditions, like the PHP Version or installed extensions, are not met.
+Аннотация ``@requires`` можно использовать для пропуска тестов, когда общие
+предварительные условия, такие как версия PHP или установленные расширения, не выполняются.
 
-A complete list of possibilities and examples can be found at
+Полный список возможностей и примеров можно найти в
 :ref:`incomplete-and-skipped-tests.requires.tables.api`
 
 .. _appendixes.annotations.runTestsInSeparateProcesses:
@@ -641,8 +627,7 @@ A complete list of possibilities and examples can be found at
 @runTestsInSeparateProcesses
 ############################
 
-Indicates that all tests in a test class should be run in a separate
-PHP process.
+Указывает, что все тесты в тестовом классе должны выполняться в отдельном процессе PHP.
 
 .. code-block:: php
 
@@ -656,19 +641,20 @@ PHP process.
         // ...
     }
 
-*Note:* By default, PHPUnit will
-attempt to preserve the global state from the parent process by
-serializing all globals in the parent process and unserializing them
-in the child process. This can cause problems if the parent process
-contains globals that are not serializable. See :ref:`appendixes.annotations.preserveGlobalState` for information
-on how to fix this.
+*Примечание:* По умолчанию PHPUnit пытается
+сохранить глобальное состояние из родительского процесса, сериализуя
+все глобальные переменные в родительском процессе и десериализуя их
+в дочернем процессе. Это может вызвать проблемы, если родительский процесс
+содержит глобальные переменные, которые невозможно сериализовать.
+См. :ref:`appendixes.annotations.preserveGlobalState` для получения информации
+по исправлению этого.
 
 .. _appendixes.annotations.runInSeparateProcess:
 
 @runInSeparateProcess
 #####################
 
-Indicates that a test should be run in a separate PHP process.
+Указывает, что тест должен выполняться в отдельном процессе PHP.
 
 .. code-block:: php
 
@@ -685,41 +671,41 @@ Indicates that a test should be run in a separate PHP process.
         }
     }
 
-*Note:* By default, PHPUnit will
-attempt to preserve the global state from the parent process by
-serializing all globals in the parent process and unserializing them
-in the child process. This can cause problems if the parent process
-contains globals that are not serializable. See :ref:`appendixes.annotations.preserveGlobalState` for information
-on how to fix this.
+*Примечание:* По умолчанию PHPUnit пытается
+сохранить глобальное состояние из родительского процесса, сериализуя
+все глобальные переменные в родительском процессе и десериализуя их
+в дочернем процессе. Это может вызвать проблемы, если родительский процесс
+содержит глобальные переменные, которые невозможно сериализовать.
+См. :ref:`appendixes.annotations.preserveGlobalState` для получения информации
+по исправлению этого.
 
 .. _appendixes.annotations.small:
 
 @small
 ######
 
-The ``@small`` annotation is an alias for
-``@group small``. A small test must not depend on a test
-marked as ``@medium`` or ``@large``.
+Аннотация ``@small`` - это псевдоним для
+``@group small``. Небольшой тест не должен зависеть от теста,
+отмеченного как ``@medium`` или ``@large``.
 
-If the ``PHP_Invoker`` package is installed and strict
-mode is enabled, a small test will fail if it takes longer than 1
-second to execute. This timeout is configurable via the
-``timeoutForSmallTests`` attribute in the XML
-configuration file.
+Если пакет ``PHP_Invoker`` установлен и включён
+строгий режим, небольшой тест тест завершится неудачно, если для его выполнения
+потребуется более 1 секунды. Этот тайм-аут настраивается через атрибут
+``timeoutForSmallTests`` в конфигурационном XML-файле.
 
-.. admonition:: Note
+.. admonition:: Примечание
 
-   Tests need to be explicitly annotated by either ``@small``,
-   ``@medium``, or ``@large`` to enable run time limits.
+   Тесты должны быть явно аннотированы либо ``@small``,
+   ``@medium`` или ``@large`` для включения ограничения времени выполнения.
 
 .. _appendixes.annotations.test:
 
 @test
 #####
 
-As an alternative to prefixing your test method names with
-``test``, you can use the ``@test``
-annotation in a method's DocBlock to mark it as a test method.
+В качестве альтернативы добавления префиксов именам тестовым методам
+``test``, вы можете использовать аннотацию ``@test``
+в блоке документации метода, чтобы отметить его как тестовый метод.
 
 .. code-block:: php
 
@@ -736,10 +722,9 @@ annotation in a method's DocBlock to mark it as a test method.
 @testdox
 ########
 
-Specifies an alternative description used when generating the agile
-documentation sentences.
+Указывает альтернативное описание, используемое при создании предложений для agile-документации.
 
-The ``@testdox`` annotation can be applied to both test classes and test methods.
+Аннотацию ``@testdox`` можно применять как к тестовым классам, так и к тестовым методам.
 
 .. code-block:: php
 
@@ -757,11 +742,11 @@ The ``@testdox`` annotation can be applied to both test classes and test methods
         }
     }
 
-.. admonition:: Note
+.. admonition:: Примечание
 
-   Prior to PHPUnit 7.0 (due to a bug in the annotation parsing), using
-   the ``@testdox`` annotation also activated the behaviour
-   of the ``@test`` annotation.
+   До PHPUnit 7.0 (из-за бага в разборе аннотации) использование
+   аннотации ``@testdox`` также активировало поведение
+   аннотацию ``@test``.
 
 .. code-block:: php
 
@@ -770,15 +755,15 @@ The ``@testdox`` annotation can be applied to both test classes and test methods
 @testWith
 #########
 
-Instead of implementing a method for use with ``@dataProvider``,
-you can define a data set using the ``@testWith`` annotation.
+Вместо реализации метода для использования с ``@dataProvider``,
+вы можете определить набор данных, используя аннотацию ``@testWith``.
 
-A data set consists of one or many elements. To define a data set
-with multiple elements, define each element in a separate line.
-Each element of the data set must be an array defined in JSON.
+Набор данных состоит из одного или нескольких элементов. Для определения набора данных
+с несколькими элементами, определите каждый элемент на отдельной строке.
+Каждый элемент набора данных должен быть массив, определенным в JSON.
 
-See :ref:`writing-tests-for-phpunit.data-providers` to learn
-more about passing a set of data to a test.
+См. :ref:`writing-tests-for-phpunit.data-providers` для получения
+дополнительной информации о передачи набора данных в тест.
 
 .. code-block:: php
 
@@ -794,7 +779,7 @@ more about passing a set of data to a test.
         $this->assertSame($expectedLength, strlen($input));
     }
 
-An object representation in JSON will be converted into an associative array.
+Представление объекта в JSON будет преобразовано в ассоциативный массив.
 
 .. code-block:: php
 
@@ -814,18 +799,18 @@ An object representation in JSON will be converted into an associative array.
 @ticket
 #######
 
-The ``@ticket`` annotation is an alias for the
-``@group`` annotation (see :ref:`appendixes.annotations.group`) and allows to filter tests based
-on their ticket ID.
+Аннотация ``@ticket`` - это псевдоним для аннотации ``@group``
+(см. :ref:`appendixes.annotations.group`) и позволяет фильтровать тесты на основе
+их идентификатора тикета.
 
 .. _appendixes.annotations.uses:
 
 @uses
 #####
 
-The ``@uses`` annotation specifies code which will be
-executed by a test, but is not intended to be covered by the test. A good
-example is a value object which is necessary for testing a unit of code.
+Аннотация ``@uses`` указывает код, который будет
+выполняться тестом, но не предназначен для покрытия тестом. Хорошим
+примером может быть объект значения (value object), который необходим для тестирования единицы (модуля) кода.
 
 .. code-block:: php
 
@@ -838,9 +823,7 @@ example is a value object which is necessary for testing a unit of code.
         // ...
     }
 
-This annotation is especially useful in strict coverage mode where
-unintentionally covered code will cause a test to fail. See
-:ref:`risky-tests.unintentionally-covered-code` for more
-information regarding strict coverage mode.
-
-
+Эта аннотация особенно полезна в режиме строгого режима, когда
+непреднамеренно покрытый код приводит тесте к неудаче. См.
+:ref:`risky-tests.unintentionally-covered-code` для получения
+дополнительной информации о строгом режиме покрытия.
