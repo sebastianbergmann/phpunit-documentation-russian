@@ -2,21 +2,20 @@
 
 .. _logging:
 
-=======
-Logging
-=======
+===========
+Логирование
+===========
 
-PHPUnit can produce several types of logfiles.
+PHPUnit может создавать несколько типов лог-файлов (logfiles).
 
 .. _logging.xml:
 
-Test Results (XML)
-##################
+Результаты теста (XML)
+######################
 
-The XML logfile for test results produced by PHPUnit is based upon the one
-used by the `JUnit
-task for Apache Ant <http://ant.apache.org/manual/Tasks/junit.html>`_. The following example shows the XML
-logfile generated for the tests in ``ArrayTest``:
+Лог-файл XML результатов тестирования, созданный PHPUnit, основан на использовании
+`задачи JUnit для Apache Ant <http://ant.apache.org/manual/Tasks/junit.html>`_.
+В следующем примере показан лог-файл XML, сгенерированный для тестов в ``ArrayTest``:
 
 .. code-block:: bash
 
@@ -44,10 +43,10 @@ logfile generated for the tests in ``ArrayTest``:
       </testsuite>
     </testsuites>
 
-The following XML logfile was generated for two tests,
-``testFailure`` and ``testError``,
-of a test case class named ``FailureErrorTest`` and
-shows how failures and errors are denoted.
+Следующий лог-файл XML был сгенерирован для двух тестов
+``testFailure`` и ``testError`` тестового класса
+``FailureErrorTest`` и показывает как обозначаются неудачи
+и ошибки.
 
 .. code-block:: bash
 
@@ -90,12 +89,13 @@ shows how failures and errors are denoted.
 
 .. _logging.codecoverage.xml:
 
-Code Coverage (XML)
+Покрытие кода (XML)
 ###################
 
-The XML format for code coverage information logging produced by PHPUnit
-is loosely based upon the one used by `Clover <http://www.atlassian.com/software/clover/>`_. The following example shows the XML
-logfile generated for the tests in ``BankAccountTest``:
+Формат XML для логирования информации о покрытии, созданный PHPUnit,
+отчасти основан на том, что используется в `Clover <http://www.atlassian.com/software/clover/>`_.
+
+В следующем примере показан лог-файл XML, сгенерированный для тестов ``BankAccountTest``:
 
 .. code-block:: bash
 
@@ -140,20 +140,18 @@ logfile generated for the tests in ``BankAccountTest``:
 Code Coverage (TEXT)
 ####################
 
-Human readable code coverage output for the command-line or a text file.
+Человекочитаемое покрытие кода можно выводить в командую строку или текстовый файл.
 
-The aim of this output format is to provide a quick coverage overview while
-working on a small set of classes. For bigger projects this output can be
-useful to get an quick overview of the projects coverage or when used with
-the ``--filter`` functionality.
-When used from the command-line by writing to ``php://stdout``
-this will honor the ``--colors`` setting.
-Writing to standard out is the default option when used from the command-line.
-By default this will only show files that have at least one covered line.
-This can only be changed via the ``showUncoveredFiles`` xml
-configuration option. See :ref:`appendixes.configuration.logging`.
-By default all files and their coverage status are shown in the detailed report.
-This can be changed via the ``showOnlySummary`` xml
-configuration option.
+Цель этого формата вывода - обеспечить общий обзор покрытия при работе
+с небольшим набором классов. Для больших проектов этот вывод может быть
+полезен для краткого обзора покрытия проектов или при использовании функциональности
+с флагом ``--filter``.
+При использовании из командной строки , записывая в ``php://stdout``,
+будут учитываться настройка ``--colors``.
 
-
+Запись в стандартный вывод - это опция по умолчанию при использовании из
+командной строки. По умолчанию будут отображаться только файлы, имеющие
+хотя бы одну покрытую строку. Это можно изменить через опцию конфигурации
+``showUncoveredFiles``. См. :ref:`appendixes.configuration.logging`.
+По умолчанию все файлы и их статус покрытия отображается в подробном отчёте.
+Это можно изменить с помощью конфигурационной опции ``showOnlySummary``.
