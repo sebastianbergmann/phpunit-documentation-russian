@@ -2,42 +2,41 @@
 
 .. _appendixes.assertions:
 
-==========
-Assertions
-==========
+===========
+Утверждения
+===========
 
-This appendix lists the various assertion methods that are available.
+В этом приложении перечислены различные доступные методы утверждения.
 
 .. _appendixes.assertions.static-vs-non-static-usage-of-assertion-methods:
 
-Static vs. Non-Static Usage of Assertion Methods
-################################################
+Статическое в сравнении с нестатическим использованием методов утверждения
+##########################################################################
 
-PHPUnit's assertions are implemented in PHPUnit\\Framework\\Assert.
-PHPUnit\\Framework\\TestCase inherits from PHPUnit\\Framework\\Assert.
+Утверждения PHPUnit реализованы в PHPUnit\\Framework\\Assert.
+PHPUnit\\Framework\\TestCase наследуется от PHPUnit\\Framework\\Assert.
 
-The assertion methods are declared static and can be invoked
-from any context using PHPUnit\\Framework\\Assert::assertTrue(),
-for instance, or using $this->assertTrue() or self::assertTrue(),
-for instance, in a class that extends PHPUnit\\Framework\\TestCase.
+Методы утверждения объявляются статическими и могут быть вызваны
+из любого контекста, например PHPUnit\\Framework\\Assert::assertTrue(),
+или используя, например, $this->assertTrue() или self::assertTrue(),
+в классе, наследующий PHPUnit\\Framework\\TestCase.
 
-In fact, you can even use global function wrappers such as assertTrue() in
-any context (including classes that extend PHPUnit\\Framework\\TestCase)
-when you (manually) include the :file:`src/Framework/Assert/Functions.php`
-sourcecode file that comes with PHPUnit.
+Фактически, вы даже можете использовать глобальные функции-обёртки, такие как assertTrue()
+в любом контексте (включая классы, наследующие PHPUnit\\Framework\\TestCase),
+когда вы (вручную) включаете файл исходного кода :file:`src/Framework/Assert/Functions.php`,
+который поставляется с PHPUnit.
 
-A common question, especially from developers new to PHPUnit, is whether
-using $this->assertTrue() or self::assertTrue(),
-for instance, is "the right way" to invoke an assertion. The short answer
-is: there is no right way. And there is no wrong way, either. It is a
-matter of personal preference.
+Часто задаваемый вопрос, особенно от разработчиков, впервые работающие с PHPUnit,
+является ли использование $this->assertTrue() или self::assertTrue(), например,
+"правильным путём" для вызова утверждения. Короткий ответ: нет правильного пути.
+И нет также неправильного пути. Это вопрос личных предпочтений.
 
-For most people it just "feels right" to use $this->assertTrue()
-because the test method is invoked on a test object. The fact that the
-assertion methods are declared static allows for (re)using
-them outside the scope of a test object. Lastly, the global function
-wrappers allow developers to type less characters (assertTrue() instead
-of $this->assertTrue() or self::assertTrue()).
+Для большинства людей "кажется правильным" использовать $this->assertTrue()
+потому что тестовый метод вызывается в тестовом объекте. Тот факт, что
+методы утверждения объявлены статичными позволяет (повторно) использовать
+их вне области видимости тестового объекта. Наконец, глобальные функции-обёртки
+позволяют разработчикам вводить меньше символов (assertTrue() вместо
+$this->assertTrue() или self::assertTrue()).
 
 .. _appendixes.assertions.assertArrayHasKey:
 
@@ -46,12 +45,12 @@ assertArrayHasKey()
 
 ``assertArrayHasKey(mixed $key, array $array[, string $message = ''])``
 
-Reports an error identified by ``$message`` if ``$array`` does not have the ``$key``.
+Сообщает об ошибке, определённой в ``$message``, если ``$array`` не имеет ``$key``.
 
-``assertArrayNotHasKey()`` is the inverse of this assertion and takes the same arguments.
+``assertArrayNotHasKey()`` является противоположным этому утверждению и принимает те же аргументы.
 
 .. code-block:: php
-    :caption: Usage of assertArrayHasKey()
+    :caption: Использование assertArrayHasKey()
     :name: appendixes.assertions.assertArrayHasKey.example
 
     <?php
@@ -92,12 +91,12 @@ assertClassHasAttribute()
 
 ``assertClassHasAttribute(string $attributeName, string $className[, string $message = ''])``
 
-Reports an error identified by ``$message`` if ``$className::attributeName`` does not exist.
+Сообщает об ошибке, определённой в ``$message``, если ``$className::attributeName`` не существует.
 
-``assertClassNotHasAttribute()`` is the inverse of this assertion and takes the same arguments.
+``assertClassNotHasAttribute()`` является противоположным этому утверждению и принимает те же аргументы.
 
 .. code-block:: php
-    :caption: Usage of assertClassHasAttribute()
+    :caption: Использование assertClassHasAttribute()
     :name: appendixes.assertions.assertClassHasAttribute.example
 
     <?php
@@ -138,12 +137,12 @@ assertArraySubset()
 
 ``assertArraySubset(array $subset, array $array[, bool $strict = false, string $message = ''])``
 
-Reports an error identified by ``$message`` if ``$array`` does not contains the ``$subset``.
+Сообщает об ошибке, определённой в ``$message``, если ``$array`` не содержит ``$subset``.
 
-``$strict`` is a flag used to compare the identity of objects within arrays.
+``$strict`` - флаг, используемый для сравнения идентичности объектов внутри массивов.
 
 .. code-block:: php
-    :caption: Usage of assertArraySubset()
+    :caption: Использование assertArraySubset()
     :name: appendixes.assertions.assertArraySubset.example
 
     <?php
@@ -189,12 +188,12 @@ assertClassHasStaticAttribute()
 
 ``assertClassHasStaticAttribute(string $attributeName, string $className[, string $message = ''])``
 
-Reports an error identified by ``$message`` if ``$className::attributeName`` does not exist.
+Сообщает об ошибке, определённой в ``$message``, если ``$className::attributeName`` не существует.
 
-``assertClassNotHasStaticAttribute()`` is the inverse of this assertion and takes the same arguments.
+``assertClassNotHasStaticAttribute()`` является противоположным этому утверждению и принимает те же аргументы.
 
 .. code-block:: php
-    :caption: Usage of assertClassHasStaticAttribute()
+    :caption: Использование assertClassHasStaticAttribute()
     :name: appendixes.assertions.assertClassHasStaticAttribute.example
 
     <?php
@@ -235,14 +234,14 @@ assertContains()
 
 ``assertContains(mixed $needle, Iterator|array $haystack[, string $message = ''])``
 
-Reports an error identified by ``$message`` if ``$needle`` is not an element of ``$haystack``.
+Сообщает об ошибке, определённой в ``$message``, если ``$needle`` не является элементом в ``$haystack``.
 
-``assertNotContains()`` is the inverse of this assertion and takes the same arguments.
+``assertNotContains()`` является противоположным этому утверждению и принимает те же аргументы.
 
-``assertAttributeContains()`` and ``assertAttributeNotContains()`` are convenience wrappers that use a ``public``, ``protected``, or ``private`` attribute of a class or object as the haystack.
+``assertAttributeContains()`` и ``assertAttributeNotContains()`` - удобные обёртки, которые используют общедоступный (``public``), защищённый (``protected``) или закрытый (``private``) атрибут класса или объекта в качестве параметра haystack.
 
 .. code-block:: php
-    :caption: Usage of assertContains()
+    :caption: Использование assertContains()
     :name: appendixes.assertions.assertContains.example
 
     <?php
@@ -278,12 +277,12 @@ Reports an error identified by ``$message`` if ``$needle`` is not an element of 
 
 ``assertContains(string $needle, string $haystack[, string $message = '', boolean $ignoreCase = false])``
 
-Reports an error identified by ``$message`` if ``$needle`` is not a substring of ``$haystack``.
+Сообщает об ошибке, определённой в ``$message``, если ``$needle`` не является подстрокой ``$haystack``.
 
-If ``$ignoreCase`` is ``true``, the test will be case insensitive.
+Если ``$ignoreCase`` - ``true``, тест будет нечувствителен к регистру.
 
 .. code-block:: php
-    :caption: Usage of assertContains()
+    :caption: Использование assertContains()
     :name: appendixes.assertions.assertContains.example2
 
     <?php
@@ -318,7 +317,7 @@ If ``$ignoreCase`` is ``true``, the test will be case insensitive.
     Tests: 1, Assertions: 1, Failures: 1.
 
 .. code-block:: php
-    :caption: Usage of assertContains() with $ignoreCase
+    :caption: Использование assertContains() с $ignoreCase
     :name: appendixes.assertions.assertContains.example3
 
     <?php
@@ -364,16 +363,16 @@ assertContainsOnly()
 
 ``assertContainsOnly(string $type, Iterator|array $haystack[, boolean $isNativeType = null, string $message = ''])``
 
-Reports an error identified by ``$message`` if ``$haystack`` does not contain only variables of type ``$type``.
+Сообщает об ошибке, определённой в ``$message``, если ``$haystack`` не содержит только переменные типа ``$type``.
 
-``$isNativeType`` is a flag used to indicate whether ``$type`` is a native PHP type or not.
+``$isNativeType`` - флаг, используемый для указания, является ли ``$type`` встроенным в PHP или нет.
 
-``assertNotContainsOnly()`` is the inverse of this assertion and takes the same arguments.
+``assertNotContainsOnly()`` является противоположным этому утверждению и принимает те же аргументы.
 
-``assertAttributeContainsOnly()`` and ``assertAttributeNotContainsOnly()`` are convenience wrappers that use a ``public``, ``protected``, or ``private`` attribute of a class or object as the haystack.
+``assertAttributeContainsOnly()`` и ``assertAttributeNotContainsOnly()`` - удобные обёртки, которые используют общедоступный (``public``), защищённый (``protected``) или закрытый (``private``) атрибут класса или объекта в качестве параметра haystack.
 
 .. code-block:: php
-    :caption: Usage of assertContainsOnly()
+    :caption: Использование assertContainsOnly()
     :name: appendixes.assertions.assertContainsOnly.example
 
     <?php
@@ -418,10 +417,10 @@ assertContainsOnlyInstancesOf()
 
 ``assertContainsOnlyInstancesOf(string $classname, Traversable|array $haystack[, string $message = ''])``
 
-Reports an error identified by ``$message`` if ``$haystack`` does not contain only instances of class ``$classname``.
+Сообщает об ошибке, определённой в  ``$message``, если ``$haystack`` не содержит только экземпляры класса ``$classname``.
 
 .. code-block:: php
-    :caption: Usage of assertContainsOnlyInstancesOf()
+    :caption: Использование assertContainsOnlyInstancesOf()
     :name: appendixes.assertions.assertContainsOnlyInstancesOf.example
 
     <?php
@@ -465,12 +464,12 @@ assertCount()
 
 ``assertCount($expectedCount, $haystack[, string $message = ''])``
 
-Reports an error identified by ``$message`` if the number of elements in ``$haystack`` is not ``$expectedCount``.
+Сообщает об ошибке, определённой в ``$message``, если количество элементов в ``$haystack`` не равно ``$expectedCount``.
 
-``assertNotCount()`` is the inverse of this assertion and takes the same arguments.
+``assertNotCount()`` является противоположным этому утверждению и принимает те же аргументы.
 
 .. code-block:: php
-    :caption: Usage of assertCount()
+    :caption: Использование assertCount()
     :name: appendixes.assertions.assertCount.example
 
     <?php
@@ -511,12 +510,12 @@ assertDirectoryExists()
 
 ``assertDirectoryExists(string $directory[, string $message = ''])``
 
-Reports an error identified by ``$message`` if the directory specified by ``$directory`` does not exist.
+Сообщает об ошибке, определённой в ``$message``, если каталог, указанный ``$directory``, не существует.
 
-``assertDirectoryNotExists()`` is the inverse of this assertion and takes the same arguments.
+``assertDirectoryNotExists()`` является противоположным этому утверждению и принимает те же аргументы.
 
 .. code-block:: php
-    :caption: Usage of assertDirectoryExists()
+    :caption: Использование assertDirectoryExists()
     :name: appendixes.assertions.assertDirectoryExists.example
 
     <?php
@@ -557,12 +556,12 @@ assertDirectoryIsReadable()
 
 ``assertDirectoryIsReadable(string $directory[, string $message = ''])``
 
-Reports an error identified by ``$message`` if the directory specified by ``$directory`` is not a directory or is not readable.
+Сообщает об ошибке, определённой в ``$message``, если каталог, указанный ``$directory``, не является каталогом или не доступен для чтения.
 
-``assertDirectoryNotIsReadable()`` is the inverse of this assertion and takes the same arguments.
+``assertDirectoryNotIsReadable()`` является противоположным этому утверждению и принимает те же аргументы.
 
 .. code-block:: php
-    :caption: Usage of assertDirectoryIsReadable()
+    :caption: Использование assertDirectoryIsReadable()
     :name: appendixes.assertions.assertDirectoryIsReadable.example
 
     <?php
@@ -603,12 +602,12 @@ assertDirectoryIsWritable()
 
 ``assertDirectoryIsWritable(string $directory[, string $message = ''])``
 
-Reports an error identified by ``$message`` if the directory specified by ``$directory`` is not a directory or is not writable.
+Сообщает об ошибке, определённой в ``$message``, если каталог, указанный ``$directory``, не является каталогом или не доступен для записи.
 
-``assertDirectoryNotIsWritable()`` is the inverse of this assertion and takes the same arguments.
+``assertDirectoryNotIsWritable()`` является противоположным этому утверждению и принимает те же аргументы.
 
 .. code-block:: php
-    :caption: Usage of assertDirectoryIsWritable()
+    :caption: Использование assertDirectoryIsWritable()
     :name: appendixes.assertions.assertDirectoryIsWritable.example
 
     <?php
@@ -649,14 +648,14 @@ assertEmpty()
 
 ``assertEmpty(mixed $actual[, string $message = ''])``
 
-Reports an error identified by ``$message`` if ``$actual`` is not empty.
+Сообщает об ошибке, определённой в ``$message``, если ``$actual`` не является пустым.
 
-``assertNotEmpty()`` is the inverse of this assertion and takes the same arguments.
+``assertNotEmpty()`` является противоположным этому утверждению и принимает те же аргументы.
 
-``assertAttributeEmpty()`` and ``assertAttributeNotEmpty()`` are convenience wrappers that can be applied to a ``public``, ``protected``, or ``private`` attribute of a class or object.
+``assertAttributeEmpty()`` и ``assertAttributeNotEmpty()`` - удобные обёртки, которые могут применяться к общедоступному (``public``), защищённому (``protected``) или закрытому (``private``) атрибуту класса или объекта.
 
 .. code-block:: php
-    :caption: Usage of assertEmpty()
+    :caption: Использование assertEmpty()
     :name: appendixes.assertions.assertEmpty.example
 
     <?php
@@ -697,10 +696,10 @@ assertEqualXMLStructure()
 
 ``assertEqualXMLStructure(DOMElement $expectedElement, DOMElement $actualElement[, boolean $checkAttributes = false, string $message = ''])``
 
-Reports an error identified by ``$message`` if the XML Structure of the DOMElement in ``$actualElement`` is not equal to the XML structure of the DOMElement in ``$expectedElement``.
+Сообщает об ошибке, определённой в ``$message``, если XML-структура объекта DOMElement в ``$actualElement`` не равна XML-структуре объекта DOMElement в ``$expectedElement``.
 
 .. code-block:: php
-    :caption: Usage of assertEqualXMLStructure()
+    :caption: Использование assertEqualXMLStructure()
     :name: appendixes.assertions.assertEqualXMLStructure.example
 
     <?php
@@ -810,14 +809,14 @@ assertEquals()
 
 ``assertEquals(mixed $expected, mixed $actual[, string $message = ''])``
 
-Reports an error identified by ``$message`` if the two variables ``$expected`` and ``$actual`` are not equal.
+Сообщает об ошибке, определённой в ``$message``, если две переменные ``$expected`` и ``$actual`` не равны.
 
-``assertNotEquals()`` is the inverse of this assertion and takes the same arguments.
+``assertNotEquals()`` является противоположным этому утверждению и принимает те же аргументы.
 
-``assertAttributeEquals()`` and ``assertAttributeNotEquals()`` are convenience wrappers that use a ``public``, ``protected``, or ``private`` attribute of a class or object as the actual value.
+``assertAttributeEquals()`` and ``assertAttributeNotEquals()`` - удобные обёртки, которые используют общедоступный (``public``), защищённый (``protected``) или закрытый (``private``) атрибут класса или объекта в качестве фактического значения.
 
 .. code-block:: php
-    :caption: Usage of assertEquals()
+    :caption: Использование assertEquals()
     :name: appendixes.assertions.assertEquals.example
 
     <?php
@@ -884,16 +883,16 @@ Reports an error identified by ``$message`` if the two variables ``$expected`` a
     FAILURES!
     Tests: 3, Assertions: 3, Failures: 3.
 
-More specialized comparisons are used for specific argument types for ``$expected`` and ``$actual``, see below.
+См. ниже более специализированные сравнения, используемые для конкретных типов ``$expected`` и ``$actual``.
 
 ``assertEquals(float $expected, float $actual[, string $message = '', float $delta = 0])``
 
-Reports an error identified by ``$message`` if the absolute difference between two floats ``$expected`` and ``$actual`` is greater than ``$delta``. If the absolute difference between two floats ``$expected`` and ``$actual`` is less than *or equal to* ``$delta``, the assertion will pass.
+Сообщает об ошибке, определённой в ``$message``, если абсолютная разница между двумя числами с плавающей точкой ``$expected`` и ``$actual`` больше, чем ``$delta``. Если абсолютная разница между двумя числами с плавающей точкой ``$expected`` и ``$actual`` меньше  *или равно* ``$delta``,то утверждение пройдёт успешно.
 
-Please read "`What Every Computer Scientist Should Know About Floating-Point Arithmetic <http://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html>`_" to understand why ``$delta`` is neccessary.
+Пожалуйста, прочитайте "`What Every Computer Scientist Should Know About Floating-Point Arithmetic <http://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html>`_" для понимания, зачем требуется ``$delta``.
 
 .. code-block:: php
-    :caption: Usage of assertEquals() with floats
+    :caption: Использование assertEquals() с числа с плавающей точкой
     :name: appendixes.assertions.assertEquals.example2
 
     <?php
@@ -934,10 +933,10 @@ Please read "`What Every Computer Scientist Should Know About Floating-Point Ari
 
 ``assertEquals(DOMDocument $expected, DOMDocument $actual[, string $message = ''])``
 
-Reports an error identified by ``$message`` if the uncommented canonical form of the XML documents represented by the two DOMDocument objects ``$expected`` and ``$actual`` are not equal.
+Сообщает об ошибке, определённой в ``$message``, если каноническая форма XML-документов, представленных двумя объектами DOMDocument ``$expected`` и ``$actual``, не равна.
 
 .. code-block:: php
-    :caption: Usage of assertEquals() with DOMDocument objects
+    :caption: Использование assertEquals() с объектами DOMDocument
     :name: appendixes.assertions.assertEquals.example3
 
     <?php
@@ -989,10 +988,10 @@ Reports an error identified by ``$message`` if the uncommented canonical form of
 
 ``assertEquals(object $expected, object $actual[, string $message = ''])``
 
-Reports an error identified by ``$message`` if the two objects ``$expected`` and ``$actual`` do not have equal attribute values.
+Сообщает об ошибке, определённой в ``$message``, если два объекта ``$expected`` и ``$actual`` не имеют одинаковых значений атрибутов.
 
 .. code-block:: php
-    :caption: Usage of assertEquals() with objects
+    :caption: Использование assertEquals() с объектами
     :name: appendixes.assertions.assertEquals.example4
 
     <?php
@@ -1045,10 +1044,10 @@ Reports an error identified by ``$message`` if the two objects ``$expected`` and
 
 ``assertEquals(array $expected, array $actual[, string $message = ''])``
 
-Reports an error identified by ``$message`` if the two arrays ``$expected`` and ``$actual`` are not equal.
+Сообщает об ошибке, определённой в ``$message``, если два массива ``$expected`` и ``$actual`` не равны.
 
 .. code-block:: php
-    :caption: Usage of assertEquals() with arrays
+    :caption: Использование assertEquals() с массивом
     :name: appendixes.assertions.assertEquals.example5
 
     <?php
@@ -1099,12 +1098,12 @@ assertFalse()
 
 ``assertFalse(bool $condition[, string $message = ''])``
 
-Reports an error identified by ``$message`` if ``$condition`` is ``true``.
+Сообщает об ошибке, определённой в ``$message``, если ``$condition`` равняется ``true``.
 
-``assertNotFalse()`` is the inverse of this assertion and takes the same arguments.
+``assertNotFalse()`` является противоположным этому утверждению и принимает те же аргументы.
 
 .. code-block:: php
-    :caption: Usage of assertFalse()
+    :caption: Использование assertFalse()
     :name: appendixes.assertions.assertFalse.example
 
     <?php
@@ -1145,12 +1144,12 @@ assertFileEquals()
 
 ``assertFileEquals(string $expected, string $actual[, string $message = ''])``
 
-Reports an error identified by ``$message`` if the file specified by ``$expected`` does not have the same contents as the file specified by ``$actual``.
+Сообщает об ошибке, определённой в ``$message``, если файл, указанный в ``$expected``, не имеет того же содержимого, что и файл, переданный в ``$actual``.
 
-``assertFileNotEquals()`` is the inverse of this assertion and takes the same arguments.
+``assertFileNotEquals()`` является противоположным этому утверждению и принимает те же аргументы.
 
 .. code-block:: php
-    :caption: Usage of assertFileEquals()
+    :caption: Использование assertFileEquals()
     :name: appendixes.assertions.assertFileEquals.example
 
     <?php
@@ -1197,12 +1196,12 @@ assertFileExists()
 
 ``assertFileExists(string $filename[, string $message = ''])``
 
-Reports an error identified by ``$message`` if the file specified by ``$filename`` does not exist.
+Сообщает об ошибке, определённой в ``$message``, если файл, указанный в ``$filename``, не существует.
 
-``assertFileNotExists()`` is the inverse of this assertion and takes the same arguments.
+``assertFileNotExists()`` является противоположным этому утверждению и принимает те же аргументы.
 
 .. code-block:: php
-    :caption: Usage of assertFileExists()
+    :caption: Использование assertFileExists()
     :name: appendixes.assertions.assertFileExists.example
 
     <?php
@@ -1243,12 +1242,12 @@ assertFileIsReadable()
 
 ``assertFileIsReadable(string $filename[, string $message = ''])``
 
-Reports an error identified by ``$message`` if the file specified by ``$filename`` is not a file or is not readable.
+Сообщает об ошибке, определённой в ``$message``, если файл, указанный в ``$filename``, не является файлом или не доступен для чтения.
 
-``assertFileNotIsReadable()`` is the inverse of this assertion and takes the same arguments.
+``assertFileNotIsReadable()`` является противоположным этому утверждению и принимает те же аргументы.
 
 .. code-block:: php
-    :caption: Usage of assertFileIsReadable()
+    :caption: Использование assertFileIsReadable()
     :name: appendixes.assertions.assertFileIsReadable.example
 
     <?php
@@ -1289,12 +1288,12 @@ assertFileIsWritable()
 
 ``assertFileIsWritable(string $filename[, string $message = ''])``
 
-Reports an error identified by ``$message`` if the file specified by ``$filename`` is not a file or is not writable.
+Сообщает об ошибке, определённой в ``$message``, если файл, указанный в ``$filename``, не является файлом или не доступен для записи.
 
-``assertFileNotIsWritable()`` is the inverse of this assertion and takes the same arguments.
+``assertFileNotIsWritable()`` является противоположным этому утверждению и принимает те же аргументы.
 
 .. code-block:: php
-    :caption: Usage of assertFileIsWritable()
+    :caption: Использование assertFileIsWritable()
     :name: appendixes.assertions.assertFileIsWritable.example
 
     <?php
@@ -1335,12 +1334,12 @@ assertGreaterThan()
 
 ``assertGreaterThan(mixed $expected, mixed $actual[, string $message = ''])``
 
-Reports an error identified by ``$message`` if the value of ``$actual`` is not greater than the value of ``$expected``.
+Сообщает об ошибке, определённой в ``$message``, если значение ``$actual`` не превышает значение ``$expected``.
 
-``assertAttributeGreaterThan()`` is a convenience wrapper that uses a ``public``, ``protected``, or ``private`` attribute of a class or object as the actual value.
+``assertAttributeGreaterThan()`` - удобная обёртка, которая использует общедоступный (``public``), защищённый (``protected``) или закрытый (``private``) атрибут класса или объекта в качестве фактического значения.
 
 .. code-block:: php
-    :caption: Usage of assertGreaterThan()
+    :caption: Использование assertGreaterThan()
     :name: appendixes.assertions.assertGreaterThan.example
 
     <?php
@@ -1381,12 +1380,12 @@ assertGreaterThanOrEqual()
 
 ``assertGreaterThanOrEqual(mixed $expected, mixed $actual[, string $message = ''])``
 
-Reports an error identified by ``$message`` if the value of ``$actual`` is not greater than or equal to the value of ``$expected``.
+Сообщает об ошибке, определённой в ``$message``, если значение ``$actual`` не больше или равно значению ``$expected``.
 
-``assertAttributeGreaterThanOrEqual()`` is a convenience wrapper that uses a ``public``, ``protected``, or ``private`` attribute of a class or object as the actual value.
+``assertAttributeGreaterThanOrEqual()`` - удобная обёртка, которая использует общедоступный (``public``), защищённый (``protected``) или закрытый (``private``) атрибут класса или объекта в качестве фактического значения.
 
 .. code-block:: php
-    :caption: Usage of assertGreaterThanOrEqual()
+    :caption: Использование assertGreaterThanOrEqual()
     :name: appendixes.assertions.assertGreaterThanOrEqual.example
 
     <?php
@@ -1427,12 +1426,12 @@ assertInfinite()
 
 ``assertInfinite(mixed $variable[, string $message = ''])``
 
-Reports an error identified by ``$message`` if ``$variable`` is not ``INF``.
+Сообщает об ошибке, определённой в ``$message``, если ``$variable`` не является ``INF``.
 
-``assertFinite()`` is the inverse of this assertion and takes the same arguments.
+``assertFinite()`` является противоположным этому утверждению и принимает те же аргументы.
 
 .. code-block:: php
-    :caption: Usage of assertInfinite()
+    :caption: Использование assertInfinite()
     :name: appendixes.assertions.assertInfinite.example
 
     <?php
@@ -1473,14 +1472,14 @@ assertInstanceOf()
 
 ``assertInstanceOf($expected, $actual[, $message = ''])``
 
-Reports an error identified by ``$message`` if ``$actual`` is not an instance of ``$expected``.
+Сообщает об ошибке, определённой в ``$message``, если ``$actual`` не является экземпляром ``$expected``.
 
-``assertNotInstanceOf()`` is the inverse of this assertion and takes the same arguments.
+``assertNotInstanceOf()`` является противоположным этому утверждению и принимает те же аргументы.
 
-``assertAttributeInstanceOf()`` and ``assertAttributeNotInstanceOf()`` are convenience wrappers that can be applied to a ``public``, ``protected``, or ``private`` attribute of a class or object.
+``assertAttributeInstanceOf()`` и ``assertAttributeNotInstanceOf()`` - удобные обёртки, которые могут применяться к общедоступному (``public``), защищённому (``protected``) или закрытому (``private``) атрибуту класса или объекта.
 
 .. code-block:: php
-    :caption: Usage of assertInstanceOf()
+    :caption: Использование assertInstanceOf()
     :name: appendixes.assertions.assertInstanceOf.example
 
     <?php
@@ -1521,14 +1520,14 @@ assertInternalType()
 
 ``assertInternalType($expected, $actual[, $message = ''])``
 
-Reports an error identified by ``$message`` if ``$actual`` is not of the ``$expected`` type.
+Сообщает об ошибке, определённой в ``$message``, если ``$actual`` не относится к типу, указанному в ``$expected``.
 
-``assertNotInternalType()`` is the inverse of this assertion and takes the same arguments.
+``assertNotInternalType()`` является противоположным этому утверждению и принимает те же аргументы.
 
-``assertAttributeInternalType()`` and ``assertAttributeNotInternalType()`` are convenience wrappers that can be applied to a ``public``, ``protected``, or ``private`` attribute of a class or object.
+``assertAttributeInternalType()`` и ``assertAttributeNotInternalType()`` - удобные обёртки, которые могут применяться к общедоступному (``public``), защищённому (``protected``) или закрытому (``private``) атрибуту класса или объекта.
 
 .. code-block:: php
-    :caption: Usage of assertInternalType()
+    :caption: Использование assertInternalType()
     :name: appendixes.assertions.assertInternalType.example
 
     <?php
@@ -1569,12 +1568,12 @@ assertIsReadable()
 
 ``assertIsReadable(string $filename[, string $message = ''])``
 
-Reports an error identified by ``$message`` if the file or directory specified by ``$filename`` is not readable.
+Сообщает об ошибке, определённой в ``$message``, если файл или каталог, указанный в ``$filename``, не доступен для чтения.
 
-``assertNotIsReadable()`` is the inverse of this assertion and takes the same arguments.
+``assertNotIsReadable()`` является противоположным этому утверждению и принимает те же аргументы.
 
 .. code-block:: php
-    :caption: Usage of assertIsReadable()
+    :caption: Использование assertIsReadable()
     :name: appendixes.assertions.assertIsReadable.example
 
     <?php
@@ -1615,12 +1614,12 @@ assertIsWritable()
 
 ``assertIsWritable(string $filename[, string $message = ''])``
 
-Reports an error identified by ``$message`` if the file or directory specified by ``$filename`` is not writable.
+Сообщает об ошибке, определённой в ``$message``, если файл или каталог, указанный в ``$filename``, не доступен для записи.
 
-``assertNotIsWritable()`` is the inverse of this assertion and takes the same arguments.
+``assertNotIsWritable()`` является противоположным этому утверждению и принимает те же аргументы.
 
 .. code-block:: php
-    :caption: Usage of assertIsWritable()
+    :caption: Использование assertIsWritable()
     :name: appendixes.assertions.assertIsWritable.example
 
     <?php
@@ -1661,11 +1660,11 @@ assertJsonFileEqualsJsonFile()
 
 ``assertJsonFileEqualsJsonFile(mixed $expectedFile, mixed $actualFile[, string $message = ''])``
 
-Reports an error identified by ``$message`` if the value of ``$actualFile`` does not match the value of
+Сообщает об ошибке, определённой в ``$message``, если значение ``$actualFile`` не соответствует значению
 ``$expectedFile``.
 
 .. code-block:: php
-    :caption: Usage of assertJsonFileEqualsJsonFile()
+    :caption: Использование assertJsonFileEqualsJsonFile()
     :name: appendixes.assertions.assertJsonFileEqualsJsonFile.example
 
     <?php
@@ -1707,11 +1706,11 @@ assertJsonStringEqualsJsonFile()
 
 ``assertJsonStringEqualsJsonFile(mixed $expectedFile, mixed $actualJson[, string $message = ''])``
 
-Reports an error identified by ``$message`` if the value of ``$actualJson`` does not match the value of
+Сообщает об ошибке, определённой в ``$message``, если значение ``$actualJson`` не соответствует значению
 ``$expectedFile``.
 
 .. code-block:: php
-    :caption: Usage of assertJsonStringEqualsJsonFile()
+    :caption: Использование assertJsonStringEqualsJsonFile()
     :name: appendixes.assertions.assertJsonStringEqualsJsonFile.example
 
     <?php
@@ -1754,11 +1753,11 @@ assertJsonStringEqualsJsonString()
 
 ``assertJsonStringEqualsJsonString(mixed $expectedJson, mixed $actualJson[, string $message = ''])``
 
-Reports an error identified by ``$message`` if the value of ``$actualJson`` does not match the value of
+Сообщает об ошибке, определённой в ``$message``, если значение ``$actualJson`` не соответствует значению
 ``$expectedJson``.
 
 .. code-block:: php
-    :caption: Usage of assertJsonStringEqualsJsonString()
+    :caption: Использование assertJsonStringEqualsJsonString()
     :name: appendixes.assertions.assertJsonStringEqualsJsonString.example
 
     <?php
@@ -1809,12 +1808,12 @@ assertLessThan()
 
 ``assertLessThan(mixed $expected, mixed $actual[, string $message = ''])``
 
-Reports an error identified by ``$message`` if the value of ``$actual`` is not less than the value of ``$expected``.
+Сообщает об ошибке, определённой в ``$message``, если значение ``$actual`` не меньше значения ``$expected``.
 
-``assertAttributeLessThan()`` is a convenience wrapper that uses a ``public``, ``protected``, or ``private`` attribute of a class or object as the actual value.
+``assertAttributeLessThan()`` - удобная обёртка, которая использует общедоступный (``public``), защищённый (``protected``) или закрытый (``private``) атрибут класса или объекта в качестве фактического значения.
 
 .. code-block:: php
-    :caption: Usage of assertLessThan()
+    :caption: Использование assertLessThan()
     :name: appendixes.assertions.assertLessThan.example
 
     <?php
@@ -1855,12 +1854,12 @@ assertLessThanOrEqual()
 
 ``assertLessThanOrEqual(mixed $expected, mixed $actual[, string $message = ''])``
 
-Reports an error identified by ``$message`` if the value of ``$actual`` is not less than or equal to the value of ``$expected``.
+Сообщает об ошибке, определённой в ``$message``, если значение ``$actual`` не меньше или равно значению ``$expected``.
 
-``assertAttributeLessThanOrEqual()`` is a convenience wrapper that uses a ``public``, ``protected``, or ``private`` attribute of a class or object as the actual value.
+``assertAttributeLessThanOrEqual()`` - удобная обёртка, которая использует общедоступный (``public``), защищённый (``protected``) или закрытый (``private``) атрибут класса или объекта в качестве фактического значения.
 
 .. code-block:: php
-    :caption: Usage of assertLessThanOrEqual()
+    :caption: Использование assertLessThanOrEqual()
     :name: appendixes.assertions.assertLessThanOrEqual.example
 
     <?php
@@ -1901,10 +1900,10 @@ assertNan()
 
 ``assertNan(mixed $variable[, string $message = ''])``
 
-Reports an error identified by ``$message`` if ``$variable`` is not ``NAN``.
+Сообщает об ошибке, определённой в ``$message``, если ``$variable`` не является ``NAN``.
 
 .. code-block:: php
-    :caption: Usage of assertNan()
+    :caption: Использование assertNan()
     :name: appendixes.assertions.assertNan.example
 
     <?php
@@ -1945,12 +1944,12 @@ assertNull()
 
 ``assertNull(mixed $variable[, string $message = ''])``
 
-Reports an error identified by ``$message`` if ``$variable`` is not ``null``.
+Сообщает об ошибке, определённой в ``$message``, если ``$variable`` не является ``null``.
 
-``assertNotNull()`` is the inverse of this assertion and takes the same arguments.
+``assertNotNull()`` является противоположным этому утверждению и принимает те же аргументы.
 
 .. code-block:: php
-    :caption: Usage of assertNull()
+    :caption: Использование assertNull()
     :name: appendixes.assertions.assertNull.example
 
     <?php
@@ -1991,12 +1990,12 @@ assertObjectHasAttribute()
 
 ``assertObjectHasAttribute(string $attributeName, object $object[, string $message = ''])``
 
-Reports an error identified by ``$message`` if ``$object->attributeName`` does not exist.
+Сообщает об ошибке, определённой в ``$message``, если ``$object->attributeName`` не существует.
 
-``assertObjectNotHasAttribute()`` is the inverse of this assertion and takes the same arguments.
+``assertObjectNotHasAttribute()`` является противоположным этому утверждению и принимает те же аргументы.
 
 .. code-block:: php
-    :caption: Usage of assertObjectHasAttribute()
+    :caption: Использование assertObjectHasAttribute()
     :name: appendixes.assertions.assertObjectHasAttribute.example
 
     <?php
@@ -2037,12 +2036,12 @@ assertRegExp()
 
 ``assertRegExp(string $pattern, string $string[, string $message = ''])``
 
-Reports an error identified by ``$message`` if ``$string`` does not match the regular expression ``$pattern``.
+Сообщает об ошибке, определённой в ``$message``, если ``$string`` не соответствует регулярному выражению ``$pattern``.
 
-``assertNotRegExp()`` is the inverse of this assertion and takes the same arguments.
+``assertNotRegExp()`` является противоположным этому утверждению и принимает те же аргументы.
 
 .. code-block:: php
-    :caption: Usage of assertRegExp()
+    :caption: Использование assertRegExp()
     :name: appendixes.assertions.assertRegExp.example
 
     <?php
@@ -2083,12 +2082,12 @@ assertStringMatchesFormat()
 
 ``assertStringMatchesFormat(string $format, string $string[, string $message = ''])``
 
-Reports an error identified by ``$message`` if the ``$string`` does not match the ``$format`` string.
+Сообщает об ошибке, определённой в ``$message``, если ``$string`` не соответствует строке формата в ``$format``.
 
-``assertStringNotMatchesFormat()`` is the inverse of this assertion and takes the same arguments.
+``assertStringNotMatchesFormat()`` является противоположным этому утверждению и принимает те же аргументы.
 
 .. code-block:: php
-    :caption: Usage of assertStringMatchesFormat()
+    :caption: Использование assertStringMatchesFormat()
     :name: appendixes.assertions.assertStringMatchesFormat.example
 
     <?php
@@ -2122,51 +2121,51 @@ Reports an error identified by ``$message`` if the ``$string`` does not match th
     FAILURES!
     Tests: 1, Assertions: 1, Failures: 1.
 
-The format string may contain the following placeholders:
+Строка формата может содержать следующие заполнители:
 
 -
 
-  ``%e``: Represents a directory separator, for example ``/`` on Linux.
+  ``%e``: Представляет разделитель каталогов, например ``/`` в Linux.
 
 -
 
-  ``%s``: One or more of anything (character or white space) except the end of line character.
+  ``%s``: Один или несколько чего-либо (символ или пробел), кроме символа конца строки.
 
 -
 
-  ``%S``: Zero or more of anything (character or white space) except the end of line character.
+  ``%S``: Ноль или более чего-либо (символ или пробел), кроме символа конца строки.
 
 -
 
-  ``%a``: One or more of anything (character or white space) including the end of line character.
+  ``%a``: Один или несколько чего-либо (символ или пробел), включая символ конца строки.
 
 -
 
-  ``%A``: Zero or more of anything (character or white space) including the end of line character.
+  ``%A``: Ноль или более чего-либо (символ или пробел), включая символ конца строки.
 
 -
 
-  ``%w``: Zero or more white space characters.
+  ``%w``: Ноль или более символов пробела.
 
 -
 
-  ``%i``: A signed integer value, for example ``+3142``, ``-3142``.
+  ``%i``: Целое число со знаком, например ``+3142``, ``-3142``.
 
 -
 
-  ``%d``: An unsigned integer value, for example ``123456``.
+  ``%d``: Целое число без знака, например ``123456``.
 
 -
 
-  ``%x``: One or more hexadecimal character. That is, characters in the range ``0-9``, ``a-f``, ``A-F``.
+  ``%x``: Один или более шестнадцатеричного символа. То есть, символы в диапазоне ``0-9``, ``a-f``, ``A-F``.
 
 -
 
-  ``%f``: A floating point number, for example: ``3.142``, ``-3.142``, ``3.142E-10``, ``3.142e+10``.
+  ``%f``: Число с плавающей точкой, например: ``3.142``, ``-3.142``, ``3.142E-10``, ``3.142e+10``.
 
 -
 
-  ``%c``: A single character of any sort.
+  ``%c``: Один символ любого типа.
 
 .. _appendixes.assertions.assertStringMatchesFormatFile:
 
@@ -2175,12 +2174,12 @@ assertStringMatchesFormatFile()
 
 ``assertStringMatchesFormatFile(string $formatFile, string $string[, string $message = ''])``
 
-Reports an error identified by ``$message`` if the ``$string`` does not match the contents of the ``$formatFile``.
+Сообщает об ошибке, определённой в ``$message``, если ``$string`` не соответствует содержимому ``$formatFile``.
 
-``assertStringNotMatchesFormatFile()`` is the inverse of this assertion and takes the same arguments.
+``assertStringNotMatchesFormatFile()`` является противоположным этому утверждению и принимает те же аргументы.
 
 .. code-block:: php
-    :caption: Usage of assertStringMatchesFormatFile()
+    :caption: Использование assertStringMatchesFormatFile()
     :name: appendixes.assertions.assertStringMatchesFormatFile.example
 
     <?php
@@ -2222,14 +2221,14 @@ assertSame()
 
 ``assertSame(mixed $expected, mixed $actual[, string $message = ''])``
 
-Reports an error identified by ``$message`` if the two variables ``$expected`` and ``$actual`` do not have the same type and value.
+Сообщает об ошибке, определённой в ``$message``, если две переменные ``$expected`` и ``$actual`` не имеют одного и того же типа и значения.
 
-``assertNotSame()`` is the inverse of this assertion and takes the same arguments.
+``assertNotSame()`` является противоположным этому утверждению и принимает те же аргументы.
 
-``assertAttributeSame()`` and ``assertAttributeNotSame()`` are convenience wrappers that use a ``public``, ``protected``, or ``private`` attribute of a class or object as the actual value.
+``assertAttributeSame()`` и ``assertAttributeNotSame()`` - удобные обёртки, которые используют общедоступный (``public``), защищённый (``protected``) или закрытый (``private``) атрибут класса или объекта в качестве фактического значения.
 
 .. code-block:: php
-    :caption: Usage of assertSame()
+    :caption: Использование assertSame()
     :name: appendixes.assertions.assertSame.example
 
     <?php
@@ -2265,10 +2264,10 @@ Reports an error identified by ``$message`` if the two variables ``$expected`` a
 
 ``assertSame(object $expected, object $actual[, string $message = ''])``
 
-Reports an error identified by ``$message`` if the two variables ``$expected`` and ``$actual`` do not reference the same object.
+Сообщает об ошибке, определённой в ``$message``, если две переменные ``$expected`` и ``$actual`` не ссылаются на один и тот же объект.
 
 .. code-block:: php
-    :caption: Usage of assertSame() with objects
+    :caption: Использование assertSame() с объектами
     :name: appendixes.assertions.assertSame.example2
 
     <?php
@@ -2309,12 +2308,12 @@ assertStringEndsWith()
 
 ``assertStringEndsWith(string $suffix, string $string[, string $message = ''])``
 
-Reports an error identified by ``$message`` if the ``$string`` does not end with ``$suffix``.
+Сообщает об ошибке, определённой в ``$message``, если ``$string`` не заканчивается на ``$suffix``.
 
-``assertStringEndsNotWith()`` is the inverse of this assertion and takes the same arguments.
+``assertStringEndsNotWith()`` является противоположным этому утверждению и принимает те же аргументы.
 
 .. code-block:: php
-    :caption: Usage of assertStringEndsWith()
+    :caption: Использование assertStringEndsWith()
     :name: appendixes.assertions.assertStringEndsWith.example
 
     <?php
@@ -2355,12 +2354,12 @@ assertStringEqualsFile()
 
 ``assertStringEqualsFile(string $expectedFile, string $actualString[, string $message = ''])``
 
-Reports an error identified by ``$message`` if the file specified by ``$expectedFile`` does not have ``$actualString`` as its contents.
+Сообщает об ошибке, определённой в ``$message``, если файл, указанный в ``$expectedFile``, не имеет ``$actualString`` в качестве его содержимого.
 
-``assertStringNotEqualsFile()`` is the inverse of this assertion and takes the same arguments.
+``assertStringNotEqualsFile()`` является противоположным этому утверждению и принимает те же аргументы.
 
 .. code-block:: php
-    :caption: Usage of assertStringEqualsFile()
+    :caption: Использование assertStringEqualsFile()
     :name: appendixes.assertions.assertStringEqualsFile.example
 
     <?php
@@ -2407,12 +2406,12 @@ assertStringStartsWith()
 
 ``assertStringStartsWith(string $prefix, string $string[, string $message = ''])``
 
-Reports an error identified by ``$message`` if the ``$string`` does not start with ``$prefix``.
+Сообщает об ошибке, определённой в ``$message``, если ``$string`` не начинается с ``$prefix``.
 
-``assertStringStartsNotWith()`` is the inverse of this assertion and takes the same arguments.
+``assertStringStartsNotWith()`` является противоположным этому утверждению и принимает те же аргументы.
 
 .. code-block:: php
-    :caption: Usage of assertStringStartsWith()
+    :caption: Использование assertStringStartsWith()
     :name: appendixes.assertions.assertStringStartsWith.example
 
     <?php
@@ -2451,20 +2450,20 @@ Reports an error identified by ``$message`` if the ``$string`` does not start wi
 assertThat()
 ############
 
-More complex assertions can be formulated using the
-``PHPUnit\Framework\Constraint`` classes. They can be
-evaluated using the ``assertThat()`` method.
-:numref:`appendixes.assertions.assertThat.example` shows how the
-``logicalNot()`` and ``equalTo()``
-constraints can be used to express the same assertion as
+Более сложные утверждения могут быть сформулированы с использованием
+классов ``PHPUnit\Framework\Constraint``. Их можно оценить (evaluated)
+с помощью метода ``assertThat()``.
+:numref:`appendixes.assertions.assertThat.example` показывает, как ограничения
+``logicalNot()`` и ``equalTo()``
+могут использоваться для выражения того же утверждения, что и
 ``assertNotEquals()``.
 
 ``assertThat(mixed $value, PHPUnit\Framework\Constraint $constraint[, $message = ''])``
 
-Reports an error identified by ``$message`` if the ``$value`` does not match the ``$constraint``.
+Сообщает об ошибке, определённой в ``$message``, если ``$value`` не соответствует ``$constraint``.
 
 .. code-block:: php
-    :caption: Usage of assertThat()
+    :caption: Использование assertThat()
     :name: appendixes.assertions.assertThat.example
 
     <?php
@@ -2487,82 +2486,82 @@ Reports an error identified by ``$message`` if the ``$value`` does not match the
     }
     ?>
 
-:numref:`appendixes.assertions.assertThat.tables.constraints` shows the
-available ``PHPUnit\Framework\Constraint`` classes.
+:numref:`appendixes.assertions.assertThat.tables.constraints` показывает
+доступные классы ``PHPUnit\Framework\Constraint``.
 
 .. rst-class:: table
 .. list-table:: Constraints
     :name: appendixes.assertions.assertThat.tables.constraints
     :header-rows: 1
 
-    * - Constraint
-      - Meaning
+    * - Ограничение
+      - Описание
     * - ``PHPUnit\Framework\Constraint\Attribute attribute(PHPUnit\Framework\Constraint $constraint, $attributeName)``
-      - Constraint that applies another constraint to an attribute of a class or an object.
+      - Ограничение, которое применяет другое ограничение к атрибуту класса или объекта.
     * - ``PHPUnit\Framework\Constraint\IsAnything anything()``
-      - Constraint that accepts any input value.
+      - Ограничение, принимающее любое входное значение.
     * - ``PHPUnit\Framework\Constraint\ArrayHasKey arrayHasKey(mixed $key)``
-      - Constraint that asserts that the array it is evaluated for has a given key.
+      - Ограничение, которое утверждает, что массив (``array``), для которого оно вычисляется, имеет заданный ключ.
     * - ``PHPUnit\Framework\Constraint\TraversableContains contains(mixed $value)``
-      - Constraint that asserts that the ``array`` or object that implements the ``Iterator`` interface it is evaluated for contains a given value.
+      - Ограничение, которое утверждает, что массив (``array``) или объект, реализующий интерфейс ``Iterator``, для которого оно вычисляется, содержит заданное значение.
     * - ``PHPUnit\Framework\Constraint\TraversableContainsOnly containsOnly(string $type)``
-      - Constraint that asserts that the ``array`` or object that implements the ``Iterator`` interface it is evaluated for contains only values of a given type.
+      - Ограничение, которое утверждает, что массив (``array``) или объект, реализующий интерфейс ``Iterator``, для которого оно вычисляется, содержит только значения заданного типа
     * - ``PHPUnit\Framework\Constraint\TraversableContainsOnly containsOnlyInstancesOf(string $classname)``
-      - Constraint that asserts that the ``array`` or object that implements the ``Iterator`` interface it is evaluated for contains only instances of a given classname.
+      - Ограничение, которое утверждает, что массив (``array``) или объект, реализующий интерфейс ``Iterator``, для которого оно вычисляется, содержит только экземпляры класса заданного имени класса.
     * - ``PHPUnit\Framework\Constraint\IsEqual equalTo($value, $delta = 0, $maxDepth = 10)``
-      - Constraint that checks if one value is equal to another.
+      - Ограничение, которое проверяет, равно ли одно значение другому.
     * - ``PHPUnit\Framework\Constraint\Attribute attributeEqualTo($attributeName, $value, $delta = 0, $maxDepth = 10)``
-      - Constraint that checks if a value is equal to an attribute of a class or of an object.
+      - Ограничение, которое проверяет, равно ли значение атрибуту класса или объекта.
     * - ``PHPUnit\Framework\Constraint\DirectoryExists directoryExists()``
-      - Constraint that checks if the directory that it is evaluated for exists.
+      - Ограничение, которое проверяет, существует ли каталог, для которого он был вычислен.
     * - ``PHPUnit\Framework\Constraint\FileExists fileExists()``
-      - Constraint that checks if the file(name) that it is evaluated for exists.
+      - Ограничение, которое проверяет, существует ли файл, для которого он был вычислен.
     * - ``PHPUnit\Framework\Constraint\IsReadable isReadable()``
-      - Constraint that checks if the file(name) that it is evaluated for is readable.
+      - Ограничение, которое проверяет, является ли файл, для которого оно вычисляется, доступным для чтения.
     * - ``PHPUnit\Framework\Constraint\IsWritable isWritable()``
-      - Constraint that checks if the file(name) that it is evaluated for is writable.
+      - Ограничение, которое проверяет, является ли файл, для которого оно вычисляется, доступным для записи.
     * - ``PHPUnit\Framework\Constraint\GreaterThan greaterThan(mixed $value)``
-      - Constraint that asserts that the value it is evaluated for is greater than a given value.
+      - Ограничение, которое утверждает, что значение, для которого оно вычисляется, больше заданного значения.
     * - ``PHPUnit\Framework\Constraint\Or greaterThanOrEqual(mixed $value)``
-      - Constraint that asserts that the value it is evaluated for is greater than or equal to a given value.
+      - Ограничение, которое утверждает, что значение, для которого оно вычисляется, больше или равно заданному значению.
     * - ``PHPUnit\Framework\Constraint\ClassHasAttribute classHasAttribute(string $attributeName)``
-      - Constraint that asserts that the class it is evaluated for has a given attribute.
+      - Ограничение, которое утверждает, что класс, для которого оно вычисляется, имеет заданный атрибут.
     * - ``PHPUnit\Framework\Constraint\ClassHasStaticAttribute classHasStaticAttribute(string $attributeName)``
-      - Constraint that asserts that the class it is evaluated for has a given static attribute.
+      - Ограничение, которое утверждает, что класс, для которого оно вычисляется, имеет заданный статический атрибут.
     * - ``PHPUnit\Framework\Constraint\ObjectHasAttribute hasAttribute(string $attributeName)``
-      - Constraint that asserts that the object it is evaluated for has a given attribute.
+      - Ограничение, которое утверждает, что объект, для которого оно вычисляется, имеет данный атрибут.
     * - ``PHPUnit\Framework\Constraint\IsIdentical identicalTo(mixed $value)``
-      - Constraint that asserts that one value is identical to another.
+      - Ограничение, которое утверждает, что одно значение идентично другому.
     * - ``PHPUnit\Framework\Constraint\IsFalse isFalse()``
-      - Constraint that asserts that the value it is evaluated is ``false``.
+      - Ограничение, которое утверждает, что значение, для которого оно вычисляется, является``false``.
     * - ``PHPUnit\Framework\Constraint\IsInstanceOf isInstanceOf(string $className)``
-      - Constraint that asserts that the object it is evaluated for is an instance of a given class.
+      - Ограничение, которое утверждает, что объект, для которого оно вычисляется, является экземпляром заданного класса.
     * - ``PHPUnit\Framework\Constraint\IsNull isNull()``
-      - Constraint that asserts that the value it is evaluated is ``null``.
+      - Ограничение, которое утверждает, что значение, для которого оно вычисляется, является ``null``.
     * - ``PHPUnit\Framework\Constraint\IsTrue isTrue()``
-      - Constraint that asserts that the value it is evaluated is ``true``.
+      - Ограничение, которое утверждает, что значение, для которого оно вычисляется, является ``true``.
     * - ``PHPUnit\Framework\Constraint\IsType isType(string $type)``
-      - Constraint that asserts that the value it is evaluated for is of a specified type.
+      - Ограничение, которое утверждает, что значение, для которого оно вычисляется, имеет указанный тип.
     * - ``PHPUnit\Framework\Constraint\LessThan lessThan(mixed $value)``
-      - Constraint that asserts that the value it is evaluated for is smaller than a given value.
+      - Ограничение, которое утверждает, что значение, для которого оно вычисляется, меньше заданного значения.
     * - ``PHPUnit\Framework\Constraint\Or lessThanOrEqual(mixed $value)``
-      - Constraint that asserts that the value it is evaluated for is smaller than or equal to a given value.
+      - Ограничение, которое утверждает, что значение, для которого оно вычисляется, меньше или равно заданному значению.
     * - ``logicalAnd()``
-      - Logical AND.
+      - Логическое И (AND).
     * - ``logicalNot(PHPUnit\Framework\Constraint $constraint)``
-      - Logical NOT.
+      - Логическое НЕ (NOT).
     * - ``logicalOr()``
-      - Logical OR.
+      - Логическое ИЛИ (OR).
     * - ``logicalXor()``
-      - Logical XOR.
+      - Логическое исключающее ИЛИ (XOR).
     * - ``PHPUnit\Framework\Constraint\PCREMatch matchesRegularExpression(string $pattern)``
-      - Constraint that asserts that the string it is evaluated for matches a regular expression.
+      - Ограничение, которое утверждает, что строка, для которой оно вычисляется, соответствует регулярному выражению.
     * - ``PHPUnit\Framework\Constraint\StringContains stringContains(string $string, bool $case)``
-      - Constraint that asserts that the string it is evaluated for contains a given string.
+      - Ограничение, которое утверждает, что строка, для которой оно вычисляется, содержит заданную строку.
     * - ``PHPUnit\Framework\Constraint\StringEndsWith stringEndsWith(string $suffix)``
-      - Constraint that asserts that the string it is evaluated for ends with a given suffix.
+      - Ограничение, которое утверждает, что строка, для которой оно вычисляется, заканчивается заданным суффиксом.
     * - ``PHPUnit\Framework\Constraint\StringStartsWith stringStartsWith(string $prefix)``
-      - Constraint that asserts that the string it is evaluated for starts with a given prefix.
+      - Ограничение, которое утверждает, что строка, для которой оно вычисляется, начинается с заданного префикса.
 
 .. _appendixes.assertions.assertTrue:
 
@@ -2571,12 +2570,12 @@ assertTrue()
 
 ``assertTrue(bool $condition[, string $message = ''])``
 
-Reports an error identified by ``$message`` if ``$condition`` is ``false``.
+Сообщает об ошибке, определённой в ``$message``, если ``$condition`` равно ``false``.
 
-``assertNotTrue()`` is the inverse of this assertion and takes the same arguments.
+``assertNotTrue()`` является противоположным этому утверждению и принимает те же аргументы.
 
 .. code-block:: php
-    :caption: Usage of assertTrue()
+    :caption: Использование assertTrue()
     :name: appendixes.assertions.assertTrue.example
 
     <?php
@@ -2617,12 +2616,12 @@ assertXmlFileEqualsXmlFile()
 
 ``assertXmlFileEqualsXmlFile(string $expectedFile, string $actualFile[, string $message = ''])``
 
-Reports an error identified by ``$message`` if the XML document in ``$actualFile`` is not equal to the XML document in ``$expectedFile``.
+Сообщает об ошибке, определённой в ``$message``, если XML-документ в ``$actualFile`` не равен XML-документу в ``$expectedFile``.
 
-``assertXmlFileNotEqualsXmlFile()`` is the inverse of this assertion and takes the same arguments.
+``assertXmlFileNotEqualsXmlFile()`` является противоположным этому утверждению и принимает те же аргументы.
 
 .. code-block:: php
-    :caption: Usage of assertXmlFileEqualsXmlFile()
+    :caption: Использование assertXmlFileEqualsXmlFile()
     :name: appendixes.assertions.assertXmlFileEqualsXmlFile.example
 
     <?php
@@ -2672,12 +2671,12 @@ assertXmlStringEqualsXmlFile()
 
 ``assertXmlStringEqualsXmlFile(string $expectedFile, string $actualXml[, string $message = ''])``
 
-Reports an error identified by ``$message`` if the XML document in ``$actualXml`` is not equal to the XML document in ``$expectedFile``.
+Сообщает об ошибке, определённой в ``$message``, если XML-документ в ``$actualXml`` не равен XML-документу в ``$expectedFile``.
 
-``assertXmlStringNotEqualsXmlFile()`` is the inverse of this assertion and takes the same arguments.
+``assertXmlStringNotEqualsXmlFile()`` является противоположным этому утверждению и принимает те же аргументы.
 
 .. code-block:: php
-    :caption: Usage of assertXmlStringEqualsXmlFile()
+    :caption: Использование assertXmlStringEqualsXmlFile()
     :name: appendixes.assertions.assertXmlStringEqualsXmlFile.example
 
     <?php
@@ -2727,12 +2726,12 @@ assertXmlStringEqualsXmlString()
 
 ``assertXmlStringEqualsXmlString(string $expectedXml, string $actualXml[, string $message = ''])``
 
-Reports an error identified by ``$message`` if the XML document in ``$actualXml`` is not equal to the XML document in ``$expectedXml``.
+Сообщает об ошибке, определённой в ``$message``, если XML-документ в ``$actualXml`` не равен XML-документу в ``$expectedXml``.
 
-``assertXmlStringNotEqualsXmlString()`` is the inverse of this assertion and takes the same arguments.
+``assertXmlStringNotEqualsXmlString()`` является противоположным этому утверждению и принимает те же аргументы.
 
 .. code-block:: php
-    :caption: Usage of assertXmlStringEqualsXmlString()
+    :caption: Использование assertXmlStringEqualsXmlString()
     :name: appendixes.assertions.assertXmlStringEqualsXmlString.example
 
     <?php
