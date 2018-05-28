@@ -2,39 +2,40 @@
 
 .. _extending-phpunit:
 
-=================
-Extending PHPUnit
-=================
+==================
+Расширение PHPUnit
+==================
 
-PHPUnit can be extended in various ways to make the writing of tests
-easier and customize the feedback you get from running tests. Here are
-common starting points to extend PHPUnit.
+PHPUnit можно расширить различными способами для облегчения процесса написания тестов
+и настройки обратной связи, получаемой от выполнения тестов. Вот общие отправные точки
+для расширения PHPUnit.
 
 .. _extending-phpunit.PHPUnit_Framework_TestCase:
 
-Subclass PHPUnit\\Framework\\TestCase
+Подкласс PHPUnit\\Framework\\TestCase
 #####################################
 
-Write custom assertions and utility methods in an abstract subclass of
-``PHPUnit\Framework\TestCase`` and derive your test case
-classes from that class. This is one of the easiest ways to extend
-PHPUnit.
+Написать пользовательские утверждения и утилитные (вспомогательные) методы
+в абстрактных подклассов ``PHPUnit\Framework\TestCase`` и наследуйте
+ваши классы тестов из этого класса.
+Это один из самых простых способов расширения PHPUnit.
 
 .. _extending-phpunit.custom-assertions:
 
-Write custom assertions
-#######################
+Написать пользовательские утверждения
+#####################################
 
-When writing custom assertions it is the best practice to follow how
-PHPUnit's own assertions are implemented. As you can see in
-:numref:`extending-phpunit.examples.Assert.php`, the
-``assertTrue()`` method is just a wrapper around the
-``isTrue()`` and ``assertThat()`` methods:
-``isTrue()`` creates a matcher object that is passed on to
-``assertThat()`` for evaluation.
+При написании пользовательских утверждений  лучше всего следовать
+принципам реализации собственных утверждений PHPUnit.
+Как вы можете видеть в
+:numref:`extending-phpunit.examples.Assert.php`, метод
+``assertTrue()`` - это просто обёртка над методами
+``isTrue()`` и ``assertThat()``:
+``isTrue()`` создаёт объект сопоставления (matcher object), который передаётся
+``assertThat()`` для проведения оценки.
 
 .. code-block:: php
-    :caption: The assertTrue() and isTrue() methods of the PHPUnit\Framework\Assert class
+    :caption: Методы assertTrue() и isTrue() класса PHPUnit\Framework\Assert
     :name: extending-phpunit.examples.Assert.php
 
     <?php
@@ -47,7 +48,7 @@ PHPUnit's own assertions are implemented. As you can see in
         // ...
 
         /**
-         * Asserts that a condition is true.
+         * Утверждает, то условие истинно
          *
          * @param  boolean $condition
          * @param  string  $message
@@ -61,7 +62,7 @@ PHPUnit's own assertions are implemented. As you can see in
         // ...
 
         /**
-         * Returns a PHPUnit\Framework\Constraint\IsTrue matcher object.
+         * Возвращает объект сопоставления PHPUnit\Framework\Constraint\IsTrue.
          *
          * @return PHPUnit\Framework\Constraint\IsTrue
          * @since  Method available since Release 3.3.0
@@ -74,13 +75,13 @@ PHPUnit's own assertions are implemented. As you can see in
         // ...
     }?>
 
-:numref:`extending-phpunit.examples.IsTrue.php` shows how
-``PHPUnit\Framework\Constraint\IsTrue`` extends the
-abstract base class for matcher objects (or constraints),
+:numref:`extending-phpunit.examples.IsTrue.php` показывает, как
+``PHPUnit\Framework\Constraint\IsTrue`` наследует
+абстрактный базовый класс для объектов сопоставления (или ограничений),
 ``PHPUnit\Framework\Constraint``.
 
 .. code-block:: php
-    :caption: The PHPUnit\Framework\Constraint\IsTrue class
+    :caption: Класс PHPUnit\Framework\Constraint\IsTrue
     :name: extending-phpunit.examples.IsTrue.php
 
     <?php
@@ -113,25 +114,24 @@ abstract base class for matcher objects (or constraints),
         }
     }?>
 
-The effort of implementing the ``assertTrue()`` and
-``isTrue()`` methods as well as the
-``PHPUnit\Framework\Constraint\IsTrue`` class yields the
-benefit that ``assertThat()`` automatically takes care of
-evaluating the assertion and bookkeeping tasks such as counting it for
-statistics. Furthermore, the ``isTrue()`` method can be
-used as a matcher when configuring mock objects.
+Усилия по реализации методов ``assertTrue()`` и
+``isTrue()``, а также класса
+``PHPUnit\Framework\Constraint\IsTrue`` дают
+преимущество, состоящее в том, что ``assertThat()`` автоматически выполняет
+оценку утверждения и задач отчётности, таких как подсчёт
+статистики. Кроме того, метод ``isTrue()`` может использоваться
+как сопоставление при настройке подставных объектов.
 
 .. _extending-phpunit.PHPUnit_Framework_TestListener:
 
-Implement PHPUnit\\Framework\\TestListener
-##########################################
+Реализация PHPUnit\\Framework\\TestListener
+###########################################
 
 :numref:`extending-phpunit.examples.SimpleTestListener.php`
-shows a simple implementation of the ``PHPUnit\Framework\TestListener``
-interface.
+показывает простую реализацию интерфейса ``PHPUnit\Framework\TestListener``.
 
 .. code-block:: php
-    :caption: A simple test listener
+    :caption: Простой слушатель тестов
     :name: extending-phpunit.examples.SimpleTestListener.php
 
     <?php
@@ -142,59 +142,58 @@ interface.
     {
         public function addError(PHPUnit\Framework\Test $test, Exception $e, $time)
         {
-            printf("Error while running test '%s'.\n", $test->getName());
+            printf("Ошибка во время выполнения теста '%s'.\n", $test->getName());
         }
 
         public function addFailure(PHPUnit\Framework\Test $test, PHPUnit\Framework\AssertionFailedError $e, $time)
         {
-            printf("Test '%s' failed.\n", $test->getName());
+            printf("Тест '%s' провалился.\n", $test->getName());
         }
 
         public function addIncompleteTest(PHPUnit\Framework\Test $test, Exception $e, $time)
         {
-            printf("Test '%s' is incomplete.\n", $test->getName());
+            printf("Тест '%s' является неполным.\n", $test->getName());
         }
 
         public function addRiskyTest(PHPUnit\Framework\Test $test, Exception $e, $time)
         {
-            printf("Test '%s' is deemed risky.\n", $test->getName());
+            printf("Тест '%s' считается рискованным.\n", $test->getName());
         }
 
         public function addSkippedTest(PHPUnit\Framework\Test $test, Exception $e, $time)
         {
-            printf("Test '%s' has been skipped.\n", $test->getName());
+            printf("Тест '%s' был пропущен.\n", $test->getName());
         }
 
         public function startTest(PHPUnit\Framework\Test $test)
         {
-            printf("Test '%s' started.\n", $test->getName());
+            printf("Тест '%s' запустился.\n", $test->getName());
         }
 
         public function endTest(PHPUnit\Framework\Test $test, $time)
         {
-            printf("Test '%s' ended.\n", $test->getName());
+            printf("Тест '%s' завершился.\n", $test->getName());
         }
 
         public function startTestSuite(PHPUnit\Framework\TestSuite $suite)
         {
-            printf("TestSuite '%s' started.\n", $suite->getName());
+            printf("Набор тестов '%s' запустился.\n", $suite->getName());
         }
 
         public function endTestSuite(PHPUnit\Framework\TestSuite $suite)
         {
-            printf("TestSuite '%s' ended.\n", $suite->getName());
+            printf("Набор тестов '%s' завершился.\n", $suite->getName());
         }
     }
     ?>
 
 :numref:`extending-phpunit.examples.BaseTestListener.php`
-shows how to subclass the ``PHPUnit\Framework\BaseTestListener``
-abstract class, which lets you specify only the interface methods that
-are interesting for your use case, while providing empty implementations
-for all the others.
+показывает, как унаследоваться от абстрактного класса ``PHPUnit\Framework\BaseTestListener``,
+который позволяет указать только интересующие методы интерфейса для вашего случая,
+но при этом оставляет пустыми реализации всех остальных методов.
 
 .. code-block:: php
-    :caption: Using base test listener
+    :caption: Использование базового слушателя тестов
     :name: extending-phpunit.examples.BaseTestListener.php
 
     <?php
@@ -204,34 +203,34 @@ for all the others.
     {
         public function endTest(PHPUnit\Framework\Test $test, $time)
         {
-            printf("Test '%s' ended.\n", $test->getName());
+            printf("Тест '%s' завершился.\n", $test->getName());
         }
     }
     ?>
 
-In :ref:`appendixes.configuration.test-listeners` you can see
-how to configure PHPUnit to attach your test listener to the test
-execution.
+В :ref:`appendixes.configuration.test-listeners` вы увидите,
+как настроить PHPUnit для добавления слушателя тестов
+к выполнению теста.
 
 .. _extending-phpunit.PHPUnit_Framework_Test:
 
-Implement PHPUnit\Framework\Test
-################################
+Реализация PHPUnit\Framework\Test
+#################################
 
-The ``PHPUnit\Framework\Test`` interface is narrow and
-easy to implement. You can write an implementation of
-``PHPUnit\Framework\Test`` that is simpler than
-``PHPUnit\Framework\TestCase`` and that runs
-*data-driven tests*, for instance.
+Интерфейс ``PHPUnit\Framework\Test`` узкий и простой
+для реализации. Вы можете написать реализацию
+``PHPUnit\Framework\Test``, которая проще, чем
+``PHPUnit\Framework\TestCase``, и которая, например, запускает
+*тесты, управляемые данными (data-driven tests)*.
 
 :numref:`extending-phpunit.examples.DataDrivenTest.php`
-shows a data-driven test case class that compares values from a file
-with Comma-Separated Values (CSV). Each line of such a file looks like
-``foo;bar``, where the first value is the one we expect
-and the second value is the actual one.
+показывает класс теста, управляемого данными, который сравнивает значения из файла
+с значениями, разделённые запятой (Comma-Separated Values, CSV). Каждая строка такого файла выглядит как
+``foo;bar``, где первое значение - это то, что мы ожидаем, а
+второе значение - фактическое.
 
 .. code-block:: php
-    :caption: A data-driven test
+    :caption: Тест, управляемый данными
     :name: extending-phpunit.examples.DataDrivenTest.php
 
     <?php
@@ -318,23 +317,23 @@ and the second value is the actual one.
 
 .. _extending-phpunit.TestRunner:
 
-Extending the TestRunner
-########################
+Расширение TestRunner
+#####################
 
-PHPUnit |version| supports TestRunner extensions that can hook
-into various events during the test execution.
-See :ref:`appendixes.configuration.extensions` for details on how
-to register extensions in PHPUnit's XML configuration.
+PHPUnit |version| поддерживает расширения TestRunner, которые привязываются (hook)
+к различным событиям во время выполнения теста.
+См. :ref:`appendixes.configuration.extensions` для получения дополнительной информации
+о регистрации расширений в конфигурационном XML-файле PHPUnit.
 
-Each available event that the extension can hook into is represented by an
-interface that the extension needs to implement.
-:ref:`extending-phpunit.hooks` lists the available events in
+Каждое доступное событие, к которому может подключаться расширение, представлено интерфейсом,
+которое расширению необходимо реализовать.
+:ref:`extending-phpunit.hooks` перечисляет доступные события в
 PHPUnit |version|.
 
 .. _extending-phpunit.hooks:
 
-Available Hook Interfaces
--------------------------
+Интерфейсы доступных событий
+----------------------------
 
 - ``AfterIncompleteTestHook``
 - ``AfterLastTestHook``
@@ -347,29 +346,29 @@ Available Hook Interfaces
 - ``BeforeFirstTestHook``
 - ``BeforeTestHook``
 
-:numref:`extending-phpunit.examples.TestRunnerExtension` shows an example
-for an extension implementing ``BeforeFirstTestHook`` and ``AfterLastTestHook``:
+:numref:`extending-phpunit.examples.TestRunnerExtension` показывает пример
+расширения, реализующего ``BeforeFirstTestHook`` и ``AfterLastTestHook``:
 
 .. code-block:: php
-    :caption: TestRunner Extension Example
+    :caption: Пример расширения TestRunner
     :name: extending-phpunit.examples.TestRunnerExtension
 
-        <?php
+    <?php
 
-        namespace Vendor;
+    namespace Vendor;
 
-        use PHPUnit\Runner\AfterLastTestHook;
-        use PHPUnit\Runner\BeforeFirstTestHook;
+    use PHPUnit\Runner\AfterLastTestHook;
+    use PHPUnit\Runner\BeforeFirstTestHook;
 
-        final class MyExtension implements BeforeFirstTestHook, AfterLastTestHook
+    final class MyExtension implements BeforeFirstTestHook, AfterLastTestHook
+    {
+        public function executeAfterLastTest(): void
         {
-            public function executeAfterLastTest(): void
-            {
-                // called after the last test has been run
-            }
-
-            public function executeBeforeFirstTest(): void
-            {
-                // called before the first test is being run
-            }
+            // вызывается после последнего выполненного теста
         }
+
+        public function executeBeforeFirstTest(): void
+        {
+            // вызывается до выполнения первого теста
+        }
+    }
