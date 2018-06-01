@@ -203,7 +203,6 @@ PHPUnit выполнит операцию TRUNCATE для всех таблиц,
             $this->assertSame(2, 1 + 1);
         }
     }
-    ?>
 
 Если вы хотите протестировать код, который использует базу данных,
 установка такого теста будет немного посложнее, потому что вам нужно
@@ -237,7 +236,6 @@ PHPUnit выполнит операцию TRUNCATE для всех таблиц,
             return $this->createFlatXMLDataSet(dirname(__FILE__).'/_files/guestbook-seed.xml');
         }
     }
-    ?>
 
 .. _database.implementing-getconnection:
 
@@ -348,7 +346,6 @@ PHPUnit предполагает, что схема база данных со �
             return $this->conn;
         }
     }
-    ?>
 
 Однако это соединение с базой данных жестко закодировано в соединении PDO.
 PHPUnit имеет одну удивительную возможность, которая поможет сделать этот тестовый класс
@@ -400,7 +397,6 @@ PHPUnit имеет одну удивительную возможность, к�
             return $this->conn;
         }
     }
-    ?>
 
 Теперь мы может запустить набор тестов базы данных, используя различные
 конфигурации из интерфейса командной строки:
@@ -589,7 +585,6 @@ Flat XML, все пропущенные значения будут устано
             return $this->createFlatXmlDataSet('myFlatXmlFixture.xml');
         }
     }
-    ?>
 
 .. _database.xml-dataset:
 
@@ -654,7 +649,6 @@ Database TestCase, вызвав метод ``createXmlDataSet($filename)``:
             return $this->createXMLDataSet('myXmlFixture.xml');
         }
     }
-    ?>
 
 .. _database.mysql-xml-dataset:
 
@@ -693,7 +687,6 @@ MySQL XML DataSet
             return $this->createMySQLXMLDataSet('/path/to/file.xml');
         }
     }
-    ?>
 
 .. _database.yaml-dataset:
 
@@ -739,7 +732,6 @@ NULL в YAML - это просто имя столбца без указанно
             return new YamlDataSet(dirname(__FILE__)."/_files/guestbook.yml");
         }
     }
-    ?>
 
 .. _database.csv-dataset:
 
@@ -780,7 +772,6 @@ CSV DataSet
             return $dataSet;
         }
     }
-    ?>
 
 .. _database.array-dataset:
 
@@ -822,7 +813,6 @@ Array DataSet
             );
         }
     }
-    ?>
 
 Набор данный PHP имеет очевидные преимущества перед всеми другими наборами данных на основе файлов:
 
@@ -892,7 +882,6 @@ Array DataSet
             return $this->tables[$tableName];
         }
     }
-    ?>
 
 .. _database.query-sql-dataset:
 
@@ -908,7 +897,6 @@ Query (SQL) DataSet
     <?php
     $ds = new PHPUnit\DbUnit\DataSet\QueryDataSet($this->getConnection());
     $ds->addTable('guestbook');
-    ?>
 
 Добавление таблицы просто по имени - это неявный способ определения
 таблицы данных (data-table) со следующим запросом:
@@ -918,7 +906,6 @@ Query (SQL) DataSet
     <?php
     $ds = new PHPUnit\DbUnit\DataSet\QueryDataSet($this->getConnection());
     $ds->addTable('guestbook', 'SELECT * FROM guestbook');
-    ?>
 
 Вы можете использовать его, указав произвольные запросы для своих
 таблиц, например, ограничивая количество строк, столбцов или добавление
@@ -929,7 +916,6 @@ Query (SQL) DataSet
     <?php
     $ds = new PHPUnit\DbUnit\DataSet\QueryDataSet($this->getConnection());
     $ds->addTable('guestbook', 'SELECT id, content FROM guestbook ORDER BY created DESC');
-    ?>
 
 В разделе "Утверждения базы данных" будет приведена подробная информация о том,
 как использовать Query DataSet.
@@ -983,7 +969,6 @@ DataSet, который состоит из всех таблиц с их сод
             // ...
         }
     }
-    ?>
 
 .. _database.replacement-dataset:
 
@@ -1027,7 +1012,6 @@ DataSet, который состоит из всех таблиц с их сод
             return $rds;
         }
     }
-    ?>
 
 .. _database.dataset-filter:
 
@@ -1070,7 +1054,6 @@ DataSet Filter
             // ..
         }
     }
-    ?>
 
 .. admonition:: Note
 
@@ -1128,7 +1111,6 @@ DataSet Filter
             return $compositeDs;
         }
     }
-    ?>
 
 .. _database.beware-of-foreign-keys:
 
@@ -1163,7 +1145,6 @@ DataSet Filter
 
         public function getReverseIterator();
     }
-    ?>
 
 Общедоступный интерфейс используется внутри утверждения
 ``assertDataSetsEqual()`` в Database TestCase для проверки качества набора данных.
@@ -1193,7 +1174,6 @@ DataSet Filter
         public function getRow($row);
         public function assertEquals(ITable $other);
     }
-    ?>
 
 За исключением метода ``getTableMetaData()``, который говорит сам за себя.
 Используемые методы необходимы для различных утверждений расширения базы данных, которые
@@ -1239,7 +1219,6 @@ DataSet Filter
 
         // ...
     }
-    ?>
 
 #.
 
@@ -1262,7 +1241,6 @@ DataSet Filter
                $dataSet = $this->getConnection()->createDataSet();
            }
        }
-       ?>
 
 #.
 
@@ -1287,7 +1265,6 @@ DataSet Filter
                $queryTable = $this->getConnection()->createQueryTable('guestbook', 'SELECT * FROM guestbook');
            }
        }
-       ?>
 
 #.
 
@@ -1310,7 +1287,6 @@ DataSet Filter
                $this->assertSame(2, $this->getConnection()->getRowCount('guestbook'));
            }
        }
-       ?>
 
 .. _database.database-assertions-api:
 
@@ -1353,7 +1329,6 @@ API Connection. Предположим, мы хотим проверить, чт
             $this->assertSame(3, $this->getConnection()->getRowCount('guestbook'), "Inserting failed");
         }
     }
-    ?>
 
 .. _database.asserting-the-state-of-a-table:
 
@@ -1391,7 +1366,6 @@ API Connection. Предположим, мы хотим проверить, чт
             $this->assertTablesEqual($expectedTable, $queryTable);
         }
     }
-    ?>
 
 Теперь для этого утверждения мы должны создать обычный XML-файл *expectedBook.xml*:
 
@@ -1428,7 +1402,6 @@ API Connection. Предположим, мы хотим проверить, чт
     $queryTable = $this->getConnection()->createQueryTable(
         'guestbook', 'SELECT id, content, user FROM guestbook'
     );
-    ?>
 
 .. _database.asserting-the-result-of-a-query:
 
@@ -1458,7 +1431,6 @@ Table, просто указав имя результата с запросом
             $this->assertTablesEqual($expectedTable, $queryTable);
         }
     }
-    ?>
 
 .. _database.asserting-the-state-of-multiple-tables:
 
@@ -1491,7 +1463,6 @@ DataSet существует два разных способа.
                $this->assertDataSetsEqual($expectedDataSet, $dataSet);
            }
        }
-       ?>
 
 #.
 
@@ -1517,7 +1488,6 @@ DataSet существует два разных способа.
                $this->assertDataSetsEqual($expectedDataSet, $dataSet);
            }
        }
-       ?>
 
 .. _database.frequently-asked-questions:
 

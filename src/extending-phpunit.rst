@@ -73,7 +73,7 @@ PHPUnit можно расширить различными способами д
         }
 
         // ...
-    }?>
+    }
 
 :numref:`extending-phpunit.examples.IsTrue.php` показывает, как
 ``PHPUnit\Framework\Constraint\IsTrue`` наследует
@@ -112,7 +112,7 @@ PHPUnit можно расширить различными способами д
         {
             return 'is true';
         }
-    }?>
+    }
 
 Усилия по реализации методов ``assertTrue()`` и
 ``isTrue()``, а также класса
@@ -185,7 +185,6 @@ PHPUnit можно расширить различными способами д
             printf("Набор тестов '%s' завершился.\n", $suite->getName());
         }
     }
-    ?>
 
 :numref:`extending-phpunit.examples.BaseTestListener.php`
 показывает, как унаследоваться от абстрактного класса ``PHPUnit\Framework\BaseTestListener``,
@@ -206,7 +205,6 @@ PHPUnit можно расширить различными способами д
             printf("Тест '%s' завершился.\n", $test->getName());
         }
     }
-    ?>
 
 В :ref:`appendixes.configuration.test-listeners` вы увидите,
 как настроить PHPUnit для добавления слушателя тестов
@@ -292,7 +290,6 @@ PHPUnit можно расширить различными способами д
 
     $test = new DataDrivenTest('data_file.csv');
     $result = PHPUnit\TextUI\TestRunner::run($test);
-    ?>
 
 .. code-block:: bash
 

@@ -63,7 +63,6 @@ assertArrayHasKey()
             $this->assertArrayHasKey('foo', ['bar' => 'baz']);
         }
     }
-    ?>
 
 .. code-block:: bash
 
@@ -109,7 +108,6 @@ assertClassHasAttribute()
             $this->assertClassHasAttribute('foo', stdClass::class);
         }
     }
-    ?>
 
 .. code-block:: bash
 
@@ -155,7 +153,6 @@ assertArraySubset()
             $this->assertArraySubset(['config' => ['key-a', 'key-b']], ['config' => ['key-a']]);
         }
     }
-    ?>
 
 .. code-block:: bash
 
@@ -206,7 +203,6 @@ assertClassHasStaticAttribute()
             $this->assertClassHasStaticAttribute('foo', stdClass::class);
         }
     }
-    ?>
 
 .. code-block:: bash
 
@@ -254,7 +250,6 @@ assertContains()
             $this->assertContains(4, [1, 2, 3]);
         }
     }
-    ?>
 
 .. code-block:: bash
 
@@ -295,7 +290,6 @@ assertContains()
             $this->assertContains('baz', 'foobar');
         }
     }
-    ?>
 
 .. code-block:: bash
 
@@ -335,7 +329,6 @@ assertContains()
             $this->assertContains('foo', 'FooBar', '', true);
         }
     }
-    ?>
 
 .. code-block:: bash
 
@@ -385,7 +378,6 @@ assertContainsOnly()
             $this->assertContainsOnly('string', ['1', '2', 3]);
         }
     }
-    ?>
 
 .. code-block:: bash
 
@@ -436,7 +428,6 @@ assertContainsOnlyInstancesOf()
             );
         }
     }
-    ?>
 
 .. code-block:: bash
 
@@ -482,7 +473,6 @@ assertCount()
             $this->assertCount(0, ['foo']);
         }
     }
-    ?>
 
 .. code-block:: bash
 
@@ -528,7 +518,6 @@ assertDirectoryExists()
             $this->assertDirectoryExists('/path/to/directory');
         }
     }
-    ?>
 
 .. code-block:: bash
 
@@ -574,7 +563,6 @@ assertDirectoryIsReadable()
             $this->assertDirectoryIsReadable('/path/to/directory');
         }
     }
-    ?>
 
 .. code-block:: bash
 
@@ -620,7 +608,6 @@ assertDirectoryIsWritable()
             $this->assertDirectoryIsWritable('/path/to/directory');
         }
     }
-    ?>
 
 .. code-block:: bash
 
@@ -668,7 +655,6 @@ assertEmpty()
             $this->assertEmpty(['foo']);
         }
     }
-    ?>
 
 .. code-block:: bash
 
@@ -754,7 +740,6 @@ assertEqualXMLStructure()
             );
         }
     }
-    ?>
 
 .. code-block:: bash
 
@@ -839,7 +824,6 @@ assertEquals()
             $this->assertEquals("foo\nbar\nbaz\n", "foo\nbah\nbaz\n");
         }
     }
-    ?>
 
 .. code-block:: bash
 
@@ -910,7 +894,6 @@ assertEquals()
             $this->assertEquals(1.0, 1.1);
         }
     }
-    ?>
 
 .. code-block:: bash
 
@@ -955,7 +938,6 @@ assertEquals()
             $this->assertEquals($expected, $actual);
         }
     }
-    ?>
 
 .. code-block:: bash
 
@@ -1012,7 +994,6 @@ assertEquals()
             $this->assertEquals($expected, $actual);
         }
     }
-    ?>
 
 .. code-block:: bash
 
@@ -1060,7 +1041,6 @@ assertEquals()
             $this->assertEquals(['a', 'b', 'c'], ['a', 'c', 'd']);
         }
     }
-    ?>
 
 .. code-block:: bash
 
@@ -1116,7 +1096,6 @@ assertFalse()
             $this->assertFalse(true);
         }
     }
-    ?>
 
 .. code-block:: bash
 
@@ -1162,7 +1141,6 @@ assertFileEquals()
             $this->assertFileEquals('/home/sb/expected', '/home/sb/actual');
         }
     }
-    ?>
 
 .. code-block:: bash
 
@@ -1214,7 +1192,6 @@ assertFileExists()
             $this->assertFileExists('/path/to/file');
         }
     }
-    ?>
 
 .. code-block:: bash
 
@@ -1260,7 +1237,6 @@ assertFileIsReadable()
             $this->assertFileIsReadable('/path/to/file');
         }
     }
-    ?>
 
 .. code-block:: bash
 
@@ -1306,7 +1282,6 @@ assertFileIsWritable()
             $this->assertFileIsWritable('/path/to/file');
         }
     }
-    ?>
 
 .. code-block:: bash
 
@@ -1352,7 +1327,6 @@ assertGreaterThan()
             $this->assertGreaterThan(2, 1);
         }
     }
-    ?>
 
 .. code-block:: bash
 
@@ -1398,7 +1372,6 @@ assertGreaterThanOrEqual()
             $this->assertGreaterThanOrEqual(2, 1);
         }
     }
-    ?>
 
 .. code-block:: bash
 
@@ -1444,7 +1417,6 @@ assertInfinite()
             $this->assertInfinite(1);
         }
     }
-    ?>
 
 .. code-block:: bash
 
@@ -1492,7 +1464,6 @@ assertInstanceOf()
             $this->assertInstanceOf(RuntimeException::class, new Exception);
         }
     }
-    ?>
 
 .. code-block:: bash
 
@@ -1540,7 +1511,6 @@ assertInternalType()
             $this->assertInternalType('string', 42);
         }
     }
-    ?>
 
 .. code-block:: bash
 
@@ -1586,7 +1556,6 @@ assertIsReadable()
             $this->assertIsReadable('/path/to/unreadable');
         }
     }
-    ?>
 
 .. code-block:: bash
 
@@ -1632,7 +1601,6 @@ assertIsWritable()
             $this->assertIsWritable('/path/to/unwritable');
         }
     }
-    ?>
 
 .. code-block:: bash
 
@@ -1678,7 +1646,6 @@ assertJsonFileEqualsJsonFile()
               'path/to/fixture/file', 'path/to/actual/file');
         }
     }
-    ?>
 
 .. code-block:: bash
 
@@ -1725,7 +1692,6 @@ assertJsonStringEqualsJsonFile()
             );
         }
     }
-    ?>
 
 .. code-block:: bash
 
@@ -1773,7 +1739,6 @@ assertJsonStringEqualsJsonString()
             );
         }
     }
-    ?>
 
 .. code-block:: bash
 
@@ -1826,7 +1791,6 @@ assertLessThan()
             $this->assertLessThan(1, 2);
         }
     }
-    ?>
 
 .. code-block:: bash
 
@@ -1872,7 +1836,6 @@ assertLessThanOrEqual()
             $this->assertLessThanOrEqual(1, 2);
         }
     }
-    ?>
 
 .. code-block:: bash
 
@@ -1916,7 +1879,6 @@ assertNan()
             $this->assertNan(1);
         }
     }
-    ?>
 
 .. code-block:: bash
 
@@ -1962,7 +1924,6 @@ assertNull()
             $this->assertNull('foo');
         }
     }
-    ?>
 
 .. code-block:: bash
 
@@ -2008,7 +1969,6 @@ assertObjectHasAttribute()
             $this->assertObjectHasAttribute('foo', new stdClass);
         }
     }
-    ?>
 
 .. code-block:: bash
 
@@ -2054,7 +2014,6 @@ assertRegExp()
             $this->assertRegExp('/foo/', 'bar');
         }
     }
-    ?>
 
 .. code-block:: bash
 
@@ -2100,7 +2059,6 @@ assertStringMatchesFormat()
             $this->assertStringMatchesFormat('%i', 'foo');
         }
     }
-    ?>
 
 .. code-block:: bash
 
@@ -2192,7 +2150,6 @@ assertStringMatchesFormatFile()
             $this->assertStringMatchesFormatFile('/path/to/expected.txt', 'foo');
         }
     }
-    ?>
 
 .. code-block:: bash
 
@@ -2241,7 +2198,6 @@ assertSame()
             $this->assertSame('2204', 2204);
         }
     }
-    ?>
 
 .. code-block:: bash
 
@@ -2280,7 +2236,6 @@ assertSame()
             $this->assertSame(new stdClass, new stdClass);
         }
     }
-    ?>
 
 .. code-block:: bash
 
@@ -2326,7 +2281,6 @@ assertStringEndsWith()
             $this->assertStringEndsWith('suffix', 'foo');
         }
     }
-    ?>
 
 .. code-block:: bash
 
@@ -2372,7 +2326,6 @@ assertStringEqualsFile()
             $this->assertStringEqualsFile('/home/sb/expected', 'actual');
         }
     }
-    ?>
 
 .. code-block:: bash
 
@@ -2424,7 +2377,6 @@ assertStringStartsWith()
             $this->assertStringStartsWith('prefix', 'foo');
         }
     }
-    ?>
 
 .. code-block:: bash
 
@@ -2484,7 +2436,6 @@ assertThat()
             );
         }
     }
-    ?>
 
 :numref:`appendixes.assertions.assertThat.tables.constraints` показывает
 доступные классы ``PHPUnit\Framework\Constraint``.
@@ -2588,7 +2539,6 @@ assertTrue()
             $this->assertTrue(false);
         }
     }
-    ?>
 
 .. code-block:: bash
 
@@ -2635,7 +2585,6 @@ assertXmlFileEqualsXmlFile()
               '/home/sb/expected.xml', '/home/sb/actual.xml');
         }
     }
-    ?>
 
 .. code-block:: bash
 
@@ -2690,7 +2639,6 @@ assertXmlStringEqualsXmlFile()
               '/home/sb/expected.xml', '<foo><baz/></foo>');
         }
     }
-    ?>
 
 .. code-block:: bash
 
@@ -2745,7 +2693,6 @@ assertXmlStringEqualsXmlString()
               '<foo><bar/></foo>', '<foo><baz/></foo>');
         }
     }
-    ?>
 
 .. code-block:: bash
 
