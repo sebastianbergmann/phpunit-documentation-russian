@@ -186,21 +186,23 @@ PHPUnit можно расширить различными способами д
         }
     }
 
-:numref:`extending-phpunit.examples.BaseTestListener.php`
-показывает, как унаследоваться от абстрактного класса ``PHPUnit\Framework\BaseTestListener``,
+:numref:`extending-phpunit.examples.ExtendedTestListener.php`
+показывает, как использовать трейт ``PHPUnit\Framework\TestListenerDefaultImplementation``,
 который позволяет указать только интересующие методы интерфейса для вашего случая,
-но при этом оставляет пустыми реализации всех остальных методов.
+но при этом предоставляет пустые реализации для всех остальных методов.
 
 .. code-block:: php
-    :caption: Использование базового слушателя тестов
-    :name: extending-phpunit.examples.BaseTestListener.php
+    :caption: Использование трейта с реализацией по умолчанию для слушателя тестов
+    :name: extending-phpunit.examples.ExtendedTestListener.php
 
     <?php
-    use PHPUnit\Framework\BaseTestListener;
+    use PHPUnit\Framework\TestListenerDefaultImplementation;
 
-    class ShortTestListener extends BaseTestListener
+    class ShortTestListener
     {
-        public function endTest(PHPUnit\Framework\Test $test, $time)
+        use TestListenerDefaultImplementation;
+
+        public function endTest(PHPUnit\Framework\Test $test, $time): void
         {
             printf("Тест '%s' завершился.\n", $test->getName());
         }
