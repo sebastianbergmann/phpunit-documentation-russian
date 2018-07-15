@@ -144,6 +144,11 @@ PHPUnit можно расширить различными способами д
         {
             printf("Ошибка во время выполнения теста '%s'.\n", $test->getName());
         }
+        
+        public function addWarning(PHPUnit\Framework\Test $test, PHPUnit\Framework\Warning $e, float $time): void
+        {
+            printf("Предупреждение во время выполнения теста '%s'.\n", $test->getName());
+        }
 
         public function addFailure(PHPUnit\Framework\Test $test, PHPUnit\Framework\AssertionFailedError $e, $time)
         {
