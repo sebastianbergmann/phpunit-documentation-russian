@@ -2479,7 +2479,7 @@ assertThat()
       - Ограничение, которое утверждает, что класс имеет заданный атрибут.
     * - ``PHPUnit\Framework\Constraint\ClassHasStaticAttribute classHasStaticAttribute(string $attributeName)``
       - Ограничение, которое утверждает, что класс имеет заданный статический атрибут.
-    * - ``PHPUnit\Framework\Constraint\ObjectHasAttribute hasAttribute(string $attributeName)``
+    * - ``PHPUnit\Framework\Constraint\ObjectHasAttribute objectHasAttribute(string $attributeName)``
       - Ограничение, которое утверждает, что объект имеет данный атрибут.
     * - ``PHPUnit\Framework\Constraint\IsIdentical identicalTo(mixed $value)``
       - Ограничение, которое утверждает, что одно значение идентично другому.
