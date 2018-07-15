@@ -140,7 +140,7 @@ PHPUnit можно расширить различными способами д
 
     class SimpleTestListener implements TestListener
     {
-        public function addError(PHPUnit\Framework\Test $test, Exception $e, $time)
+        public function addError(PHPUnit\Framework\Test $test, \Throwable $e, float $time): void
         {
             printf("Ошибка во время выполнения теста '%s'.\n", $test->getName());
         }
@@ -150,42 +150,42 @@ PHPUnit можно расширить различными способами д
             printf("Предупреждение во время выполнения теста '%s'.\n", $test->getName());
         }
 
-        public function addFailure(PHPUnit\Framework\Test $test, PHPUnit\Framework\AssertionFailedError $e, $time)
+        public function addFailure(PHPUnit\Framework\Test $test, PHPUnit\Framework\AssertionFailedError $e, float $time): void
         {
             printf("Тест '%s' провалился.\n", $test->getName());
         }
 
-        public function addIncompleteTest(PHPUnit\Framework\Test $test, Exception $e, $time)
+        public function addIncompleteTest(PHPUnit\Framework\Test $test, Exception $e, float $time): void
         {
             printf("Тест '%s' является неполным.\n", $test->getName());
         }
 
-        public function addRiskyTest(PHPUnit\Framework\Test $test, Exception $e, $time)
+        public function addRiskyTest(PHPUnit\Framework\Test $test, Exception $e, float $time): void
         {
             printf("Тест '%s' считается рискованным.\n", $test->getName());
         }
 
-        public function addSkippedTest(PHPUnit\Framework\Test $test, Exception $e, $time)
+        public function addSkippedTest(PHPUnit\Framework\Test $test, Exception $e, float $time): void
         {
             printf("Тест '%s' был пропущен.\n", $test->getName());
         }
 
-        public function startTest(PHPUnit\Framework\Test $test)
+        public function startTest(PHPUnit\Framework\Test $test): void
         {
             printf("Тест '%s' запустился.\n", $test->getName());
         }
 
-        public function endTest(PHPUnit\Framework\Test $test, $time)
+        public function endTest(PHPUnit\Framework\Test $test, float $time): void
         {
             printf("Тест '%s' завершился.\n", $test->getName());
         }
 
-        public function startTestSuite(PHPUnit\Framework\TestSuite $suite)
+        public function startTestSuite(PHPUnit\Framework\TestSuite $suite): void
         {
             printf("Набор тестов '%s' запустился.\n", $suite->getName());
         }
 
-        public function endTestSuite(PHPUnit\Framework\TestSuite $suite)
+        public function endTestSuite(PHPUnit\Framework\TestSuite $suite): void
         {
             printf("Набор тестов '%s' завершился.\n", $suite->getName());
         }
