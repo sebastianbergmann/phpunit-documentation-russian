@@ -2,11 +2,11 @@
 
 .. _phpunit:
 
-==============
-PHPUnit Manual
-==============
+======================
+Руководство по PHPUnit
+======================
 
-*Edition for PHPUnit |version|. Updated on format="Y-m-d".*
+*Версия PHPUnit |version|. Обновлено format="Y-m-d".*
 Sebastian Bergmann
 
 2005
@@ -22,6 +22,4 @@ Sebastian Bergmann
 2015
 Sebastian Bergmann
 
-This work is licensed under the Creative Commons Attribution 3.0 Unported License.
-
-
+Эта работа распространяется под лицензией the Creative Commons Attribution 3.0 Unported.
