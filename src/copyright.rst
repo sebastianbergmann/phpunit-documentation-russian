@@ -2,48 +2,50 @@
 
 .. _appendixes.copyright:
 
-=========
-Copyright
-=========
+===============
+Авторские права
+===============
 
 .. code-block:: text
 
-    Copyright (c) 2005-2018 Sebastian Bergmann.
+    © 2005-2018 Sebastian Bergmann.
 
-    This work is licensed under the Creative Commons Attribution 3.0
-    Unported License.
+    Эта работа распространяется под лицензией Creative Commons Attribution 3.0
+    Unported.
 
-    A summary of the license is given below, followed by the full legal
-    text.
+    Ниже приводится краткое описание лицензии, после которого следует полный
+    юридический текст (на английском).
 
-    --------------------------------------------------------------------
+    ---------------------------------------------------------------------
 
-    You are free:
+    Вы можете свободно:
 
-        * to Share - to copy, distribute and transmit the work
-        * to Remix - to adapt the work
+        * Делиться (обмениваться) — копировать, распространять и передавать работу
+        * Адаптировать — делать ремиксы, видоизменять, и создавать новое,
+          опираясь на эту работу
 
-    Under the following conditions:
+    При обязательном соблюдении следующих условий:
 
-    Attribution. You must attribute the work in the manner specified by
-    the author or licensor (but not in any way that suggests that they
-    endorse you or your use of the work).
+    Вы должны обеспечить соответствующее указание авторства, предоставить ссылку
+    на лицензию, и обозначить изменения, если таковые были сделаны. Вы можете
+    это делать любым разумным способом, но не таким, который подразумевал бы,
+    что лицензиар одобряет вас или ваш способ использования произведения.
 
-        * For any reuse or distribution, you must make clear to others
-          the license terms of this work. The best way to do this is with
-          a link to this web page.
+        * Для любого повторного использования или распространения вы должны
+          разъяснять другим условия лицензии на данную работу.
+          Лучший способ сделать это — ссылку на эту веб-страницу.
 
-        * Any of the above conditions can be waived if you get
-          permission from the copyright holder.
+        * Любое из вышеуказанных условий может быть отменено, если вы получите
+          разрешение владельца авторских прав.
 
-        * Nothing in this license impairs or restricts the author's moral
-          rights.
+        * Ничто в этой лицензии не нарушает или ограничивает моральные права
+          автора.
 
-    Your fair dealing and other rights are in no way affected by the
-    above.
+    Ваше честность и другие права никоим образом не затрагиваются
+    выше.
 
-    This is a human-readable summary of the Legal Code (the full
-    license) below.
+    Это доступное для человеческого понимания резюме Юридического Кодекса
+    (полная лицензия) ниже.
 
     ====================================================================
 
