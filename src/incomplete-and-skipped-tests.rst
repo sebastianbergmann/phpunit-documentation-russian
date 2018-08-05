@@ -9,8 +9,9 @@
 Неполные тесты
 ##############
 
-Когда вы работаете над новым тестовым классом, вы можете начать
-с написания пустых тестовых методов, например:
+Когда вы работаете над новым тестовым классом, вы можете начать с написания
+пустых тестовых методов для отслеживания тех тестов, которые нужно написать,
+например:
 
 .. code-block:: php
 
@@ -18,8 +19,7 @@
     {
     }
 
-для отслеживания тех тестов, которые нужно написать. Проблема
-с пустыми тестовыми методами состоит в том, что фреймворком PHPUnit
+Проблема с пустыми тестовыми методами состоит в том, что фреймворком PHPUnit
 они интерпретируется как успешно пройденные. Это ошибочное толкование приводит к тому,
 что отчёты о покрытии становятся бесполезными — вы не сможете увидеть,
 действительно ли тест прошёл, либо он просто ещё не реализован.
@@ -30,8 +30,8 @@
 Если мы думаем об успешном тестировании как о зелёном свете, а о непройденном тесте как
 о красном цвете, то нам нужен дополнительный жёлтый цвет для обозначения теста как
 неполного или ещё не реализованного.
-``PHPUnit\Framework\IncompleteTest``- это интерфейс маркера для обозначения
-исключения, возникающего тестовым методом как результат на то, что данный
+``PHPUnit\Framework\IncompleteTest`` — это интерфейс для обозначения
+исключения, выбрасываемого тестовым методом как результат на то, что данный
 тестовый метод неполный или в данный момент ещё не реализован.
 ``PHPUnit\Framework\IncompleteTestError`` — стандартная реализация этого интерфейса.
 
@@ -55,9 +55,9 @@
             // Необязательно: протестируйте здесь что-нибудь, если хотите.
             $this->assertTrue(true, 'This should already work.');
 
-            // Остановиться здесь и отметить, что тест неполный.
+            // Остановиться тут и отметить, что тест неполный.
             $this->markTestIncomplete(
-              'This test has not been implemented yet.'
+              'Этот тест ещё не реализован.'
             );
         }
     }
@@ -77,7 +77,7 @@ PHPUnit, как показано в следующем примере:
     There was 1 incomplete test:
 
     1) SampleTest::testSomething
-    This test has not been implemented yet.
+    Этот тест ещё не реализован.
 
     /home/sb/SampleTest.php:12
     OK, but incomplete or skipped tests!
@@ -87,7 +87,7 @@ PHPUnit, как показано в следующем примере:
 показывает API для маркировки тестов как неполных.
 
 .. rst-class:: table
-.. list-table:: API for Incomplete Tests
+.. list-table:: API для неполных тестов
     :name: incomplete-and-skipped-tests.incomplete-tests.tables.api
     :header-rows: 1
 
@@ -153,7 +153,7 @@ PHPUnit, как показано в следующем примере:
     There was 1 skipped test:
 
     1) DatabaseTest::testConnection
-    The MySQLi extension is not available.
+    Расширение MySQLi недоступно.
 
     /home/sb/DatabaseTest.php:9
     OK, but incomplete or skipped tests!
@@ -183,7 +183,7 @@ PHPUnit, как показано в следующем примере:
 ``@requires``, чтобы предоставить общие предварительные условия для тестового класса.
 
 .. rst-class:: table
-.. list-table:: Possible @requires usages
+.. list-table:: Возможные примеры использования @requires
     :name: incomplete-and-skipped-tests.requires.tables.api
     :header-rows: 1
 
@@ -200,15 +200,15 @@ PHPUnit, как показано в следующем примере:
       - @requires PHPUnit 3.6.3
       - @requires PHPUnit 4.6
     * - ``OS``
-      - Регулярное выражения для `PHP_OS <http://php.net/manual/en/reserved.constants.php#constant.php-os>`_
+      - Регулярное выражения для `PHP_OS <http://php.net/manual/ru/reserved.constants.php#constant.php-os>`_
       - @requires OS Linux
       - @requires OS WIN32|WINNT
     * - ``OSFAMILY``
-      - Любое `семейство ОС <http://php.net/manual/en/reserved.constants.php#constant.php-os-family>`_
+      - Любое `семейство ОС <http://php.net/manual/ru/reserved.constants.php#constant.php-os-family>`_
       - @requires OSFAMILY Solaris
       - @requires OSFAMILY Windows
     * - ``function``
-      - Любой корректный параметр для `function_exists <http://php.net/function_exists>`_
+      - Любой корректный параметр для `function_exists <http://php.net/ru/function_exists>`_
       - @requires function imap_open
       - @requires function ReflectionMethod::setAccessible
     * - ``extension``
@@ -240,4 +240,4 @@ PHPUnit, как показано в следующем примере:
     }
 
 Если вы используете синтаксис, который не компилируется с определённой версией PHP,
-посмотрите на версии от которых зависят тестовые классы в XML-конфигурации (см :ref:`appendixes.configuration.testsuites`)
+посмотрите на версии, от которых зависят тестовые классы в XML-конфигурации (см :ref:`appendixes.configuration.testsuites`)
