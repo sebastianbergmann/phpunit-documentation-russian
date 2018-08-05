@@ -6,7 +6,7 @@
 
 Себастьян Бергман (Sebastian Bergmann)
 
-Эта работа распространяется под лицензией Creative Commons Attribution 3.0 Unported.
+Распространяется под лицензией Creative Commons Attribution 3.0 Unported.
 
 Содержание:
 
