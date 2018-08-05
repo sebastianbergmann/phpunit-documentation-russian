@@ -144,7 +144,7 @@ html_add_permalinks = ""
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
-html_title = "Руководство PHPUnit на русском языке %s" % get_version()
+html_title = u"Руководство PHPUnit на русском языке %s" % get_version()
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
 #html_short_title = None
@@ -310,10 +310,10 @@ texinfo_documents = [
 numfig = True
 
 numfig_format = {
-    'code-block': 'Пример %s',
-    'figure': 'Изображение %s',
-    'table': 'Таблица %s',
-    'section': 'Раздел'
+    'code-block': u'Пример %s',
+    'figure': u'Изображение %s',
+    'table': u'Таблица %s',
+    'section': u'Раздел'
 }
 
 
