@@ -95,7 +95,7 @@ language = None
 # non-false value, then it is used:
 #today = ''
 # Else, today_fmt is used as the format for a strftime call.
-#today_fmt = '%B %d, %Y'
+today_fmt = '%d.%m.%y %T'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
@@ -144,7 +144,7 @@ html_add_permalinks = ""
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
-html_title = "PHPUnit %s Manual" % get_version()
+html_title = "Руководство PHPUnit на русском языке %s" % get_version()
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
 #html_short_title = None
@@ -310,10 +310,10 @@ texinfo_documents = [
 numfig = True
 
 numfig_format = {
-    'code-block': 'Example %s',
-    'figure': 'Figure %s',
-    'table': 'Table %s',
-    'section': 'Section'
+    'code-block': 'Пример %s',
+    'figure': 'Изображение %s',
+    'table': 'Таблица %s',
+    'section': 'Раздел'
 }
 
 
