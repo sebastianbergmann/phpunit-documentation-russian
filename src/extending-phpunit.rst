@@ -12,8 +12,8 @@ PHPUnit можно расширить различными способами д
 
 .. _extending-phpunit.PHPUnit_Framework_TestCase:
 
-Подкласс ``PHPUnit\Framework\TestCase``
-#######################################
+Подкласс PHPUnit\\Framework\\TestCase
+#####################################
 
 Написать пользовательские утверждения и вспомогательные методы
 в абстрактных подклассах ``PHPUnit\Framework\TestCase`` и наследуйте
@@ -35,7 +35,7 @@ PHPUnit можно расширить различными способами д
 ``assertThat()`` для проведения вычисления.
 
 .. code-block:: php
-    :caption: Методы ``assertTrue()`` и ``isTrue()`` класса ``PHPUnit\Framework\Assert``
+    :caption: Методы assertTrue() и isTrue() класса PHPUnit\Framework\Assert
     :name: extending-phpunit.examples.Assert.php
 
     <?php
@@ -81,7 +81,7 @@ PHPUnit можно расширить различными способами д
 ``PHPUnit\Framework\Constraint``.
 
 .. code-block:: php
-    :caption: Класс ``PHPUnit\Framework\Constraint\IsTrue``
+    :caption: Класс PHPUnit\\Framework\\Constraint\\IsTrue
     :name: extending-phpunit.examples.IsTrue.php
 
     <?php
@@ -124,8 +124,8 @@ PHPUnit можно расширить различными способами д
 
 .. _extending-phpunit.PHPUnit_Framework_TestListener:
 
-Реализация ``PHPUnit\Framework\TestListener``
-#############################################
+Реализация PHPUnit\\Framework\\TestListener
+###########################################
 
 :numref:`extending-phpunit.examples.SimpleTestListener.php`
 показывает простую реализацию интерфейса ``PHPUnit\Framework\TestListener``.
@@ -220,8 +220,8 @@ PHPUnit можно расширить различными способами д
 
 .. _extending-phpunit.PHPUnit_Framework_Test:
 
-Реализация ``PHPUnit\Framework\Test``
-#####################################
+Реализация PHPUnit\\Framework\\Test
+###################################
 
 Интерфейс ``PHPUnit\Framework\Test`` — небольшой и простой
 для реализации. Вы можете написать реализацию
