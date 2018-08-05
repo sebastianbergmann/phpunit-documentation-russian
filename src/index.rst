@@ -28,7 +28,7 @@
    extending-phpunit
 
 .. toctree::
-   :caption: Appendix
+   :caption:  Приложение
    :maxdepth: 2
    :numbered: 1
 
