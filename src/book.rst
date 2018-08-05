@@ -22,4 +22,4 @@ Sebastian Bergmann
 2015
 Sebastian Bergmann
 
-Эта работа распространяется под лицензией the Creative Commons Attribution 3.0 Unported.
+Эта работа распространяется под лицензией Creative Commons Attribution 3.0 Unported.
