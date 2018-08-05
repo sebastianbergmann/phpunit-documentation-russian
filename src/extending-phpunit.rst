@@ -35,7 +35,7 @@ PHPUnit можно расширить различными способами д
 ``assertThat()`` для проведения вычисления.
 
 .. code-block:: php
-    :caption: Методы assertTrue() и isTrue() класса PHPUnit\Framework\Assert
+    :caption: Методы assertTrue() и isTrue() класса PHPUnit\\Framework\\Assert
     :name: extending-phpunit.examples.Assert.php
 
     <?php
