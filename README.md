@@ -70,6 +70,6 @@ make html
 | System Under Test (SUT) | Тестируемая система |
 | Test case | Тестовый класс |
 | Test doubles | Тестовые двойники |
-| Test listeneer | Обработчик тестов |
+| Test listener | Обработчик тестов |
 | Test runner | Исполнитель тестов |
 | Test suites | Набор тестов |
