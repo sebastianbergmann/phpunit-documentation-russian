@@ -1,39 +1,74 @@
-# Translations
+# Документация PHPUnit на русском языке
 
-Each translation of the documentation is maintained in a separate 
-repository:
+## Переводы
 
-* [English Documentation](https://github.com/sebastianbergmann/phpunit-documentation-english)
-* [Spanish Documentation](https://github.com/sebastianbergmann/phpunit-documentation-spanish)
-* [French Documentation](https://github.com/sebastianbergmann/phpunit-documentation-french)
-* [Brazilian Portuguese Documentation](https://github.com/sebastianbergmann/phpunit-documentation-brazilian-portuguese)
-* [Japanese Documentation](https://github.com/sebastianbergmann/phpunit-documentation-japanese)
-* [Simplified Chinese Documentation](https://github.com/sebastianbergmann/phpunit-documentation-chinese)
+Каждый перевод документации поддерживается в отдельном
+репозиторий:
 
-## Adding a new translation
+* [Документация на английском языке](https://github.com/sebastianbergmann/phpunit-documentation-english)
+* [Документация на испанском языке](https://github.com/sebastianbergmann/phpunit-documentation-spanish)
+* [Документация на французском языке](https://github.com/sebastianbergmann/phpunit-documentation-french)
+* [Документация на португальском языке](https://github.com/sebastianbergmann/phpunit-documentation-brazilian-portuguese)
+* [Документация на японском языке](https://github.com/sebastianbergmann/phpunit-documentation-japanese)
+* [Документация на китайском упрощённом языке](https://github.com/sebastianbergmann/phpunit-documentation-chinese)
 
-If you want to create a new translation, please open an issue in the issue
-tracker of the English documentation, stating which language you would like to
-translate. A repository will be created and added to the available translations.
+### Добавление нового перевода
 
-Ideally, you would already have prepared a first version based on a fork or
-a copy of the English documentation, which will then be imported into the 
-official repository. 
+Если вы хотите создать новый перевод, пожалуйста, откройте ишью в
+трекере английской документации, в которой укажите, на какой язык вы хотели бы
+перевести документацию. Будет создан репозиторий и добавлен к доступным переводам.
 
-# Building the Documentation
+В идеале вы уже подготовили первую версию перевода в форке или
+копии английской документации, которая затем будет импортирована в
+официальный репозиторий.
 
-## Requirements
+## Сборка документации
+
+### Требования
 
 - Python
 - [Sphinx](http://www.sphinx-doc.org/)
-- [Read the Docs Sphinx Theme](https://github.com/rtfd/sphinx_rtd_theme)
+- [Тема для Sphinx «Read the Docs»](https://github.com/rtfd/sphinx_rtd_theme)
 
-## Building the HTML Documentation
+### Сборка документации в формате HTML
 
-To build the complete documentation run:
+Чтобы выполнить полную сборку документации:
 
-    make html
+```bash
+make html
+```
 
-# Output
+### Вывод
 
-Afterwards you will find the HTML files in `build/html`.
+После выполнения вышеуказанной команды этого вы найдете HTML-файлы по пути `build/html`.
+
+## Соглашения по переводу
+
+В следующей таблице перечислены принятые переводы некоторых терминов и словосочетаний,
+используемых в переводе документации для общей согласованности.
+
+| Исходный вариант | Принятый перевод |
+| - | - |
+| Assertion | Утверждение |
+| Code coverage | Покрытие кода |
+| Constraint | Ограничение |
+| Consumer | Потребитель |
+| Data-driven tests | Тесты, управляемые данными |
+| Data provider | Провайдер данных |
+| Docblock | Докблок |
+| Fixture | Фикстура |
+| Matcher object | Объект сопоставления |
+| Mock Objects | Подставные объекты |
+| Mock | Подстановка |
+| Mocking | Имитация, подстановка |
+| Producer | Продюсер |
+| Production | Продакшен |
+| Spies | Шпионы |
+| Stub | Заглушка |
+| Stubbed | Подменённый |
+| System Under Test (SUT) | Тестируемая система |
+| Test case | Тестовый класс |
+| Test doubles | Тестовые двойники |
+| Test listeneer | Обработчик тестов |
+| Test runner | Исполнитель тестов |
+| Test suites | Набор тестов |
