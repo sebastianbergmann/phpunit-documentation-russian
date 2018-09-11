@@ -1,5 +1,9 @@
 # Документация PHPUnit на русском языке
 
+> **(!)** Поддерживается только перевод последней версии из ветки [master](https://github.com/sebastianbergmann/phpunit-documentation-english/tree/master).
+
+Прямая ссылка на перевод — https://phpunit.readthedocs.io/ru/latest/
+
 ## Переводы
 
 Каждый перевод документации поддерживается в отдельном репозитории:
