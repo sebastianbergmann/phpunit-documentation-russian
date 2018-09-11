@@ -2125,6 +2125,10 @@ assertStringMatchesFormat()
 
   ``%c``: Один символ любого типа.
 
+-
+
+   ``%%``: Буквальный символ процента: ``%``.
+
 .. _appendixes.assertions.assertStringMatchesFormatFile:
 
 assertStringMatchesFormatFile()
