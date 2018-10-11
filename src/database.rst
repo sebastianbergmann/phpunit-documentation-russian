@@ -41,7 +41,8 @@ WordPress, TYPO3 или Symfony с Doctrine или Propel,
 
 Расширение DbUnit значительно упрощает настройку базы данных для целей
 тестирования и позволяет проверять содержимое базы данных после
-выполнения ряда операций.
+выполнения ряда операций. Установка расширения DbUnit простая
+и описана в :ref:`installation.optional-packages`.
 
 .. _database.supported-vendors-for-database-testing:
 
