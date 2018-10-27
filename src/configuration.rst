@@ -29,7 +29,6 @@ PHPUnit
              convertNoticesToExceptions="true"
              convertWarningsToExceptions="true"
              forceCoversAnnotation="false"
-             mapTestClassNameToCoveredClassName="false"
              printerClass="PHPUnit\TextUI\ResultPrinter"
              <!--printerFile="/path/to/ResultPrinter.php"-->
              processIsolation="false"
