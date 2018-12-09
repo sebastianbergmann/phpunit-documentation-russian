@@ -134,7 +134,8 @@ todo_include_todos = False
 html_theme = 'sphinx_rtd_theme'
 html_theme_options = {
     'collapse_navigation': False,
-    'display_version': False
+    'display_version': False,
+    'analytics_id': 'UA-130682870-1'
 }
 
 # Add any paths that contain custom themes here, relative to this directory.
