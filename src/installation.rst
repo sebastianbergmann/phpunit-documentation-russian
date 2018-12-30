@@ -287,7 +287,7 @@ Composer
 
         composer require --dev phpunit/php-invoker
 
-``DbUnit``
+``DbUnit`` (устарело)
 
     Порт DbUnit для PHP/PHPUnit для поддержки тестирования взаимодействия с базами данных.
 
