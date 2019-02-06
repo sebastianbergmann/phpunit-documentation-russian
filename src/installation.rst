@@ -9,7 +9,7 @@
 Требования
 ##########
 
-PHPUnit |version| требует PHP 7.1; настоятельно рекомендуется использовать последнюю версию PHP.
+PHPUnit |version| требует PHP 7.2; настоятельно рекомендуется использовать последнюю версию PHP.
 
 PHPUnit требует расширений `dom <http://php.net/manual/ru/dom.setup.php>`_ и `json <http://php.net/manual/ru/json.installation.php>`_,
 которые обычно включены по умолчанию.
@@ -22,7 +22,7 @@ PHPUnit также требует расширений
 отключены без внесения изменений в систему сборки PHP и/или в исходный код C.
 
 Для функциональности отчёта по покрытию кода тестами требуются расширения
-`Xdebug <http://xdebug.org/>`_ (2.5.0 или новее) и
+`Xdebug <http://xdebug.org/>`_ (2.7.0 или новее) и
 `tokenizer <http://php.net/manual/ru/tokenizer.installation.php>`_.
 Генерация XML-отчётов требует расширения
 `xmlwriter <http://php.net/manual/ru/xmlwriter.installation.php>`_.
