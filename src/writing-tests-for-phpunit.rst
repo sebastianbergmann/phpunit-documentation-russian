@@ -48,6 +48,7 @@
             $this->assertSame(0, count($stack));
         }
     }
+    
 |
     *Мартин Фаулер (Martin Fowler)*:
 
