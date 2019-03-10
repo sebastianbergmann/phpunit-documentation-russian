@@ -47,79 +47,22 @@ PHP Archive (PHAR)
 
     suhosin.executor.include.whitelist = phar
 
-Для глобальной установки PHAR:
+PHAR с PHPUnit можно использовать сразу после загрузки:
 
 .. code-block:: bash
 
-    $  wget https://phar.phpunit.de/phpunit-|version|.phar
-    $  chmod +x phpunit-|version|.phar
-    $  sudo mv phpunit-|version|.phar /usr/local/bin/phpunit
-    $  phpunit --version
+    $ wget https://phar.phpunit.de/phpunit-|version|.phar
+    $ php phpunit-|version|.phar --version
     PHPUnit x.y.z by Sebastian Bergmann and contributors.
 
-Вы также можете использовать загруженный PHAR-файл напрямую:
+Как правило, далее необходимо сделать исполняемым PHAR-файл:
 
 .. code-block:: bash
 
-    $  wget https://phar.phpunit.de/phpunit-|version|.phar
-    $  php phpunit-|version|.phar --version
+    $ wget https://phar.phpunit.de/phpunit-|version|.phar
+    $ chmod +x phpunit-|version|.phar
+    $ ./phpunit-|version|.phar --version
     PHPUnit x.y.z by Sebastian Bergmann and contributors.
-
-.. _installation.phar.windows:
-
-Windows
-=======
-
-Глобальная установка PHAR включает ту же самую процедуру, что и ручная
-`установка Composer на Windows <https://getcomposer.org/doc/00-intro.md#installation-windows>`_:
-
-#.
-
-   Создать папку для двоичных файлов PHP; например, :file:`C:\\bin`
-
-#.
-
-   Добавить ;C:\bin к вашей переменной окружения ``PATH``
-   (`справочная информация по этой теме <http://stackoverflow.com/questions/6318156/adding-python-path-on-windows-7>`_)
-
-#.
-
-   Загрузить `<https://phar.phpunit.de/phpunit-|version|.phar>`_ и
-   сохранить файл по пути :file:`C:\\bin\\phpunit.phar`
-
-#.
-
-   Открыть командую строку (например,
-   нажать :kbd:`Windows`:kbd:`R`
-   » ввести cmd
-   » :kbd:`ENTER`)
-
-#.
-
-   Создать пакетный скрипт (в результате получится
-   :file:`C:\\bin\\phpunit.cmd`):
-
-   .. code-block:: bash
-
-       C:\Users\username>  cd C:\bin
-       C:\bin>  echo @php "%~dp0phpunit.phar" %* > phpunit.cmd
-       C:\bin>  exit
-
-#.
-
-   Открыть новую командную строку и убедиться, что вы можете выполнить PHPUnit
-   из любого пути:
-
-   .. code-block:: bash
-
-       C:\Users\username>  phpunit --version
-       PHPUnit x.y.z by Sebastian Bergmann and contributors.
-
-Для командных оболочек Cygwin и/или MingW32 (например, TortoiseGit) вы
-можете пропустить шаг 5 выше, просто сохранив файл как
-:file:`phpunit` (без расширения :file:`.phar`)
-и сделав его исполняемым через команду
-``chmod 775 phpunit``.
 
 .. _installation.phar.verification:
 
@@ -127,7 +70,7 @@ Windows
 =============================
 
 Все официальные релизы кода, распространяемые проектом PHPUnit, подписываются
-релиз-менеджером. Подписи PGP и хеши SHA1
+релиз-менеджером. Подписи PGP и хеши SHA256
 доступны для проверки на `phar.phpunit.de <https://phar.phpunit.de/>`_.
 
 В следующем примере показано, как работает проверка релиза. Мы начинаем
@@ -136,15 +79,15 @@ Windows
 
 .. code-block:: bash
 
-    wget https://phar.phpunit.de/phpunit.phar
-    wget https://phar.phpunit.de/phpunit.phar.asc
+    $ wget https://phar.phpunit.de/phpunit-|version|.phar
+    $ wget https://phar.phpunit.de/phpunit-|version|.phar.asc
 
-Мы хотим проверить PHP Archive (:file:`phpunit.phar`) PHPUnit
-с его отделённой подписью (:file:`phpunit.phar.asc`):
+Мы хотим проверить PHP Archive (:file:`phpunit-|version|.phar`) PHPUnit
+с его отделённой подписью (:file:`phpunit-|version|.phar.asc`):
 
 .. code-block:: bash
 
-    gpg phpunit.phar.asc
+    $ gpg phpunit-|version|.phar.asc
     gpg: Signature made Sat 19 Jul 2014 01:28:02 PM CEST using RSA key ID 6372C20A
     gpg: Can't check signature: public key not found
 
@@ -156,7 +99,7 @@ Windows
 
 .. code-block:: bash
 
-    gpg --keyserver pgp.uni-mainz.de --recv-keys 0x4AA394086372C20A
+    $ gpg --keyserver pgp.uni-mainz.de --recv-keys 0x4AA394086372C20A
     gpg: requesting key 6372C20A from hkp server pgp.uni-mainz.de
     gpg: key 6372C20A: public key "Sebastian Bergmann <sb@sebastian-bergmann.de>" imported
     gpg: Total number processed: 1
@@ -169,7 +112,7 @@ Bergmann). Но давайте снова попробуем проверить 
 
 .. code-block:: bash
 
-    gpg phpunit.phar.asc
+    $ gpg phpunit-|version|.phar.asc
     gpg: Signature made Sat 19 Jul 2014 01:28:02 PM CEST using RSA key ID 6372C20A
     gpg: Good signature from "Sebastian Bergmann <sb@sebastian-bergmann.de>"
     gpg:                 aka "Sebastian Bergmann <sebastian@php.net>"
@@ -194,65 +137,7 @@ key. После чего, если вы попытаетесь проверит�
 нужно проверить подлинность этого ключа. Однако проверка подлинности открытого ключа
 выходит за рамки данной документации.
 
-Возможно, было бы целесообразно создать скрипт командной оболочки для управления установкой PHPUnit,
-который проверяет подпись GnuPG перед запуском набора тестов. Например:
-
-.. code-block:: bash
-
-    #!/usr/bin/env bash
-    clean=1 # Удалить phpunit.phar после завершения выполнения тестов?
-    aftercmd="php phpunit.phar --bootstrap bootstrap.php src/tests"
-    gpg --fingerprint D8406D0D82947747293778314AA394086372C20A
-    if [ $? -ne 0 ]; then
-        echo -e "\033[33mDownloading PGP Public Key...\033[0m"
-        gpg --recv-keys D8406D0D82947747293778314AA394086372C20A
-        # Sebastian Bergmann <sb@sebastian-bergmann.de>
-        gpg --fingerprint D8406D0D82947747293778314AA394086372C20A
-        if [ $? -ne 0 ]; then
-            echo -e "\033[31mCould not download PGP public key for verification\033[0m"
-            exit
-        fi
-    fi
-
-    if [ "$clean" -eq 1 ]; then
-        # Let's clean them up, if they exist
-        if [ -f phpunit.phar ]; then
-            rm -f phpunit.phar
-        fi
-        if [ -f phpunit.phar.asc ]; then
-            rm -f phpunit.phar.asc
-        fi
-    fi
-
-    # Давайте возьмём последний релиз и его подпись
-    if [ ! -f phpunit.phar ]; then
-        wget https://phar.phpunit.de/phpunit.phar
-    fi
-    if [ ! -f phpunit.phar.asc ]; then
-        wget https://phar.phpunit.de/phpunit.phar.asc
-    fi
-
-    # Прорить перед запуском
-    gpg --verify phpunit.phar.asc phpunit.phar
-    if [ $? -eq 0 ]; then
-        echo
-        echo -e "\033[33mBegin Unit Testing\033[0m"
-        # Запустить тестовый набор
-        `$after_cmd`
-        # Очистка
-        if [ "$clean" -eq 1 ]; then
-            echo -e "\033[32mCleaning Up!\033[0m"
-            rm -f phpunit.phar
-            rm -f phpunit.phar.asc
-        fi
-    else
-        echo
-        chmod -x phpunit.phar
-        mv phpunit.phar /tmp/bad-phpunit.phar
-        mv phpunit.phar.asc /tmp/bad-phpunit.phar.asc
-        echo -e "\033[31mSignature did not match! PHPUnit has been moved to /tmp/bad-phpunit.phar\033[0m"
-        exit 1
-    fi
+Проверка подлинности и целостности PHAR с PHPUnit вручную через GPG утомительна. Вот зачем нужен PHIVE (PHAR Installation and Verification Environment), среда установки и проверки PHAR. Вы можете узнать про PHIVE на `сайте <https://phar.io/>` _
 
 .. _installation.composer:
 
@@ -268,32 +153,14 @@ Composer
 
     composer require --dev phpunit/phpunit ^|version|
 
-.. _installation.optional-packages:
+.. _installation.global:
 
-Необязательные пакеты
-#####################
+Глобальная установка
+####################
 
-Доступны следующие необязательные пакеты:
+Обратите внимание, что не рекомендуется устанавливать PHPUnit глобально, например``/usr/bin/phpunit`` или
+``/usr/local/bin/phpunit``.
 
-``PHP_Invoker``
+Вместо этого PHPUnit должен использоваться в виде локальной зависимости проекта.
 
-    Класс-утилита для вызова функций обратного вызова с тайм-аутом. Этот пакет
-    необходим для обеспечения выполнения тайм-аутов тестирования в строгом режиме.
-
-    Этот пакет включён в дистрибутив PHAR PHPUnit. Его
-    можно установить через Composer, используя следующую команду:
-
-    .. code-block:: bash
-
-        composer require --dev phpunit/php-invoker
-
-``DbUnit`` (устарело)
-
-    Порт DbUnit для PHP/PHPUnit для поддержки тестирования взаимодействия с базами данных.
-
-    Этот пакет не включён в дистрибутив PHAR PHPUnit. Его
-    можно установить через Composer, используя следующую команду:
-
-    .. code-block:: bash
-
-        composer require --dev phpunit/dbunit
+Поэтому либо поместите PHAR определённой версии PHPUnit, которая вам нужна, в директорию ``tools`` вашего проекта (который должен управляться с помощью PHIVE), либо укажите конкретную версию PHPUnit в файле ``composer.json`` вашего проекта, если вы используете Composer.
