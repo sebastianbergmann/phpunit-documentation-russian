@@ -7,7 +7,7 @@
 =================
 
 Джерард Месарош (Gerard Meszaros) вводит концепцию тестовых двойников в
-:ref:`Meszaros2007` следующим образом:
+:ref:`Meszaros2007 <appendixes.bibliography>` следующим образом:
 
     *Gerard Meszaros*:
 
