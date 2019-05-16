@@ -195,7 +195,7 @@ PHPUnit, какие файлы исходного кода следует вкл
     {
         protected $ba;
 
-        protected function setUp()
+        protected function setUp(): void
         {
             $this->ba = new BankAccount;
         }

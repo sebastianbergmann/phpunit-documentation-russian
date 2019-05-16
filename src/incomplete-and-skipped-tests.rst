@@ -110,7 +110,7 @@ PHPUnit, как показано в следующем примере:
 
 :numref:`incomplete-and-skipped-tests.skipping-tests.examples.DatabaseTest.php`
 демонстрирует тестовый класс ``DatabaseTest``, содержащий один тестовый
-метод ``testConnection()``. В шаблонном методе ``setUp()`` тестового класса мы проверяем,
+метод ``testConnection()``. В шаблонном методе ``setUp(): void`` тестового класса мы проверяем,
 доступно ли расширение MySQLi, и используем метод ``markTestSkipped()``
 для пропуска этого теста в противном случае.
 
@@ -123,7 +123,7 @@ PHPUnit, как показано в следующем примере:
 
     class DatabaseTest extends TestCase
     {
-        protected function setUp()
+        protected function setUp(): void
         {
             if (!extension_loaded('mysqli')) {
                 $this->markTestSkipped(
