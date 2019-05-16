@@ -43,13 +43,13 @@ PHP Archive (PHAR)
 вам необходимо разрешить выполнение PHAR в вашем
 ``php.ini``:
 
-.. code-block:: bash
+.. parsed-literal::
 
     suhosin.executor.include.whitelist = phar
 
 PHAR с PHPUnit можно использовать сразу после загрузки:
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ wget https://phar.phpunit.de/phpunit-|version|.phar
     $ php phpunit-|version|.phar --version
@@ -57,7 +57,7 @@ PHAR с PHPUnit можно использовать сразу после заг
 
 Как правило, далее необходимо сделать исполняемым PHAR-файл:
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ wget https://phar.phpunit.de/phpunit-|version|.phar
     $ chmod +x phpunit-|version|.phar
@@ -77,15 +77,15 @@ PHAR с PHPUnit можно использовать сразу после заг
 с загрузки :file:`phpunit.phar`, а также его отделённой подписи PGP
 :file:`phpunit.phar.asc`:
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ wget https://phar.phpunit.de/phpunit-|version|.phar
     $ wget https://phar.phpunit.de/phpunit-|version|.phar.asc
 
-Мы хотим проверить PHP Archive (:file:`phpunit-|version|.phar`) PHPUnit
-с его отделённой подписью (:file:`phpunit-|version|.phar.asc`):
+Мы хотим проверить PHP Archive (:file:`phpunit-x.y.phar`) PHPUnit
+с его отделённой подписью (:file:`phpunit-x.y.phar.asc`):
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ gpg phpunit-|version|.phar.asc
     gpg: Signature made Sat 19 Jul 2014 01:28:02 PM CEST using RSA key ID 6372C20A
@@ -97,7 +97,7 @@ PHAR с PHPUnit можно использовать сразу после заг
 серверов — это :file:`pgp.uni-mainz.de`. Серверы открытых ключей
 связаны между собой, поэтому вы можете подключиться к любому из них.
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ gpg --keyserver pgp.uni-mainz.de --recv-keys 0x4AA394086372C20A
     gpg: requesting key 6372C20A from hkp server pgp.uni-mainz.de
@@ -110,7 +110,7 @@ Bergmann <sb@sebastian-bergmann.de>". Однако, у нас нет спосо�
 проверить, что этот ключ был создан человеком под именем Себастьян Бергман (Sebastian
 Bergmann). Но давайте снова попробуем проверить подпись релиза.
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ gpg phpunit-|version|.phar.asc
     gpg: Signature made Sat 19 Jul 2014 01:28:02 PM CEST using RSA key ID 6372C20A
@@ -149,9 +149,9 @@ Composer
 ``composer.json`` вашего проекта, если вы используете `Composer <https://getcomposer.org/>`_ для управления
 зависимостями в вашей проекте:
 
-.. code-block:: bash
+.. parsed-literal::
 
-    composer require --dev phpunit/phpunit ^|version|
+    composer require --dev phpunit/phpunit ^\ |version|
 
 .. _installation.global:
 

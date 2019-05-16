@@ -28,7 +28,7 @@ PHPUnit может автоматически обнаруживать и зап
 структуру пакета и классов тестируемой системы в каталоге
 :file:`src`:
 
-.. code-block:: bash
+.. code-block:: none
 
     src                                 tests
     `-- Currency.php                    `-- CurrencyTest.php
@@ -39,7 +39,7 @@ PHPUnit может автоматически обнаруживать и зап
 Для запуска всех тестов библиотеки нам просто нужно указать исполнителю тестов командной строки PHPUnit
 каталог с тестами:
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit --bootstrap src/autoload.php tests
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -59,7 +59,7 @@ PHPUnit может автоматически обнаруживать и зап
 в файле :file:`tests/CurrencyTest.php`, мы можем использовать
 следующую команду:
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit --bootstrap src/autoload.php tests/CurrencyTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -72,7 +72,7 @@ PHPUnit может автоматически обнаруживать и зап
 
 Для более точного контроля, какие тесты запускать, мы можем использовать опцию ``--filter``:
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit --bootstrap src/autoload.php --filter testObjectCanBeConstructedForValidConstructorArgument tests
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -103,7 +103,7 @@ XML-файл конфигурации PHPUnit (:ref:`appendixes.configuration`)
 классы ``*Test``, находящиеся в файлах
 :file:`*Test.php`, после рекурсивного обхода каталога :file:`tests`.
 
-.. code-block:: php
+.. code-block:: xml
     :caption: Составление набора тестов, используя конфигурацию XML
     :name: organizing-tests.xml-configuration.examples.phpunit.xml
 
@@ -123,7 +123,7 @@ XML-файл конфигурации PHPUnit (:ref:`appendixes.configuration`)
 
 Порядок выполнения тестов можно сделать явным:
 
-.. code-block:: php
+.. code-block:: xml
     :caption: Составление набора тестов, используя конфигурацию XML
     :name: organizing-tests.xml-configuration.examples.phpunit.xml2
 

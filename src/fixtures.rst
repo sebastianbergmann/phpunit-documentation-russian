@@ -142,7 +142,7 @@ PHPUnit поддерживает общий код установки. Пере�
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit TemplateMethodsTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.

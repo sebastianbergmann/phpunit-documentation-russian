@@ -297,7 +297,7 @@ PHPUnit можно расширить различными способами д
     $test = new DataDrivenTest('data_file.csv');
     $result = PHPUnit\TextUI\TestRunner::run($test);
 
-.. code-block:: bash
+.. parsed-literal::
 
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
 

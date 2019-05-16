@@ -64,7 +64,7 @@ assertArrayHasKey()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit ArrayHasKeyTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -109,7 +109,7 @@ assertClassHasAttribute()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit ClassHasAttributeTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -154,7 +154,7 @@ assertArraySubset()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit ArraySubsetTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -204,7 +204,7 @@ assertClassHasStaticAttribute()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit ClassHasStaticAttributeTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -251,7 +251,7 @@ assertContains()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit ContainsTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -291,7 +291,7 @@ assertContains()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit ContainsTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -330,7 +330,7 @@ assertContains()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit ContainsTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -379,7 +379,7 @@ assertContainsOnly()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit ContainsOnlyTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -429,7 +429,7 @@ assertContainsOnlyInstancesOf()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit ContainsOnlyInstancesOfTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -474,7 +474,7 @@ assertCount()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit CountTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -519,7 +519,7 @@ assertDirectoryExists()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit DirectoryExistsTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -564,7 +564,7 @@ assertDirectoryIsReadable()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit DirectoryIsReadableTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -609,7 +609,7 @@ assertDirectoryIsWritable()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit DirectoryIsWritableTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -656,7 +656,7 @@ assertEmpty()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit EmptyTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -741,7 +741,7 @@ assertEqualXMLStructure()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit EqualXMLStructureTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -825,7 +825,7 @@ assertEquals()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit EqualsTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -895,7 +895,7 @@ assertEquals()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit EqualsTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -939,7 +939,7 @@ assertEquals()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit EqualsTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -995,7 +995,7 @@ assertEquals()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit EqualsTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -1042,7 +1042,7 @@ assertEquals()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit EqualsTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -1097,7 +1097,7 @@ assertFalse()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit FalseTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -1142,7 +1142,7 @@ assertFileEquals()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit FileEqualsTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -1193,7 +1193,7 @@ assertFileExists()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit FileExistsTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -1238,7 +1238,7 @@ assertFileIsReadable()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit FileIsReadableTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -1283,7 +1283,7 @@ assertFileIsWritable()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit FileIsWritableTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -1328,7 +1328,7 @@ assertGreaterThan()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit GreaterThanTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -1373,7 +1373,7 @@ assertGreaterThanOrEqual()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit GreaterThanOrEqualTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -1418,7 +1418,7 @@ assertInfinite()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit InfiniteTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -1465,7 +1465,7 @@ assertInstanceOf()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit InstanceOfTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -1508,7 +1508,7 @@ assertIsArray()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit ArrayTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -1551,7 +1551,7 @@ assertIsBool()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit BoolTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -1594,7 +1594,7 @@ assertIsCallable()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit CallableTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -1637,7 +1637,7 @@ assertIsFloat()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit FloatTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -1680,7 +1680,7 @@ assertIsInt()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit IntTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -1723,7 +1723,7 @@ assertIsIterable()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit IterableTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -1766,7 +1766,7 @@ assertIsNumeric()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit NumericTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -1809,7 +1809,7 @@ assertIsObject()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit ObjectTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -1852,7 +1852,7 @@ assertIsResource()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit ResourceTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -1895,7 +1895,7 @@ assertIsScalar()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit ScalarTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -1938,7 +1938,7 @@ assertIsString()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit StringTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -1983,7 +1983,7 @@ assertIsReadable()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit IsReadableTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -2028,7 +2028,7 @@ assertIsWritable()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit IsWritableTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -2073,7 +2073,7 @@ assertJsonFileEqualsJsonFile()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit JsonFileEqualsJsonFileTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -2119,7 +2119,7 @@ assertJsonStringEqualsJsonFile()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit JsonStringEqualsJsonFileTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -2166,7 +2166,7 @@ assertJsonStringEqualsJsonString()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit JsonStringEqualsJsonStringTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -2218,7 +2218,7 @@ assertLessThan()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit LessThanTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -2263,7 +2263,7 @@ assertLessThanOrEqual()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit LessThanOrEqualTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -2306,7 +2306,7 @@ assertNan()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit NanTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -2351,7 +2351,7 @@ assertNull()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit NotNullTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -2396,7 +2396,7 @@ assertObjectHasAttribute()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit ObjectHasAttributeTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -2441,7 +2441,7 @@ assertRegExp()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit RegExpTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -2486,7 +2486,7 @@ assertStringMatchesFormat()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit StringMatchesFormatTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -2581,7 +2581,7 @@ assertStringMatchesFormatFile()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit StringMatchesFormatFileTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -2629,7 +2629,7 @@ assertSame()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit SameTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -2667,7 +2667,7 @@ assertSame()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit SameTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -2712,7 +2712,7 @@ assertStringEndsWith()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit StringEndsWithTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -2757,7 +2757,7 @@ assertStringEqualsFile()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit StringEqualsFileTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -2808,7 +2808,7 @@ assertStringStartsWith()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit StringStartsWithTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -2970,7 +2970,7 @@ assertTrue()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit TrueTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -3016,7 +3016,7 @@ assertXmlFileEqualsXmlFile()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit XmlFileEqualsXmlFileTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -3070,7 +3070,7 @@ assertXmlStringEqualsXmlFile()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit XmlStringEqualsXmlFileTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -3124,7 +3124,7 @@ assertXmlStringEqualsXmlString()
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit XmlStringEqualsXmlStringTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.

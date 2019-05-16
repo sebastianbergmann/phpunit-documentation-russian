@@ -48,7 +48,7 @@
             $this->assertSame(0, count($stack));
         }
     }
-    
+
 |
     *Мартин Фаулер (Martin Fowler)*:
 
@@ -172,7 +172,7 @@ PHPUnit поддерживает объявление явных зависим�
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit --verbose DependencyFailureTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -237,7 +237,7 @@ PHPUnit не изменяет порядок выполнения тестов, 
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit --verbose MultipleDependenciesTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -291,7 +291,7 @@ PHPUnit не изменяет порядок выполнения тестов, 
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit DataTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -342,7 +342,7 @@ PHPUnit не изменяет порядок выполнения тестов, 
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit DataTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -386,7 +386,7 @@ PHPUnit не изменяет порядок выполнения тестов, 
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit DataTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -503,7 +503,7 @@ PHPUnit не изменяет порядок выполнения тестов, 
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit --verbose DependencyAndDataProviderComboTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -567,7 +567,7 @@ PHPUnit не изменяет порядок выполнения тестов, 
           }
        }
 
-.. code-block:: bash
+.. parsed-literal::
     $ phpunit DataTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
 
@@ -623,7 +623,7 @@ PHPUnit не изменяет порядок выполнения тестов, 
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit ExceptionTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -677,7 +677,7 @@ PHPUnit не изменяет порядок выполнения тестов, 
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit ExceptionTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -729,7 +729,7 @@ PHP, как показано в :numref:`writing-tests-for-phpunit.exceptions.ex
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit -d error_reporting=2 ExpectedErrorTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -785,7 +785,7 @@ PHP, как показано в :numref:`writing-tests-for-phpunit.exceptions.ex
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit ErrorSuppressionTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -838,7 +838,7 @@ PHP, как показано в :numref:`writing-tests-for-phpunit.exceptions.ex
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit OutputTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -909,7 +909,7 @@ PHP, как показано в :numref:`writing-tests-for-phpunit.exceptions.ex
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit ArrayDiffTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -964,7 +964,7 @@ PHP, как показано в :numref:`writing-tests-for-phpunit.exceptions.ex
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit LongArrayDiffTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -1025,7 +1025,7 @@ PHP, как показано в :numref:`writing-tests-for-phpunit.exceptions.ex
         }
     }
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit ArrayWeakComparisonTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.

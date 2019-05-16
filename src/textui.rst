@@ -10,7 +10,7 @@
 команды :file:`phpunit`. Следующий пример показывает, как запускать
 тесты с помощью этого инструмента командной строки PHPUnit:
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit ArrayTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -71,7 +71,7 @@ PHPUnit различает *неудачные выполнения (failures)* 
 
 Давайте посмотрим на опции командной строки исполнителя тестов в следующем коде:
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit --help
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -521,7 +521,7 @@ initially zero». Если есть несколько тестовых мето
 
 Давайте посмотрим aglie-документацию, сгенерированную для класса ``BankAccount``:
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit --testdox BankAccountTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.

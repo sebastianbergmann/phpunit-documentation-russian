@@ -14,11 +14,11 @@ PHPUnit
 Атрибуты элемента ``<phpunit>`` можно
 использовать для настройки основной функциональности PHPUnit.
 
-.. code-block:: bash
+.. parsed-literal::
 
     <phpunit
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-             xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/|version|/phpunit.xsd"
+             xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/\ |version|/phpunit.xsd"
              backupGlobals="true"
              backupStaticAttributes="false"
              <!--bootstrap="/path/to/bootstrap.php"-->
@@ -125,7 +125,7 @@ PHPUnit
 один или несколько дочерних элементов ``<testsuite>`` можно
 использовать для составления набора тестов из наборов тестов и тестовых классов.
 
-.. code-block:: bash
+.. code-block:: xml
 
     <testsuites>
       <testsuite name="Мой набор тестов">
@@ -141,7 +141,7 @@ PHPUnit
 :file:`/path/to/\*Test.php`
 и файл :file:`/path/to/MyTest.php`, если версия PHP не менее 5.3.0.
 
-.. code-block:: bash
+.. code-block:: xml
 
       <testsuites>
         <testsuite name="My Test Suite">
@@ -166,7 +166,7 @@ PHPUnit
 (описанных в :ref:`appendixes.annotations.group`),
 которые должны (или не должны) выполняться.
 
-.. code-block:: bash
+.. code-block:: xml
 
     <groups>
       <include>
@@ -196,7 +196,7 @@ PHPUnit
 Элемент ``<filter>`` и его дочерние элементы можно
 использовать для настройки белого списка при создании отчёта о покрытии кода.
 
-.. code-block:: bash
+.. code-block:: xml
 
     <filter>
       <whitelist processUncoveredFilesFromWhitelist="true">
@@ -218,7 +218,7 @@ PHPUnit
 можно использовать для настройки логирования
 выполнения тестов.
 
-.. code-block:: bash
+.. code-block:: xml
 
     <logging>
       <log type="coverage-html" target="/tmp/report" lowUpperBound="35"
@@ -296,7 +296,7 @@ PHPUnit
 ``<listener>`` можно использовать для присоединения
 дополнительных обработчиков теста к выполнению теста.
 
-.. code-block:: bash
+.. code-block:: xml
 
     <listeners>
       <listener class="MyListener" file="/optional/path/to/MyListener.php">
@@ -318,7 +318,7 @@ PHPUnit
 Вышеприведённая конфигурация XML соответствует прикреплению объекта
 ``$listener`` (см. ниже) к выполнению теста:
 
-.. code-block:: bash
+.. code-block:: php
 
     $listener = new MyListener(
         ['Sebastian'],
@@ -360,7 +360,7 @@ PHPUnit
 можно использовать для настройки параметров, констант и глобальных переменных PHP.
 Он может также использоваться для добавления новых путей в опцию ``include_path``.
 
-.. code-block:: bash
+.. code-block:: xml
 
     <php>
       <includePath>.</includePath>
@@ -378,7 +378,7 @@ PHPUnit
 
 Вышеприведённая конфигурация XML соответствует следующем коду PHP:
 
-.. code-block:: bash
+.. code-block:: php
 
     ini_set('foo', 'bar');
     define('foo', 'bar');

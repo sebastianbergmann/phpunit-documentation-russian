@@ -65,7 +65,7 @@
 Неполный тест обозначается ``I`` в выводе исполнителя тестов командной строки
 PHPUnit, как показано в следующем примере:
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit --verbose SampleTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
@@ -141,7 +141,7 @@ PHPUnit, как показано в следующем примере:
 Пропущенный тест обозначается ``S`` в выводе исполнителя тестов командной строки
 PHPUnit, как показано в следующем примере:
 
-.. code-block:: bash
+.. parsed-literal::
 
     $ phpunit --verbose DatabaseTest
     PHPUnit |version|.0 by Sebastian Bergmann and contributors.
