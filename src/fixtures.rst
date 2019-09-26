@@ -55,19 +55,19 @@ PHPUnit поддерживает общий код установки. Пере�
             $this->stack = [];
         }
 
-        public function testEmpty()
+        public function testEmpty(): void
         {
             $this->assertTrue(empty($this->stack));
         }
 
-        public function testPush()
+        public function testPush(): void
         {
             array_push($this->stack, 'foo');
             $this->assertSame('foo', $this->stack[count($this->stack) - 1]);
             $this->assertFalse(empty($this->stack));
         }
 
-        public function testPop()
+        public function testPop(): void
         {
             array_push($this->stack, 'foo');
             $this->assertSame('foo', array_pop($this->stack));
@@ -93,7 +93,7 @@ PHPUnit поддерживает общий код установки. Пере�
 
     class TemplateMethodsTest extends TestCase
     {
-        public static function setUpBeforeClass(): void: void
+        public static function setUpBeforeClass(): void
         {
             fwrite(STDOUT, __METHOD__ . "\n");
         }
@@ -108,13 +108,13 @@ PHPUnit поддерживает общий код установки. Пере�
             fwrite(STDOUT, __METHOD__ . "\n");
         }
 
-        public function testOne()
+        public function testOne(): void
         {
             fwrite(STDOUT, __METHOD__ . "\n");
             $this->assertTrue(true);
         }
 
-        public function testTwo()
+        public function testTwo(): void
         {
             fwrite(STDOUT, __METHOD__ . "\n");
             $this->assertTrue(false);
@@ -130,7 +130,7 @@ PHPUnit поддерживает общий код установки. Пере�
             fwrite(STDOUT, __METHOD__ . "\n");
         }
 
-        public static function tearDownAfterClass(): void: void
+        public static function tearDownAfterClass(): void
         {
             fwrite(STDOUT, __METHOD__ . "\n");
         }
@@ -219,8 +219,8 @@ PHPUnit поддерживает общий код установки. Пере�
 Это позволяет сделать ваши тесты быстрее.
 
 :numref:`fixtures.sharing-fixture.examples.DatabaseTest.php`
-использует шаблонные методы ``setUpBeforeClass(): void: void`` и
-``tearDownAfterClass(): void: void`` для подключения к базе данных
+использует шаблонные методы ``setUpBeforeClass(): void`` и
+``tearDownAfterClass(): void`` для подключения к базе данных
 до выполнения первого теста в тестовом классе и закрытие соединения
 с базой данных после запуска последнего теста, соответственно.
 
