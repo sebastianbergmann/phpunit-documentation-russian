@@ -363,14 +363,14 @@ PHPUnit имеет одну удивительную возможность, к�
 .. code-block:: bash
 
     <?xml version="1.0" encoding="UTF-8" ?>
-    <phpunit>
+    <dataset>
         <php>
             <var name="DB_DSN" value="mysql:dbname=myguestbook;host=localhost" />
             <var name="DB_USER" value="user" />
             <var name="DB_PASSWD" value="passwd" />
             <var name="DB_DBNAME" value="myguestbook" />
         </php>
-    </phpunit>
+    </dataset>
 
 Теперь мы можем изменить тестовый класс, чтобы он выглядел так:
 
