@@ -801,7 +801,7 @@ PHP, как показано в :numref:`writing-tests-for-phpunit.exceptions.ex
 
 .. _writing-tests-for-phpunit.output:
 
-Тестирования вывода
+Тестирование вывода
 ###################
 
 Иногда вам нужно проверить, что выполнение метода, например,
