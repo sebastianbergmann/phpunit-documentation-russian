@@ -593,7 +593,7 @@
     {
         public function testErrorReported()
         {
-            // Создать подставной объект длч Observer, имитируя
+            // Создать подставной объект для Observer, имитируя
             // метод reportError()
             $observer = $this->getMockBuilder(Observer::class)
                              ->setMethods(['reportError'])
