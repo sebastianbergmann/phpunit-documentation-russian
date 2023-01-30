@@ -1,3 +1,5 @@
+**The PHPUnit project is no longer involved with the translation of its documentation to other languages. This repository is now archived.**
+
 # Документация PHPUnit на русском языке
 
 > **(!)** Поддерживается только перевод последней версии из ветки [master](https://github.com/sebastianbergmann/phpunit-documentation-english/tree/master).
